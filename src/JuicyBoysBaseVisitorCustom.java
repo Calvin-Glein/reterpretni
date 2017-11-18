@@ -62,7 +62,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //
         Object a = super.visit(ctx.multiplicativeExpression(0));
 
-        Integer temp = 0;
+        Integer temp = Integer.parseInt(a.toString());
         //store the non recurive one based CFG
         List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
         //Para sa + or -
@@ -77,7 +77,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
             try
             {
-                Object b = super.visit(multExps.get(j).unaryExpression(0));
+                Object b = null;
+                if(multExps.get(j).unaryExpression(1)==null)
+                 b = super.visit(multExps.get(j).unaryExpression(0));
+
+                else {
+                    b = super.visit(multExps.get(j));
+                }
 
                 Integer int1 = Integer.parseInt(b.toString());
 
@@ -98,6 +104,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                         System.out.println("inside ADD with Instance value: " + (int)int1);
                         temp = temp + (int)int1;
+
                         //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                     }
@@ -130,10 +137,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //Object b = super.visitAdditiveExpression()
         }
 
-        System.out.println("Answer: " + (Integer.parseInt(a.toString()) + temp));
+        System.out.println("Answer in Additive Expression: " + temp);
 
 
-        return (Integer.parseInt(a.toString()) + temp);
+        return (temp);
         /*
         if(ctx.ADD() != null && super.visit(ctx.multiplicativeExpression(0))!= null && super.visit(ctx.multiplicativeExpression(1))!= null){
             Object addend = super.visit(ctx.multiplicativeExpression(0));
@@ -146,22 +153,23 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return visitChildren(ctx);*/
     }
 
-
+    @Override
     public Object visitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx) {
 
         System.out.println("---------- Multiplicative Expression ----------");
         //
         Object a = super.visit(ctx.unaryExpression(0));
 
-
         //temporary fix
         Integer temp = Integer.parseInt(a.toString());
+        System.out.println("))))))))))))))))) Temp: " + temp);
+
         //store the non recurive one based CFG
         List<JuicyBoysParser.UnaryExpressionContext> unaryExps = ctx.unaryExpression();
         List<JuicyBoysParser.MulORdivORmodContext> mulORdivORmod = ctx.mulORdivORmod();
 
         //        Object b = super.visit(ctx.multiplicativeExpression(1));
-        for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
+        //for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
 
 
             for (int j = 1; j < unaryExps.size(); j++) {
@@ -172,6 +180,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     Object b = super.visit(unaryExps.get(j).unaryExpressionNotPlusMinus());
 
                     Integer int1 = Integer.parseInt(b.toString());
+                    System.out.println(")))))))))))))))) int1: " + int1);
 
                     //wait explain ko sayo problem
 
@@ -181,13 +190,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     //so we're trying to find a way na maaaccess yung ADD and SUB
 
                     if (int1 instanceof Integer) {
-                        System.out.println("nakapasok si koya sa add shit na int instance");
+                        System.out.println("Instance is an Integer");
                         if (mulORdivORmod.get(j - 1).MUL() != null) {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
 
                             System.out.println("inside MUL");
                             temp = temp * (int) int1;
+                            System.out.println("\t\t\t Temp: " + temp);
+
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                         } else if (mulORdivORmod.get(j - 1).DIV() != null) {
