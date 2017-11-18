@@ -787,11 +787,24 @@ shiftOp
 
 
 additiveExpression
-    :   multiplicativeExpression ( (ADD | SUB) multiplicativeExpression)*
+    :   multiplicativeExpression (addORsub multiplicativeExpression)*
     ;
 
+//Added eto para sa visitor
+addORsub
+    : ADD
+    | SUB
+    ;
+
+
 multiplicativeExpression
-    :   unaryExpression ( ( MUL | DIV | MOD ) unaryExpression )*
+    :   unaryExpression ( mulORdivORmod unaryExpression )*
+    ;
+
+mulORdivORmod
+    : MUL
+    | DIV
+    | MOD
     ;
 
 unaryExpression

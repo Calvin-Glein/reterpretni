@@ -1467,6 +1467,18 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAddORsub(JuicyBoysParser.AddORsubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddORsub(JuicyBoysParser.AddORsubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1474,6 +1486,18 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulORdivORmod(JuicyBoysParser.MulORdivORmodContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulORdivORmod(JuicyBoysParser.MulORdivORmodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

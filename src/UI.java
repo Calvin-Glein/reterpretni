@@ -290,7 +290,7 @@ public class UI {
 
 
         if(!visitor.getHasError()){
-            System.out.print("no error sabi ni visitor");
+            System.out.print("\n\n\n\n No error sabi ni visitor");
 
         }else{
             //do something

@@ -1217,6 +1217,16 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#addORsub}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddORsub(JuicyBoysParser.AddORsubContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#addORsub}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddORsub(JuicyBoysParser.AddORsubContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#multiplicativeExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -1226,6 +1236,16 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#mulORdivORmod}.
+	 * @param ctx the parse tree
+	 */
+	void enterMulORdivORmod(JuicyBoysParser.MulORdivORmodContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#mulORdivORmod}.
+	 * @param ctx the parse tree
+	 */
+	void exitMulORdivORmod(JuicyBoysParser.MulORdivORmodContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#unaryExpression}.
 	 * @param ctx the parse tree

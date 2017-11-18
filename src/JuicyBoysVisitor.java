@@ -736,11 +736,23 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#addORsub}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAddORsub(JuicyBoysParser.AddORsubContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#multiplicativeExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#mulORdivORmod}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulORdivORmod(JuicyBoysParser.MulORdivORmodContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#unaryExpression}.
 	 * @param ctx the parse tree
