@@ -22,7 +22,7 @@ public class Variable extends Symbol {
 		return data_type;
 	}
 
-	public void setDatType(String data_type) {
+	public void setDataType(String data_type) {
 		this.data_type = data_type;
 	}
 
@@ -39,6 +39,7 @@ public class Variable extends Symbol {
 		// TODO Auto-generated method stub
 		if (value == null)
 			return " Data Type:" + data_type + " Name:" + name + " Value: null";
+
 		else
 			return " Data Type:" + data_type + " Name:" + name + " Value: " + value.toString();
 	}

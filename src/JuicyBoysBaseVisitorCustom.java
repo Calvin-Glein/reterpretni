@@ -42,6 +42,57 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
     }*/
 
+
+    @Override
+    public Object visitLocalVariableDeclarationStatement(JuicyBoysParser.LocalVariableDeclarationStatementContext ctx) {
+        return super.visitLocalVariableDeclarationStatement(ctx);
+    }
+
+    @Override
+    public Object visitLocalVariableDeclaration(JuicyBoysParser.LocalVariableDeclarationContext ctx) {
+
+        System.out.println("---------- Visit LocalVariableDeclaration ----------");
+        if(ctx.type()!=null)
+        {
+            Variable a = (Variable)super.visit(ctx.variableDeclarators());
+            a.setDataType(ctx.type().getText().toString());
+
+            System.out.println(a.toString());
+
+        }
+
+        return null;
+
+    }
+
+
+    @Override
+    public Object visitVariableDeclarator(JuicyBoysParser.VariableDeclaratorContext ctx) {
+        Object a = null;
+        Object b = null;
+
+        if(ctx.variableDeclaratorId() != null){
+            a = ctx.variableDeclaratorId().getText();
+        }
+        if(ctx.variableInitializer() != null){
+            b = super.visit(ctx.variableInitializer());
+        }
+
+        Variable v = new Variable(null, a.toString(), new Value(b));
+        return v;
+    }
+
+    @Override
+    public Object visitVariableDeclarators(JuicyBoysParser.VariableDeclaratorsContext ctx) {
+        Object a = super.visit(ctx.variableDeclarator(0));
+
+        if(a != null){
+            return a;
+        }
+
+        return null;
+    }
+
     @Override
     public Object visitCompilationUnit(@NotNull JuicyBoysParser.CompilationUnitContext ctx) {
         System.out.println("---------- Visited Compilation Unit ----------");
@@ -60,7 +111,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     {
         System.out.println("---------- Visit Additive Expression ----------");
         //
+
+
         Object a = super.visit(ctx.multiplicativeExpression(0));
+
+        if(a != null){
+
 
         Integer temp = Integer.parseInt(a.toString());
         //store the non recurive one based CFG
@@ -141,6 +197,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
         return (temp);
+
+        }
+        return null;
         /*
         if(ctx.ADD() != null && super.visit(ctx.multiplicativeExpression(0))!= null && super.visit(ctx.multiplicativeExpression(1))!= null){
             Object addend = super.visit(ctx.multiplicativeExpression(0));
@@ -160,16 +219,17 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //
         Object a = super.visit(ctx.unaryExpression(0));
 
-        //temporary fix
-        Integer temp = Integer.parseInt(a.toString());
-        System.out.println("))))))))))))))))) Temp: " + temp);
+        if(a!=null) {
+            //temporary fix
+            Integer temp = Integer.parseInt(a.toString());
+            System.out.println("))))))))))))))))) Temp: " + temp);
 
-        //store the non recurive one based CFG
-        List<JuicyBoysParser.UnaryExpressionContext> unaryExps = ctx.unaryExpression();
-        List<JuicyBoysParser.MulORdivORmodContext> mulORdivORmod = ctx.mulORdivORmod();
+            //store the non recurive one based CFG
+            List<JuicyBoysParser.UnaryExpressionContext> unaryExps = ctx.unaryExpression();
+            List<JuicyBoysParser.MulORdivORmodContext> mulORdivORmod = ctx.mulORdivORmod();
 
-        //        Object b = super.visit(ctx.multiplicativeExpression(1));
-        //for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
+            //        Object b = super.visit(ctx.multiplicativeExpression(1));
+            //for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
 
 
             for (int j = 1; j < unaryExps.size(); j++) {
@@ -229,11 +289,17 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 //Object b = super.visitAdditiveExpression()
             }
 
-        //MAY SIRA PA DIS cuz di siya + d nasa baba nito aapat
-        System.out.println("Answer in multExp: " + temp);
+            //MAY SIRA PA DIS cuz di siya + d nasa baba nito aapat
+            System.out.println("Answer in multExp: " + temp);
 
 
-        return temp;
+            return temp;
+
+        }
+
+
+        return null;
+
     }
 
     {
@@ -323,9 +389,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }
     @Override
     public Object visitUnaryExpression(JuicyBoysParser.UnaryExpressionContext ctx) {
-
         Object a = super.visit(ctx.unaryExpressionNotPlusMinus());
-        return a;
+
+
+        if(a != null){
+            return a;
+        }
+        return null;
 
         //return super.visitUnaryExpression(ctx);
     }
@@ -333,15 +403,24 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitUnaryExpressionNotPlusMinus(JuicyBoysParser.UnaryExpressionNotPlusMinusContext ctx) {
 
+
         Object a = super.visit(ctx.primary());
-        return a;
+
+        if(a != null){
+            return a;
+        }
+
+        return null;
         //return super.visitUnaryExpressionNotPlusMinus(ctx);
     }
     @Override
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
+        if(ctx.literal() != null)
+        {
+            return ctx.literal().getText();
 
-        Object a = super.visit(ctx.literal());
-        return a;
+        }
+       return null;
 
         //return super.visitPrimary(ctx);
     }
