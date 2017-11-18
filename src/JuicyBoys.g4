@@ -815,7 +815,7 @@ unaryExpressionNotPlusMinus
     |   castExpression
     |   primary selector* ('++'|'--')?
     ;
-    
+
 castExpression
     :  '(' primitiveType ')' unaryExpression
     |  '(' (type | expression) ')' unaryExpressionNotPlusMinus
@@ -968,12 +968,14 @@ WHILE : 'while';
 // §3.10.1 Integer Literals
 
 IntegerLiteral
-	:	DecimalIntegerLiteral
-/*	|	HexIntegerLiteral
+	:   [0-9]+
+/*	|	DecimalIntegerLiteral
+    |   HexIntegerLiteral
 	|	OctalIntegerLiteral
 	|	BinaryIntegerLiteral*/
 	;
 
+/*
 fragment
 DecimalIntegerLiteral
 	:	DecimalNumeral IntegerTypeSuffix?
@@ -993,17 +995,20 @@ fragment
 BinaryIntegerLiteral
 	:	BinaryNumeral IntegerTypeSuffix?
 	;
+*/
 
 fragment
 IntegerTypeSuffix
 	:	[lL]
 	;
 
+/*
 fragment
 DecimalNumeral
 	:	'0'
 	|	NonZeroDigit (Digits? | Underscores Digits)
 	;
+*/
 
 fragment
 Digits

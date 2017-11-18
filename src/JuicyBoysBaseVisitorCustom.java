@@ -3,6 +3,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.naming.event.ObjectChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
@@ -56,8 +57,66 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
-   @Override public Object visitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx)
+    @Override public Object visitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx)
     {
+        System.out.println("additive EXP");
+
+
+        //store the non recurive one based CFG
+        Object a = super.visit(ctx.multiplicativeExpression(0));
+        List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
+
+
+        System.out.println("Count of multExps: " + multExps.size() );
+        int i = 0;
+        //        Object b = super.visit(ctx.multiplicativeExpression(1));
+      /*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*/
+
+        for(int j = 0; j < multExps.size(); j++){
+
+            //^^ iterating through all multExps kasi *
+            System.out.println("Counter: " + j);
+            try
+            {
+                Object b = super.visit(multExps.get(j).unaryExpression(0));
+                Integer int1 = Integer.parseInt(a.toString());
+                Integer int2 = Integer.parseInt(b.toString());
+
+                if(int1 instanceof Integer && int2 instanceof  Integer)
+                {
+                    System.out.println("nakapasok si koya sa add shit na int instance");
+
+                    if(ctx.ADD()!=null)
+                    {
+                        System.out.println("int1: " + (int)int1  + " End");
+                        System.out.println("int2: " + (int)int2  + " End");
+
+                        System.out.println("Added: " + ((int)int1 + (int)int2) + "End");
+                        //return (int)int1 + (int)int2;
+                    }
+                    if(ctx.SUB()!=null)
+                    {
+                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
+                        //return (int)int1 - (int)int2;
+                    }
+                }
+
+                System.out.println(" DI nakapasok si koya sa add shit na int instance");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            i++;
+
+            //Object b = super.visitAdditiveExpression()
+        }
+
+        System.out.println("Di sya instance of an integer");
+
+        return null;
+        /*
         if(ctx.ADD() != null && super.visit(ctx.multiplicativeExpression(0))!= null && super.visit(ctx.multiplicativeExpression(1))!= null){
             Object addend = super.visit(ctx.multiplicativeExpression(0));
             System.out.println("Not null Add and multiplicative inverse");
@@ -66,17 +125,80 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         else{
             System.out.println("Null Add and multiplicative inverse");
         }
-        return visitChildren(ctx);
+        return visitChildren(ctx);*/
     }
 
 
-    public Object visitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx) {
+ /*   public Object visitMultiplicativeExpression(JuicyBoysParser.MultiplicativeExpressionContext ctx) {
 
         Object a = super.visit(ctx.unaryExpression(0));
-        Object b = super.visit(ctx.unaryExpression(1));
+        //Object b = super.visit(ctx.unaryExpression(1));
 
+        List<JuicyBoysParser.UnaryExpressionContext> unaryExps =  ctx.unaryExpression();
+
+        int i = 1;
+        //        Object b = super.visit(ctx.multiplicativeExpression(1));
+        for(JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps) {
+
+            System.out.println("Counter Unary: " + i);
+
+           *//* try
+            {
+                Object b = super.visit(visitUnaryExpression());
+                Integer int1 = Integer.parseInt(a.toString());
+                Integer int2 = Integer.parseInt(b.toString());
+
+                if(int1 instanceof Integer && int2 instanceof  Integer)
+                {
+                    System.out.println("nakapasok si koya sa add shit na int instance");
+
+                    if(ctx.MUL()!=null) {
+                        System.out.println("int1: " + (int) int1 + " End");
+                        System.out.println("int2: " + (int) int2 + " End");
+
+                        System.out.println("Added: " + ((int) int1 + (int) int2) + "End");
+                        return (int) int1 + (int) int2;
+                    }
+                }
+
+                System.out.println(" DI nakapasok si koya sa add shit na int instance");
+            }
+
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }*//*
+
+
+            //Object b = super.visitAdditiveExpression()
+        }
+      *//*  try
+        {
+            Integer int1 = Integer.parseInt(a.toString());
+            Integer int2 = Integer.parseInt(b.toString());
+
+            if(int1 instanceof Integer && int2 instanceof  Integer)
+            {
+                if(ctx.MUL()!=null)
+                    return (int)int1 * (int)int2;
+                if(ctx.DIV()!=null)
+                    return (int)int1 / (int)int2;
+                if(ctx.MOD()!=null)
+                    return (int)int1 % (int)int2;
+
+            }
+        }
+        catch(Exception e)
+        {
+        }
+*//*
+        //return super.visitMultiplicativeExpression(ctx);
+
+        System.out.println("Di sya instance of an integer");
+        return super.visitMultiplicativeExpression(ctx);
 
         // Glenn's code
+    *//*
         if(super.visit(ctx.unaryExpression(0)) != null || ((ctx.MUL()!=null || ctx.DIV()!=null || ctx.MOD()!=null) && super.visit(ctx.unaryExpression(1)) != null)){
             //Object addend = super.visit(ctx.multiplicativeExpression(0));
             System.out.println("Not null multiplicativeexpresion");
@@ -85,9 +207,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             System.out.println("Null multiplicativeexpresion");
         }
         return visitChildren(ctx);
-
+*//*
         //return super.visitMultiplicativeExpression(ctx);
-    }
+    }*/
 
     @Override
     public Object visitUnaryExpression(JuicyBoysParser.UnaryExpressionContext ctx) {
@@ -118,7 +240,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitLiteral(JuicyBoysParser.LiteralContext ctx) {
 
-        return super.visitLiteral(ctx);
+        System.out.println("visit Literal");
+        if(ctx.IntegerLiteral()!=null) {
+            System.out.println("Visit Literal: " + ctx.IntegerLiteral().getText().toString());
+            return ctx.IntegerLiteral().getText();
+        }
+
+        return null;
     }
 
 
