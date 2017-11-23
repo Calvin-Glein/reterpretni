@@ -20,7 +20,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     public JuicyBoysBaseVisitorCustom() {
 
-      //*  hasError = false;
+        hasError = false;
         //for global siguro
 
         //local or global, this will dictate

@@ -16,42 +16,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCompilationUnit(JuicyBoysParser.CompilationUnitContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPackageDeclaration(JuicyBoysParser.PackageDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitImportDeclaration(JuicyBoysParser.ImportDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeDeclaration(JuicyBoysParser.TypeDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassOrInterfaceDeclaration(JuicyBoysParser.ClassOrInterfaceDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifiers}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassOrInterfaceModifiers(JuicyBoysParser.ClassOrInterfaceModifiersContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassOrInterfaceModifier(JuicyBoysParser.ClassOrInterfaceModifierContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#modifiers}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -88,48 +52,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTypeBound(JuicyBoysParser.TypeBoundContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumDeclaration(JuicyBoysParser.EnumDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumBody(JuicyBoysParser.EnumBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumConstants}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumConstants(JuicyBoysParser.EnumConstantsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumConstant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumConstant(JuicyBoysParser.EnumConstantContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumBodyDeclarations(JuicyBoysParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceDeclaration(JuicyBoysParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#normalInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNormalInterfaceDeclaration(JuicyBoysParser.NormalInterfaceDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#typeList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -141,12 +63,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitClassBody(JuicyBoysParser.ClassBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceBody(JuicyBoysParser.InterfaceBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
@@ -189,30 +105,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFieldDeclaration(JuicyBoysParser.FieldDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceBodyDeclaration(JuicyBoysParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceMemberDecl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMemberDecl(JuicyBoysParser.InterfaceMemberDeclContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldDecl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMethodOrFieldDecl(JuicyBoysParser.InterfaceMethodOrFieldDeclContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMethodOrFieldRest(JuicyBoysParser.InterfaceMethodOrFieldRestContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#methodDeclaratorRest}.
 	 * @param ctx the parse tree
@@ -406,24 +298,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLiteral(JuicyBoysParser.LiteralContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotations}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotations(JuicyBoysParser.AnnotationsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotation(JuicyBoysParser.AnnotationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationName(JuicyBoysParser.AnnotationNameContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#elementValuePairs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -447,48 +321,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitElementValueArrayInitializer(JuicyBoysParser.ElementValueArrayInitializerContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeDeclaration(JuicyBoysParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeBody(JuicyBoysParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeElementDeclaration(JuicyBoysParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeElementRest(JuicyBoysParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationMethodOrConstantRest(JuicyBoysParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationMethodRest(JuicyBoysParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationConstantRest(JuicyBoysParser.AnnotationConstantRestContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#defaultValue}.
 	 * @param ctx the parse tree

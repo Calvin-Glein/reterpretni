@@ -17,66 +17,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitCompilationUnit(JuicyBoysParser.CompilationUnitContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterPackageDeclaration(JuicyBoysParser.PackageDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitPackageDeclaration(JuicyBoysParser.PackageDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterImportDeclaration(JuicyBoysParser.ImportDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitImportDeclaration(JuicyBoysParser.ImportDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeDeclaration(JuicyBoysParser.TypeDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeDeclaration(JuicyBoysParser.TypeDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#classOrInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassOrInterfaceDeclaration(JuicyBoysParser.ClassOrInterfaceDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassOrInterfaceDeclaration(JuicyBoysParser.ClassOrInterfaceDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifiers}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassOrInterfaceModifiers(JuicyBoysParser.ClassOrInterfaceModifiersContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifiers}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassOrInterfaceModifiers(JuicyBoysParser.ClassOrInterfaceModifiersContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifier}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassOrInterfaceModifier(JuicyBoysParser.ClassOrInterfaceModifierContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceModifier}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassOrInterfaceModifier(JuicyBoysParser.ClassOrInterfaceModifierContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#modifiers}.
 	 * @param ctx the parse tree
 	 */
@@ -137,76 +77,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitTypeBound(JuicyBoysParser.TypeBoundContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumDeclaration(JuicyBoysParser.EnumDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumDeclaration(JuicyBoysParser.EnumDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#enumBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumBody(JuicyBoysParser.EnumBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#enumBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumBody(JuicyBoysParser.EnumBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#enumConstants}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumConstants(JuicyBoysParser.EnumConstantsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#enumConstants}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumConstants(JuicyBoysParser.EnumConstantsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#enumConstant}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumConstant(JuicyBoysParser.EnumConstantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#enumConstant}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumConstant(JuicyBoysParser.EnumConstantContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumBodyDeclarations(JuicyBoysParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumBodyDeclarations(JuicyBoysParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceDeclaration(JuicyBoysParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceDeclaration(JuicyBoysParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#normalInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterNormalInterfaceDeclaration(JuicyBoysParser.NormalInterfaceDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#normalInterfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitNormalInterfaceDeclaration(JuicyBoysParser.NormalInterfaceDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#typeList}.
 	 * @param ctx the parse tree
 	 */
@@ -226,16 +96,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitClassBody(JuicyBoysParser.ClassBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceBody(JuicyBoysParser.InterfaceBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceBody(JuicyBoysParser.InterfaceBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
@@ -306,46 +166,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFieldDeclaration(JuicyBoysParser.FieldDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceBodyDeclaration(JuicyBoysParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceBodyDeclaration(JuicyBoysParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceMemberDecl}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceMemberDecl(JuicyBoysParser.InterfaceMemberDeclContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceMemberDecl}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceMemberDecl(JuicyBoysParser.InterfaceMemberDeclContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldDecl}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceMethodOrFieldDecl(JuicyBoysParser.InterfaceMethodOrFieldDeclContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldDecl}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceMethodOrFieldDecl(JuicyBoysParser.InterfaceMethodOrFieldDeclContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceMethodOrFieldRest(JuicyBoysParser.InterfaceMethodOrFieldRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#interfaceMethodOrFieldRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceMethodOrFieldRest(JuicyBoysParser.InterfaceMethodOrFieldRestContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#methodDeclaratorRest}.
 	 * @param ctx the parse tree
@@ -667,36 +487,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitLiteral(JuicyBoysParser.LiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotations}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotations(JuicyBoysParser.AnnotationsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotations}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotations(JuicyBoysParser.AnnotationsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotation}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotation(JuicyBoysParser.AnnotationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotation}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotation(JuicyBoysParser.AnnotationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationName}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationName(JuicyBoysParser.AnnotationNameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationName}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationName(JuicyBoysParser.AnnotationNameContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#elementValuePairs}.
 	 * @param ctx the parse tree
 	 */
@@ -736,76 +526,6 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitElementValueArrayInitializer(JuicyBoysParser.ElementValueArrayInitializerContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeDeclaration(JuicyBoysParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeDeclaration(JuicyBoysParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeBody(JuicyBoysParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeBody(JuicyBoysParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeElementDeclaration(JuicyBoysParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeElementDeclaration(JuicyBoysParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeElementRest(JuicyBoysParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeElementRest(JuicyBoysParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationMethodOrConstantRest(JuicyBoysParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationMethodOrConstantRest(JuicyBoysParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationMethodRest(JuicyBoysParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationMethodRest(JuicyBoysParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationConstantRest(JuicyBoysParser.AnnotationConstantRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationConstantRest(JuicyBoysParser.AnnotationConstantRestContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#defaultValue}.
 	 * @param ctx the parse tree

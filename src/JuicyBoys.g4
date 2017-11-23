@@ -171,23 +171,25 @@ grammar JuicyBoys;
 /* The annotations are separated out to make parsing faster, but must be associated with
    a packageDeclaration or a typeDeclaration (and not an empty one). */
 compilationUnit
-    :   annotations
+   /* :   annotations
         (   packageDeclaration importDeclaration* typeDeclaration*
         |   classOrInterfaceDeclaration typeDeclaration*
         )
         EOF
     |   packageDeclaration? importDeclaration* typeDeclaration*
-        EOF
+        EOF*/
+    :   classDeclaration*
+                 EOF
     ;
 
-packageDeclaration
+/*packageDeclaration
     :   'package' qualifiedName ';'
     ;
 
 importDeclaration
     :   'import' 'static'? qualifiedName ('.' '*')? ';'
-    ;
-
+    ;*/
+/*
 typeDeclaration
     :   classOrInterfaceDeclaration
     |   ';'
@@ -211,7 +213,7 @@ classOrInterfaceModifier
         |   'final'      // class only -- does not apply to interfaces
         |   'strictfp'   // class or interface
         )
-    ;
+    ;*/
 
 modifiers
     :   modifier*
@@ -219,7 +221,7 @@ modifiers
 
 classDeclaration
     :   normalClassDeclaration
-    |   enumDeclaration
+/*    |   enumDeclaration*/
     ;
 
 normalClassDeclaration
@@ -241,34 +243,40 @@ typeBound
     :   type ('&' type)*
     ;
 
+/*
 enumDeclaration
     :   ENUM Identifier ('implements' typeList)? enumBody
     ;
+*/
 
-enumBody
+/*enumBody
     :   '{' enumConstants? ','? enumBodyDeclarations? '}'
-    ;
+    ;*/
 
-enumConstants
+/*enumConstants
     :   enumConstant (',' enumConstant)*
-    ;
+    ;*/
 
-enumConstant
+/*enumConstant
     :   annotations? Identifier arguments? classBody?
-    ;
+    ;*/
 
+/*
 enumBodyDeclarations
     :   ';' (classBodyDeclaration)*
     ;
+*/
 
-interfaceDeclaration
+/*interfaceDeclaration
     :   normalInterfaceDeclaration
     |   annotationTypeDeclaration
-    ;
+    ;*/
 
+/*
 normalInterfaceDeclaration
     :   'interface' Identifier typeParameters? ('extends' typeList)? interfaceBody
     ;
+*/
 
 typeList
     :   type (',' type)*
@@ -278,9 +286,9 @@ classBody
     :   '{' classBodyDeclaration* '}'
     ;
 
-interfaceBody
+/*interfaceBody
     :   '{' interfaceBodyDeclaration* '}'
-    ;
+    ;*/
 
 classBodyDeclaration
     :   ';'
@@ -293,7 +301,9 @@ memberDecl
     |   memberDeclaration
     |   'void' Identifier voidMethodDeclaratorRest
     |   Identifier constructorDeclaratorRest
+/*
     |   interfaceDeclaration
+*/
     |   classDeclaration
     ;
 
@@ -318,11 +328,12 @@ fieldDeclaration
     :   variableDeclarators ';'
     ;
 
-interfaceBodyDeclaration
+/*interfaceBodyDeclaration
     :   modifiers interfaceMemberDecl
     |   ';'
-    ;
+    ;*/
 
+/*
 interfaceMemberDecl
     :   interfaceMethodOrFieldDecl
     |   interfaceGenericMethodDecl
@@ -330,15 +341,16 @@ interfaceMemberDecl
     |   interfaceDeclaration
     |   classDeclaration
     ;
+*/
 
-interfaceMethodOrFieldDecl
+/*interfaceMethodOrFieldDecl
     :   type Identifier interfaceMethodOrFieldRest
-    ;
+    ;*/
 
-interfaceMethodOrFieldRest
+/*interfaceMethodOrFieldRest
     :   constantDeclaratorsRest ';'
     |   interfaceMethodDeclaratorRest
-    ;
+    ;*/
 
 methodDeclaratorRest
     :   formalParameters ('[' ']')*
@@ -406,8 +418,10 @@ arrayInitializer
     ;
 
 modifier
+/*
     :   annotation
-    |   (   'public'
+*/
+    :   (   'public'
         |   'protected'
         |   'private'
         |   'static'
@@ -458,7 +472,9 @@ primitiveType
 
 variableModifier
     :   'final'
+/*
     |   annotation
+*/
     ;
 
 typeArguments
@@ -510,17 +526,17 @@ literal
 
 // ANNOTATIONS
 
-annotations
+/*annotations
     :   annotation+
-    ;
+    ;*/
 
-annotation
+/*annotation
     :   '@' annotationName ( '(' ( elementValuePairs | elementValue )? ')' )?
-    ;
+    ;*/
 
-annotationName
+/*annotationName
     : Identifier ('.' Identifier)*
-    ;
+    ;*/
 
 elementValuePairs
     :   elementValuePair (',' elementValuePair)*
@@ -532,14 +548,16 @@ elementValuePair
 
 elementValue
     :   conditionalExpression
+/*
     |   annotation
+*/
     |   elementValueArrayInitializer
     ;
 
 elementValueArrayInitializer
     :   '{' (elementValue (',' elementValue)*)? (',')? '}'
     ;
-
+/*
 annotationTypeDeclaration
     :   '@' 'interface' Identifier annotationTypeBody
     ;
@@ -574,6 +592,7 @@ annotationConstantRest
     :   variableDeclarators
     ;
 
+*/
 defaultValue
     :   'default' elementValue
     ;
@@ -586,7 +605,9 @@ block
 
 blockStatement
     :   localVariableDeclarationStatement
+/*
     |   classOrInterfaceDeclaration
+*/
     |   statement
     ;
 
