@@ -2,6 +2,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.naming.event.ObjectChangeListener;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -62,6 +63,31 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         {
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
             a.setDataType(ctx.type().getText().toString());
+            Object castChecker = null;
+            try{
+                castChecker = Integer.parseInt(a.getValue().toString());
+            }
+            catch (Exception e){
+                try{
+                    castChecker = Double.parseDouble(a.getValue().toString());
+
+                }catch (Exception e1){
+                    hasError = true;
+                    errorCode += "\n Di sya int or di sya double";
+                    e.printStackTrace();
+                }
+            }
+
+            if(castChecker instanceof Integer && a.getDataType().equals("int")){
+                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+            }
+            else if (castChecker instanceof Double && a.getDataType().equals("double")) {
+                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+            }
+            else{
+                hasError = true;
+                errorCode += "\n Error, data type not same with value";
+            }
 
             System.out.println(a.toString());
 
@@ -175,15 +201,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                         e.printStackTrace();
                     }
                 }
-
-
-
-                //wait explain ko sayo problem
-
-                //multiplicativeExpression ( (ADD | SUB) multiplicativeExpression)*
-                //diba may for loop tayo for multExps
-                //pero since yung loop na yan only accesses yung multiplicativeExpression, di kasama yung ADD | SUB ^^^
-                //so we're trying to find a way na maaaccess yung ADD and SUB
 
                 if(temp instanceof Integer && nextNumber instanceof  Integer)
                 {
@@ -335,13 +352,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
                     System.out.println(")))))))))))))))) int1: " + nextNumber);
-
-                    //wait explain ko sayo problem
-
-                    //multiplicativeExpression ( (ADD | SUB) multiplicativeExpression)*
-                    //diba may for loop tayo for multExps
-                    //pero since yung loop na yan only accesses yung multiplicativeExpression, di kasama yung ADD | SUB ^^^
-                    //so we're trying to find a way na maaaccess yung ADD and SUB
 
                     if (temp instanceof Integer && nextNumber instanceof Integer) {
                         System.out.println("Instance is an Integer");
