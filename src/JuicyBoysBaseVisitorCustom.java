@@ -12,23 +12,27 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     private Stack<Scope> scopes;
     private SymbolTable symbolTable;
     private boolean hasError;
-    private String string1;
+    private String errorCode = "";
     private ArrayList<Function> masterFuncList;
 
     private ParseTree parseTree;
 
- /*   public JuicyBoysBaseVisitorCustom(ParseTree parseTree) {
-        this.parseTree = parseTree;
+    public JuicyBoysBaseVisitorCustom() {
 
-      *//*  hasError = false;
+      //*  hasError = false;
         //for global siguro
+
+        //local or global, this will dictate
         scopes = new Stack<Scope>();
-        scopes.push(new Scope());
 
-        symbolTable = new SymbolTable();*//*
-    }*/
+        symbolTable = new SymbolTable();
 
-  /*  @Override
+
+
+    }
+
+    /*
+    @Override
     public Object visitCompilationUnit(@NotNull JuicyBoysParser.CompilationUnitContext ctx) {
         System.out.println("hello");
         string1 = "elo";
@@ -40,7 +44,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 //        symbolTab visitChildren(ctx);le.exitScope();
 
         return null;
-    }*/
+    }
+*/
+
 
 
     @Override
@@ -58,6 +64,11 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             a.setDataType(ctx.type().getText().toString());
 
             System.out.println(a.toString());
+
+
+            //scopes.push(new Scope(, String scopeName, RuleContext caller);
+
+
 
         }
 
@@ -107,6 +118,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
+
+
     @Override public Object visitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx)
     {
         System.out.println("---------- Visit Additive Expression ----------");
@@ -118,8 +131,17 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         if(a != null){
 
 
-        Integer temp = Integer.parseInt(a.toString());
-        //store the non recurive one based CFG
+        Object temp = null;
+            try{
+                temp = Integer.parseInt(a.toString());
+            }catch(Exception e){
+                try{
+                    temp = Double.parseDouble(a.toString());
+                }catch (Exception e1){
+                    e.printStackTrace();
+                }
+            }
+            //store the non recurive one based CFG
         List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
         //Para sa + or -
         List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
@@ -141,7 +163,20 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     b = super.visit(multExps.get(j));
                 }
 
-                Integer int1 = Integer.parseInt(b.toString());
+                Object nextNumber = null;
+
+
+                try{
+                    nextNumber = Integer.parseInt(b.toString());;
+                }catch(Exception e){
+                    try{
+                        nextNumber = Double.parseDouble(b.toString());
+                    }catch (Exception e1){
+                        e.printStackTrace();
+                    }
+                }
+
+
 
                 //wait explain ko sayo problem
 
@@ -150,7 +185,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 //pero since yung loop na yan only accesses yung multiplicativeExpression, di kasama yung ADD | SUB ^^^
                 //so we're trying to find a way na maaaccess yung ADD and SUB
 
-                if(int1 instanceof  Integer)
+                if(temp instanceof Integer && nextNumber instanceof  Integer)
                 {
                     System.out.println("Instance is an Integer");
                     if(addORsubs.get(j-1).ADD()!=null)
@@ -158,8 +193,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                         // 3 (+ 1)
                         //return (int)int1 + (int)int2;
 
-                        System.out.println("inside ADD with Instance value: " + (int)int1);
-                        temp = temp + (int)int1;
+                        System.out.println("inside ADD with Instance value: " + (int)nextNumber);
+                        temp = (int)temp + (int)nextNumber;
 
                         //System.out.println("Added: " + (temp + (int)int1) + " End");
 
@@ -168,8 +203,37 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     {
                         // 3 (+ 1)
                         //return (int)int1 + (int)int2;
-                        System.out.println("inside SUB with Instance value: " + int1);
-                        temp = temp - (int)int1;
+                        System.out.println("inside SUB with Instance value: " + nextNumber);
+                        temp = (int)temp - (int)nextNumber;
+                        //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                    }
+                  /*  if(ctx.SUB()!=null)
+                    {
+                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
+                        //return (int)int1 - (int)int2;
+                    }*/
+                }
+                else  if(temp instanceof Double && nextNumber instanceof Double)
+                {
+                    System.out.println("Instance is an Integer");
+                    if(addORsubs.get(j-1).ADD()!=null)
+                    {
+                        // 3 (+ 1)
+                        //return (int)int1 + (int)int2;
+
+                        System.out.println("inside ADD with Instance value: " + (double)nextNumber);
+                        temp = (double)temp + (double)nextNumber;
+
+                        //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                    }
+                    else if(addORsubs.get(j-1).SUB()!=null)
+                    {
+                        // 3 (+ 1)
+                        //return (int)int1 + (int)int2;
+                        System.out.println("inside SUB with Instance value: " + nextNumber);
+                        temp = (double)temp - (double)nextNumber;
                         //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                     }
@@ -180,7 +244,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     }*/
                 }
                 else{
-                    System.out.println("Instance not an integer");
+                    System.out.println("Instance unknown");
+                    hasError = true;
+                    errorCode += "You cannot perform that operation";
                 }
 
             }
@@ -219,9 +285,23 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //
         Object a = super.visit(ctx.unaryExpression(0));
 
+
+
         if(a!=null) {
             //temporary fix
-            Integer temp = Integer.parseInt(a.toString());
+
+            Object temp = null;
+
+            try{
+                temp = Integer.parseInt(a.toString());
+            }catch(Exception e){
+                try{
+                    temp = Double.parseDouble(a.toString());
+
+                }catch (Exception e1){
+                    e.printStackTrace();
+                }
+            }
             System.out.println("))))))))))))))))) Temp: " + temp);
 
             //store the non recurive one based CFG
@@ -239,8 +319,22 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 try {
                     Object b = super.visit(unaryExps.get(j).unaryExpressionNotPlusMinus());
 
-                    Integer int1 = Integer.parseInt(b.toString());
-                    System.out.println(")))))))))))))))) int1: " + int1);
+                    //Integer int1 = Integer.parseInt(b.toString());
+
+                    Object nextNumber = null;
+
+                    try{
+                        nextNumber = Integer.parseInt(b.toString());
+                    }catch(Exception e){
+                        try{
+                            nextNumber = Double.parseDouble(b.toString());
+                        }catch (Exception e1){
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    System.out.println(")))))))))))))))) int1: " + nextNumber);
 
                     //wait explain ko sayo problem
 
@@ -249,14 +343,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     //pero since yung loop na yan only accesses yung multiplicativeExpression, di kasama yung ADD | SUB ^^^
                     //so we're trying to find a way na maaaccess yung ADD and SUB
 
-                    if (int1 instanceof Integer) {
+                    if (temp instanceof Integer && nextNumber instanceof Integer) {
                         System.out.println("Instance is an Integer");
                         if (mulORdivORmod.get(j - 1).MUL() != null) {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
 
                             System.out.println("inside MUL");
-                            temp = temp * (int) int1;
+                            temp = (int)temp * (int) nextNumber;
                             System.out.println("\t\t\t Temp: " + temp);
 
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
@@ -265,22 +359,51 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
                             System.out.println("inside DIV");
-                            temp = temp / (int) int1;
+                            temp = (int)temp / (int) nextNumber;
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                         } else if (mulORdivORmod.get(j - 1).MOD() != null) {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
                             System.out.println("inside MOD");
-                            temp = temp % (int) int1;
+                            temp = (int)temp % (int) nextNumber;
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
-
                         }
-
-
                     }
 
-                    System.out.println("Instance not an integer");
+                   else if (temp instanceof Double && nextNumber instanceof Double) {
+                        System.out.println("Instance is a Double");
+                        if (mulORdivORmod.get(j - 1).MUL() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside MUL");
+                            temp = (double)temp * (double) nextNumber;
+                            System.out.println("\t\t\t Temp: " + temp);
+
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        } else if (mulORdivORmod.get(j - 1).DIV() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside DIV");
+                            temp = (double)temp / (double) nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        } else if (mulORdivORmod.get(j - 1).MOD() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside MOD");
+                            temp = (double)temp % (double) nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+                        }
+                    }
+                    else{
+                        System.out.println("Error in casting");
+                        hasError = true;
+                        errorCode += "You cannot perform that operation";
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -433,6 +556,11 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             System.out.println("Visit Literal: " + ctx.IntegerLiteral().getText().toString());
             return ctx.IntegerLiteral().getText();
         }
+        else if(ctx.FloatingPointLiteral()!=null) {
+            System.out.println("Visit Literal: " + ctx.FloatingPointLiteral().getText().toString());
+            return ctx.FloatingPointLiteral().getText();
+        }
+
 
         return null;
     }
@@ -444,4 +572,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return hasError;
     }
 
+    public String getErrorCode(){
+        return errorCode;
+    }
 }

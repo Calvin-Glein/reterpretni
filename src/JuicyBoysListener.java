@@ -877,6 +877,36 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitStatement(JuicyBoysParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#ioStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIoStatement(JuicyBoysParser.IoStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#ioStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIoStatement(JuicyBoysParser.IoStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#input_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterInput_statement(JuicyBoysParser.Input_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#input_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitInput_statement(JuicyBoysParser.Input_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#catches}.
 	 * @param ctx the parse tree
 	 */

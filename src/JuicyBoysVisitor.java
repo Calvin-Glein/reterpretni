@@ -532,6 +532,24 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(JuicyBoysParser.StatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#ioStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIoStatement(JuicyBoysParser.IoStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#input_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInput_statement(JuicyBoysParser.Input_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#catches}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

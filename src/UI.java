@@ -290,12 +290,14 @@ public class UI {
 
 
         if(!visitor.getHasError()){
-            System.out.print("\n\n\n\n No error sabi ni visitor");
+            System.out.print("\n\n\n\n No nnnerror sabi ni visitor");
 
         }else{
             //do something
             System.out.print("may error sabi ni visitor");
-
+            System.out.println();
+            System.out.println();
+            System.out.println("Error: " + visitor.getErrorCode());
         }
 
     }

@@ -451,6 +451,9 @@ primitiveType
     |   'long'
     |   'float'
     |   'double'
+
+    //added string as primitive
+    |   'String'
     ;
 
 variableModifier
@@ -617,6 +620,21 @@ statement
     |   ';'
     |   statementExpression ';'
     |   Identifier ':' statement
+    |   ioStatement
+    ;
+
+//ako nag add neto until output statement
+ioStatement
+    :   input_statement
+    |   output_statement
+    ;
+
+input_statement
+    :   INPUT LPAREN Identifier RPAREN SEMI
+    ;
+
+output_statement
+    :   OUTPUT LPAREN Identifier RPAREN SEMI
     ;
 
 catches
@@ -706,7 +724,9 @@ constantExpression
     ;
 
 expression
-    :   conditionalExpression (assignmentOperator expression)?
+    // ako nag add neto -glenn
+   // : '"' Identifier '"' SEMI
+    : conditionalExpression (assignmentOperator expression)?
     ;
 
 assignmentOperator
@@ -978,6 +998,8 @@ TRY : 'try';
 VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
+OUTPUT : 'output';
+INPUT : 'input';
 
 // §3.10.1 Integer Literals
 

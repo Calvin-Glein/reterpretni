@@ -15,7 +15,7 @@ public class AutoComplete {
         this.textarea = textarea;
 
         this.insertionPosition = position;
-        this.subWord = subWord;
+        this.subWord =  subWord;
         popupMenu = new JPopupMenu();
         popupMenu.removeAll();
         popupMenu.setOpaque(false);
