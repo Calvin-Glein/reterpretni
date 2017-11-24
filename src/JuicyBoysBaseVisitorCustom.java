@@ -96,10 +96,31 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     @Override
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
-        return super.visitHashtagIfStatement(ctx);
+
+            if(super.visit(ctx.parExpression())!=null) {
+                if ((boolean) super.visit(ctx.parExpression()) == true) {
+                    System.out.println("PUMASOK");
+                    return super.visitHashtagIfStatement(ctx);
+                } else if ((boolean) super.visit(ctx.parExpression()) == false) {
+                    System.out.println("HINDI PUMASOK");
+                    return null;
+
+                }
+            }
+        System.out.println("PUMASOK SA HASHTAGIFSTATEMENt");
+        return null;
     }
 
-/*    @Override
+    @Override
+    public Object visitParExpression(JuicyBoysParser.ParExpressionContext ctx) {
+        Object a = super.visit(ctx.expression());
+
+        if(a!=null)
+            return a;
+        return null;
+    }
+
+    @Override
     public Object visitRelationalExpression(JuicyBoysParser.RelationalExpressionContext ctx) {
 
         Object a = super.visit(ctx.shiftExpression(0));
@@ -118,25 +139,21 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
             }
             //store the non recurive one based CFG
-            List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
-            //Para sa + or -
-            List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
+            List<JuicyBoysParser.ShiftExpressionContext> shiftExps =  ctx.shiftExpression();
+            List<JuicyBoysParser.RelationalOpContext> relops =  ctx.relationalOp();
 
-            //        Object b = super.visit(ctx.multiplicativeExpression(1));
-      *//*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*//*
-
-            for(int j = 1; j < multExps.size(); j++){
+            for(int j = 1; j < shiftExps.size(); j++){
 
                 //^^ iterating through all multExps kasi *
 
                 try
                 {
                     Object b = null;
-                    if(multExps.get(j).unaryExpression(1)==null)
-                        b = super.visit(multExps.get(j).unaryExpression(0));
+                    if(shiftExps.get(j).additiveExpression(1)==null)
+                        b = super.visit(shiftExps.get(j).additiveExpression(0));
 
                     else {
-                        b = super.visit(multExps.get(j));
+                        b = super.visit(shiftExps.get(j));
                     }
 
                     Object nextNumber = null;
@@ -155,61 +172,68 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     if(temp instanceof Integer && nextNumber instanceof  Integer)
                     {
                         System.out.println("Instance is an Integer");
-                        if(addORsubs.get(j-1).ADD()!=null)
+                        if(relops.get(j-1).LT()!=null)
                         {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
 
-                            System.out.println("inside ADD with Instance value: " + (int)nextNumber);
-                            temp = (int)temp + (int)nextNumber;
+                            System.out.println("inside LT with Instance value: " + (int)nextNumber);
+                            if((int)temp < (int)nextNumber) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return true;
 
+                            }else
+                            {
+                                System.out.println("NOT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return false;
+                            }
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                         }
-                        else if(addORsubs.get(j-1).SUB()!=null)
+                        else if(relops.get(j-1).GT()!=null)
                         {
                             // 3 (+ 1)
                             //return (int)int1 + (int)int2;
-                            System.out.println("inside SUB with Instance value: " + nextNumber);
-                            temp = (int)temp - (int)nextNumber;
+
+                            System.out.println("inside GT with Instance value: " + (int)nextNumber);
+                            if((int)temp > (int)nextNumber)
+                                return true;
+                            else
+                                return false;
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                         }
-                  *//*  if(ctx.SUB()!=null)
-                    {
-                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
-                        //return (int)int1 - (int)int2;
-                    }*//*
+                        if(relops.get(j-1).LE()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside LE with Instance value: " + (int)nextNumber);
+                            if((int)temp <= (int)nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        if(relops.get(j-1).GE()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside GE with Instance value: " + (int)nextNumber);
+                            if((int)temp >= (int)nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        
+
+
                     }
-                    else  if(temp instanceof Double && nextNumber instanceof Double)
-                    {
-                        System.out.println("Instance is an Integer");
-                        if(addORsubs.get(j-1).ADD()!=null)
-                        {
-                            // 3 (+ 1)
-                            //return (int)int1 + (int)int2;
 
-                            System.out.println("inside ADD with Instance value: " + (double)nextNumber);
-                            temp = (double)temp + (double)nextNumber;
-
-                            //System.out.println("Added: " + (temp + (int)int1) + " End");
-
-                        }
-                        else if(addORsubs.get(j-1).SUB()!=null)
-                        {
-                            // 3 (+ 1)
-                            //return (int)int1 + (int)int2;
-                            System.out.println("inside SUB with Instance value: " + nextNumber);
-                            temp = (double)temp - (double)nextNumber;
-                            //System.out.println("Added: " + (temp + (int)int1) + " End");
-
-                        }
-                  *//*  if(ctx.SUB()!=null)
-                    {
-                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
-                        //return (int)int1 - (int)int2;
-                    }*//*
-                    }
                     else{
                         System.out.println("Instance unknown");
                         hasError = true;
@@ -236,7 +260,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //
         return super.visitRelationalExpression(ctx);
-    }*/
+    }
 
     @Override
     public Object visitLocalVariableDeclarationStatement(JuicyBoysParser.LocalVariableDeclarationStatementContext ctx) {
