@@ -273,8 +273,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                 }catch (Exception e1){
                     try{
-                        JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
-
+                       // JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
+                        castChecker = a.getValue().toString();
                     }catch (Exception e2) {
                         hasError = true;
                         errorCode += "\n Di sya int or di sya double";
@@ -293,9 +293,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 scopes.peek().bind(a);
 
             }
+
+            else if(castChecker instanceof String && a.getDataType().equals("String")){
+                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                scopes.peek().bind(a);
+            }
             else{
                 hasError = true;
-                errorCode += "\n Error, data type not same with value";
+                errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
             }
 
             System.out.println(a.toString());
@@ -400,7 +405,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 try{
                     temp = Double.parseDouble(a.toString());
                 }catch (Exception e1){
-                    e.printStackTrace();
+                    try{
+                        //if using string ex "test"
+                        temp = a.toString();
+                        return temp;
+                    }catch(Exception e2){
+                        e2.printStackTrace();
+
+                    }
+
                 }
             }
             //store the non recurive one based CFG
@@ -798,18 +811,30 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
         if(ctx.literal() != null)
         {
+            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
             return ctx.literal().getText();
 
         }
+        //for variables
         else{
 
            // JOptionPane.showMessageDialog(null, "Test: " + scopes.peek().getSymbolMap().get((Object) ctx.getText()));
 
             Variable var = (Variable) scopes.peek().lookup(ctx.getText());
             //JOptionPane.showMessageDialog(null, "Test Name: " + scopes.peek().lookup(ctx.getText()).getName());
-            JOptionPane.showMessageDialog(null, "Test Name: " + ctx.getText() + " Test Value: "+ var.getValue());
-            return var.getValue();
+           // JOptionPane.showMessageDialog(null, "Test Name: " + ctx.getText() + " Test Value: "+ var.getValue());
+
+            if(var !=null){
+                return var.getValue();
+            }
+            else{
+                hasError = true;
+                errorCode += "\n Variable: " + ctx.getText() + "is Null";
+                return null;
+            }
         }
+
+
 
         //return super.visitPrimary(ctx);
     }
