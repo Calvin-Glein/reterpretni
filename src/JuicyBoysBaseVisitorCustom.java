@@ -649,15 +649,20 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     newValue =  Integer.parseInt(a.getValue().toString());
                 }catch(Exception e)
                 {
-                    newValue = Double.parseDouble(a.getValue().toString());
                     try{
-                        newValue = a.getValue().toString();
+                        newValue = Double.parseDouble(a.getValue().toString());
+                    }catch (Exception e1){
+                        try{
+                            newValue = a.getValue().toString();
+                        }
+                        catch (Exception e2){
+                            hasError = true;
+                            errorCode += "\n Cannot read data type of value to be assigned to an existing variable";
+                            e2.printStackTrace();
+                        }
                     }
-                    catch (Exception e1){
-                        hasError = true;
-                        errorCode += "\n Cannot read data type of value to be assigned to an existing variable";
-                        e1.printStackTrace();
-                    }
+
+
                  }
 
                  if(var.getDataType().equals("int") && newValue instanceof Integer){
