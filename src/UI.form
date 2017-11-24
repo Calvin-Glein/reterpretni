@@ -69,17 +69,19 @@
               <text value="Errors"/>
             </properties>
           </component>
-          <scrollpane id="a8154">
+          <scrollpane id="a8154" binding="errorScrollPane">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <enabled value="true"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="5e082" class="javax.swing.JTextArea" binding="textAreaError" default-binding="true">
+              <component id="46feb" class="javax.swing.JTable" binding="errorTable" custom-create="true">
                 <constraints/>
                 <properties>
-                  <text value=""/>
+                  <enabled value="true"/>
                 </properties>
               </component>
             </children>

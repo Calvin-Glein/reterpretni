@@ -21,9 +21,11 @@ public class UI {
     private JPanel panel;
     private JTextArea textAreaTokenTypes;
     private JTextArea textAreaTree;
-    public JTextArea textAreaError;
+    //public JTextArea textAreaError;
     private JScrollPane scrollPaneCodeInput;
     private JScrollPane jtablescrollpane;
+    private JTable errorTable;
+    private JScrollPane errorScrollPane;
     private TextLineNumber textLineNumber;
 
     private ArrayList<String> TokenTypes= new ArrayList<String>();
@@ -196,12 +198,10 @@ public class UI {
 
 
                      
-        textAreaError.setText("");
+        //textAreaError.setText("");
         textArea2Output.setText("");
 
         code = textAreaCodeInput.getText();
-
-
 
         ANTLRInputStream input = new ANTLRInputStream(code);
 
@@ -286,14 +286,38 @@ public class UI {
 
 
         //textAreaTree.setText(tree.toStringTree(parser));
-        textAreaError.setText(errorListener.getOutput());
+        //textAreaError.setText(errorListener.getOutput());
+
+        //System.out.println(errorListener.getOutput());
+
         //textAreaExceptions.setText("Exceptions: "  + exceptionErrorStrategy.getErrors().toString());
+
+        ArrayList<String> errorList = errorListener.getErrors();
+        System.out.println("ErrorList size:" + errorList.size());
+
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("Errors");
+        errorTable = new JTable(tableModel);
+
+        for (int i=0; i<errorList.size(); i++){
+            Object[] data = {errorList.get(i)};
+            System.out.println(errorList.get(i));
+            tableModel.addRow(data);
+        }
+
+        tableModel.fireTableDataChanged();
+
+        errorScrollPane.getViewport().add(errorTable);
+        errorTable.setVisible(true);
+        errorScrollPane.setVisible(true);
+
+        // TODO: Set click listener for each row
 
         System.out.println("Parser: " + parser.getNumberOfSyntaxErrors());
 
-        if(errorListener.getLineErrors().size()>0){
+       /* if(errorListener.getLineErrors().size()>0){
             textAreaCodeInput.setCaretPosition(errorListener.getLineErrors().get(0));
-        }
+        }*/
 
 
 
@@ -332,6 +356,7 @@ public class UI {
 
 
         }
+
 
         System.out.println(model.getRowCount());
 

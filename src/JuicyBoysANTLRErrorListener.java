@@ -12,6 +12,8 @@ import java.util.List;
 public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
 
     String output = "";
+    ErrorObject p;
+    ArrayList<String> errors = new ArrayList<>();
     Recognizer<?, ?> recognizer;
     Object o;
     int i; int i1; String s; RecognitionException e;
@@ -58,6 +60,8 @@ public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
     output = output + "\n You have a syntax error at line: " + lineNumber + "\n";
     output = output + " It is at the character position: " + charPositionInLine;
     output = output + " \n \n Specific Error: " + msg.toString() + "\n\n ";
+
+    errors.add("Error:(" + lineNumber + ", " + charPositionInLine + ") " + msg.toString());
 
     lineErrors.add(lineNumber);
 
@@ -111,6 +115,9 @@ public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
         return output;
     }
 
+    public ArrayList<String> getErrors() {
+        return errors;
+    }
 
     @Override
     public void reportAmbiguity(Parser parser, DFA dfa, int lineNumber, int charPositionInLine, boolean b, BitSet bitSet, ATNConfigSet atnConfigSet) {
