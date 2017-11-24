@@ -64,6 +64,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             System.out.println("values" + mentry.getValue());
         }
 */
+        while(!scopes.empty())
+            System.out.println(scopes.pop().getList());
         return set;
 /*
         // method 2:
@@ -552,11 +554,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitLocalVariableDeclaration(JuicyBoysParser.LocalVariableDeclarationContext ctx) {
 
         System.out.println("---------- Visit LocalVariableDeclaration ----------");
-        if(ctx.type()!=null)
+
+        System.out.println("VALUE NI CTX TYPE: " + ctx.type());
+
+        if(super.visit(ctx.type())!=null)
         {
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
-            System.out.println("Variable a: " + a.toString());
             a.setDataType(ctx.type().getText().toString());
+            System.out.println("Variable a: " + a.toString());
+
             Object castChecker = null;
             try{
                 castChecker = Integer.parseInt(a.getValue().toString());
@@ -593,9 +599,112 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 scopes.peek().bind(a);
             }
             else{
+                System.out.println("STARBUCKKKKKKKS");
                 hasError = true;
                 errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
             }
+
+            System.out.println(a.toString());
+
+
+            //scopes.push(new Scope(, String scopeName, RuleContext caller);
+
+
+
+        }
+        else
+        {
+            System.out.println("null syaaaaaaaaaaaaaaa");
+            Variable a = (Variable)super.visit(ctx.variableDeclarators());
+            System.out.println("VALUE NI A: " + a.getValue());
+            System.out.println("Existing Variable a: " + a.toString());
+            Object castChecker = null;
+            try{
+                castChecker = Integer.parseInt(a.getValue().toString());
+            }
+            catch (Exception e){
+                try{
+                    castChecker = Double.parseDouble(a.getValue().toString());
+
+                }catch (Exception e1){
+                    try{
+                        // JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
+                        castChecker = a.getValue().toString();
+                    }catch (Exception e2) {
+                        hasError = true;
+                        errorCode += "\n Di sya int or di sya double";
+                        e2.printStackTrace();
+                    }
+                }
+            }
+
+            Variable var = (Variable) scopes.peek().lookup(a.getName());
+
+            System.out.println("Dapat si test etooooooooooooooooooooo: " + var.toString());
+
+            if(var!=null){
+
+                Object newValue = null;
+                try{
+                    newValue =  Integer.parseInt(a.getValue().toString());
+                }catch(Exception e)
+                {
+                    newValue = Double.parseDouble(a.getValue().toString());
+                    try{
+                        newValue = a.getValue().toString();
+                    }
+                    catch (Exception e1){
+                        hasError = true;
+                        errorCode += "\n Cannot read data type of value to be assigned to an existing variable";
+                        e1.printStackTrace();
+                    }
+                 }
+
+                 if(var.getDataType().equals("int") && newValue instanceof Integer){
+                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+
+
+                     //check if variable exist
+
+                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                     var = (Variable) scopes.peek().lookup(a.getName()
+                     );
+                     var.setValue(new Value(newValue));
+
+                 }
+                 else if(var.getDataType().equals("double") && newValue instanceof Double){
+                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+
+
+                     //check if variable exist
+
+                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                     var = (Variable) scopes.peek().lookup(a.getName());
+                     var.setValue(new Value(newValue));
+                 }
+                 else if(var.getDataType().equals("String")){
+                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+
+
+                     //check if variable exist
+
+                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                     var = (Variable) scopes.peek().lookup(a.getName());
+                     var.setValue(new Value(newValue));
+                 }
+/*
+            if(var.getDataType().equals(a.getDataType())){
+
+                }*/
+            else{
+                hasError = true;
+                errorCode += "\n [Exisiting variable] Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
+            }
+
+
+
+            }
+
 
             System.out.println(a.toString());
 
@@ -610,6 +719,31 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     }
 
+
+    @Override
+    public Object visitPrimitiveType(JuicyBoysParser.PrimitiveTypeContext ctx) {
+
+        if(ctx.BOOLEAN()!=null)
+            return ctx.BOOLEAN().getText();
+        else if(ctx.CHAR()!=null)
+            return ctx.CHAR().getText();
+        else if(ctx.BYTE()!=null)
+            return ctx.BYTE().getText();
+        else if(ctx.SHORT()!=null)
+            return ctx.SHORT().getText();
+        else if(ctx.INT()!=null)
+            return ctx.INT().getText();
+        else if(ctx.LONG()!=null)
+            return ctx.LONG().getText();
+        else if(ctx.FLOAT()!=null)
+            return ctx.FLOAT().getText();
+        else if(ctx.DOUBLE()!=null)
+            return ctx.DOUBLE().getText();
+        else if(ctx.STRING()!=null)
+            return ctx.STRING().getText();
+        else
+            return null;
+    }
 
     @Override
     public Object visitVariableDeclarator(JuicyBoysParser.VariableDeclaratorContext ctx) {
@@ -637,6 +771,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         return null;
     }
+
 
 
     @Override
@@ -990,6 +1125,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     }
 
+
+
     {
 
 
@@ -1075,6 +1212,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 */
 
     }
+
+
+
     @Override
     public Object visitUnaryExpression(JuicyBoysParser.UnaryExpressionContext ctx) {
         Object a = super.visit(ctx.unaryExpressionNotPlusMinus());

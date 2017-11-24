@@ -463,17 +463,17 @@ type
 	;*/
 
 primitiveType
-    :   'boolean'
-    |   'char'
-    |   'byte'
-    |   'short'
-    |   'int'
-    |   'long'
-    |   'float'
-    |   'double'
+    :   BOOLEAN
+    |   CHAR
+    |   BYTE
+    |   SHORT
+    |   INT
+    |   LONG
+    |   FLOAT
+    |   DOUBLE
 
     //added string as primitive
-    |   'String'
+    |   STRING
     ;
 
 variableModifier
@@ -1031,6 +1031,7 @@ RETURN : 'return';
 SHORT : 'short';
 STATIC : 'static';
 STRICTFP : 'strictfp';
+STRING : 'String';
 SUPER : 'super';
 SWITCH : 'switch';
 SYNCHRONIZED : 'synchronized';
