@@ -780,11 +780,11 @@ conditionalExpression
     ;
 
 conditionalOrExpression
-    :   conditionalAndExpression ( '||' conditionalAndExpression )*
+    :   conditionalAndExpression ( OR conditionalAndExpression )*
     ;
 
 conditionalAndExpression
-    :   inclusiveOrExpression ( '&&' inclusiveOrExpression )*
+    :   inclusiveOrExpression ( AND inclusiveOrExpression )*
     ;
 
 inclusiveOrExpression

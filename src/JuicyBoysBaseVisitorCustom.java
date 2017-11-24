@@ -547,8 +547,69 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }
 
 
+    @Override
+    public Object visitConditionalOrExpression(JuicyBoysParser.ConditionalOrExpressionContext ctx) {
 
 
+        Object a = super.visit(ctx.conditionalAndExpression(0));
+
+
+
+        if(a != null) {
+
+
+            Object temp = null;
+
+            //store the non recurive one based CFG
+            List<JuicyBoysParser.ConditionalAndExpressionContext> conAndExps = ctx.conditionalAndExpression();
+            //Para sa + or -
+
+            //        Object b = super.visit(ctx.multiplicativeExpression(1));
+      /*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*/
+
+            for (int j = 1; j < conAndExps.size(); j++) {
+
+                //^^ iterating through all multExps kasi *
+
+                try {
+                    Object b = null;
+                    if (conAndExps.get(j).inclusiveOrExpression(1) == null)
+                        b = super.visit(conAndExps.get(j).inclusiveOrExpression(0));
+
+                    else {
+                        b = super.visit(conAndExps.get(j));
+                    }
+
+                    Object nextNumber = null;
+
+
+                    try {
+                        nextNumber = (Boolean) b;
+                    } catch (Exception e) {
+
+                        hasError = true;
+                        errorCode += "\n Error in determining if boolean or not";
+                        e.printStackTrace();
+
+                    }
+                    if (ctx.OR() != null)
+                        if ((Boolean) nextNumber == true) {
+                            return ((Boolean) nextNumber || (Boolean) a);
+                        }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                //Object b = super.visitAdditiveExpression()
+            }
+
+
+        }
+
+        return super.visitConditionalOrExpression(ctx);
+    }
 
     @Override
     public Object visitLocalVariableDeclaration(JuicyBoysParser.LocalVariableDeclarationContext ctx) {

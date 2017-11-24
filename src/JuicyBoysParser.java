@@ -4870,6 +4870,10 @@ public class JuicyBoysParser extends Parser {
 		public ConditionalAndExpressionContext conditionalAndExpression(int i) {
 			return getRuleContext(ConditionalAndExpressionContext.class,i);
 		}
+		public List<TerminalNode> OR() { return getTokens(JuicyBoysParser.OR); }
+		public TerminalNode OR(int i) {
+			return getToken(JuicyBoysParser.OR, i);
+		}
 		public ConditionalOrExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4933,6 +4937,10 @@ public class JuicyBoysParser extends Parser {
 		}
 		public InclusiveOrExpressionContext inclusiveOrExpression(int i) {
 			return getRuleContext(InclusiveOrExpressionContext.class,i);
+		}
+		public List<TerminalNode> AND() { return getTokens(JuicyBoysParser.AND); }
+		public TerminalNode AND(int i) {
+			return getToken(JuicyBoysParser.AND, i);
 		}
 		public ConditionalAndExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
