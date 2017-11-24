@@ -628,6 +628,59 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }
 
     @Override
+    public Object visitHashtagForStatement(JuicyBoysParser.HashtagForStatementContext ctx) {
+
+        Object condition = super.visit(ctx.forControl());
+
+
+        if (condition instanceof Boolean) {
+            System.out.println("inside condition instance of boolean");
+            if ((Boolean) condition == true) {
+                System.out.println("for condition is true");
+                super.visit(ctx.forControl().forInit());
+                do {
+                    super.visit(ctx.statement());
+                    condition = super.visit(ctx.forControl());
+                    super.visit(ctx.forControl().forUpdate());
+                    System.out.print("INSIDE LOOPPPPPPPPPPPPPPPPPPP pPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP true paren");
+                } while ((Boolean) condition == true);
+            }
+        }
+        else
+            System.out.println("not inside condition instance of boolean");
+        return super.visitHashtagForStatement(ctx);
+    }
+
+
+    @Override
+    public Object visitForControl(JuicyBoysParser.ForControlContext ctx) {
+        //returns boolean
+        Object secondParam = super.visit(ctx.expression());
+
+        Object castChecker = null;
+
+        if(secondParam!=null)
+            try{
+                castChecker = Boolean.parseBoolean(secondParam.toString());
+                return castChecker;
+            }catch(Exception e){
+                hasError = true;
+                errorCode += "\n Error in For loop 2nd parameter";
+                e.printStackTrace();
+            }
+        return super.visitForControl(ctx);
+    }
+
+
+    @Override
+    public Object visitForInit(JuicyBoysParser.ForInitContext ctx) {
+
+        return super.visit(ctx.localVariableDeclaration());
+
+
+    }
+
+    @Override
     public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {
 
 
@@ -848,26 +901,37 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
             }
 
-            if(castChecker instanceof Integer && a.getDataType().equals("int")){
-                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                scopes.peek().bind(a);
+            Variable var = (Variable) scopes.peek().lookup(a.getName().toString());
 
-            }
-            else if (castChecker instanceof Double && a.getDataType().equals("double")) {
-                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                scopes.peek().bind(a);
+            if(var==null){
 
-            }
+                if(castChecker instanceof Integer && a.getDataType().equals("int")){
+                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    scopes.peek().bind(a);
 
-            else if(castChecker instanceof String && a.getDataType().equals("String")){
-                JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                scopes.peek().bind(a);
+
+                }
+                else if (castChecker instanceof Double && a.getDataType().equals("double")) {
+                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    scopes.peek().bind(a);
+
+                }
+
+                else if(castChecker instanceof String && a.getDataType().equals("String")){
+                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    scopes.peek().bind(a);
+                }
+                else{
+                    hasError = true;
+                    errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
+                }
             }
-            else{
-                System.out.println("STARBUCKKKKKKKS");
+            else if(var!=null){
                 hasError = true;
-                errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
+                errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Exists already";
             }
+
+
 
             System.out.println(a.toString());
 
