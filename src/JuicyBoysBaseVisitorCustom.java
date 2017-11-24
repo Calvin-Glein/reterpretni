@@ -630,19 +630,25 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitHashtagForStatement(JuicyBoysParser.HashtagForStatementContext ctx) {
 
+       super.visit(ctx.forControl().forInit());
         Object condition = super.visit(ctx.forControl());
-
 
         if (condition instanceof Boolean) {
             System.out.println("inside condition instance of boolean");
             if ((Boolean) condition == true) {
                 System.out.println("for condition is true");
-                super.visit(ctx.forControl().forInit());
                 do {
                     super.visit(ctx.statement());
                     condition = super.visit(ctx.forControl());
-                    super.visit(ctx.forControl().forUpdate());
+                   super.visit(ctx.forControl().forUpdate());
+                    // super.visit(ctx.forControl().expression(1));
+
                     System.out.print("INSIDE LOOPPPPPPPPPPPPPPPPPPP pPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP true paren");
+
+
+
+                Variable var = (Variable) scopes.peek().lookup("i");
+                System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII: " + var.getValue());
                 } while ((Boolean) condition == true);
             }
         }
@@ -653,32 +659,76 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
     @Override
+    public Object visitForUpdate(JuicyBoysParser.ForUpdateContext ctx) {
+
+        return super.visit(ctx.expressionList().expression(0));
+        //return super.visitForUpdate(ctx);
+    }
+
+
+    @Override
     public Object visitForControl(JuicyBoysParser.ForControlContext ctx) {
         //returns boolean
         Object secondParam = super.visit(ctx.expression());
 
+        System.out.println("laman ni secondParam: " + secondParam.toString());
         Object castChecker = null;
 
         if(secondParam!=null)
             try{
-                castChecker = Boolean.parseBoolean(secondParam.toString());
-                return castChecker;
+                castChecker = (Boolean) secondParam;
+                    return castChecker;
             }catch(Exception e){
                 hasError = true;
                 errorCode += "\n Error in For loop 2nd parameter";
                 e.printStackTrace();
             }
-        return super.visitForControl(ctx);
+        return null;
     }
 
+    @Override
+    public Object visitAssignmentOperator(JuicyBoysParser.AssignmentOperatorContext ctx) {
+        if(ctx.ASSIGN()!=null)
+            return ctx.ASSIGN().getText();
+        return null;
+    }
+    @Override
+    public Object visitExpression(JuicyBoysParser.ExpressionContext ctx) {
+
+        Object a = super.visit(ctx.conditionalExpression());
+        System.out.println("MAY LAMAN BA ETO A: " + a.toString());
+
+        try{
+            if(super.visit(ctx.assignmentOperator())!=null)
+            {
+                System.out.print("SUPer visit assignment operator");
+                Object assign = super.visit(ctx.assignmentOperator());
+                System.out.print("laman ni assign: " + assign.toString());
+
+                if(assign.toString()!=null)
+                {
+                    System.out.println("FRWSTTTADNAWIUAIDNWIAUDNAWIUDNIAWUDJ");
+
+                    Variable var = (Variable) scopes.peek().lookup(a.toString());
+
+                    var.setValue(new Value(super.visit(ctx.expression())));
+                    System.out.println("TRY NATIN I PRINTTTTTTTTTTTTTTTTTTTTTTTTT: "+ var.getValue());
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return super.visitExpression(ctx);
+    }
 
     @Override
     public Object visitForInit(JuicyBoysParser.ForInitContext ctx) {
 
         return super.visit(ctx.localVariableDeclaration());
-
-
     }
+
 
     @Override
     public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {

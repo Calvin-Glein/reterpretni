@@ -3,7 +3,40 @@
   <component name="ChangeListManager">
     <list default="true" id="d1b5e7de-5acb-4897-bb71-56a5672f3623" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AddORsubContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AddORsubContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AdditiveExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AdditiveExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AndExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AndExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArgumentsContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArgumentsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayCreatorRestContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayCreatorRestContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AssignmentOperatorContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AssignmentOperatorContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CastExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CastExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassCreatorRestContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassCreatorRestContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalAndExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalAndExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalOrExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalOrExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualORnotequalContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualORnotequalContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualityExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualityExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExplicitGenericInvocationSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExplicitGenericInvocationSuffixContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IdentifierSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IdentifierSuffixContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InclusiveOrExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InclusiveOrExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InstanceOfExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InstanceOfExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MulORdivORmodContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MulORdivORmodContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MultiplicativeExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MultiplicativeExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimaryContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimaryContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalOpContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalOpContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SelectorContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SelectorContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftOpContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftOpContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SuperSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SuperSuffixContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionNotPlusMinusContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionNotPlusMinusContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoys.g4" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoys.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoys.g4" afterPath="$PROJECT_DIR$/src/JuicyBoys.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" afterPath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoysParser.java" afterPath="$PROJECT_DIR$/src/JuicyBoysParser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,33 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="736" column="0" lean-forward="false" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#32414#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/jdk.jartool/sun/security/tools/jarsigner/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="813" column="43" lean-forward="false" selection-start-line="813" selection-start-column="43" selection-end-line="813" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="671" column="0" lean-forward="false" selection-start-line="656" selection-start-column="0" selection-end-line="671" selection-end-column="0" />
+            <state relative-caret-position="290">
+              <caret line="711" column="81" lean-forward="true" selection-start-line="711" selection-start-column="81" selection-end-line="711" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
@@ -61,6 +72,28 @@
                 <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
                 <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="763" column="52" lean-forward="true" selection-start-line="763" selection-start-column="52" selection-end-line="763" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#32471#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventQueue.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.desktop/java/awt/EventQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,7 +108,7 @@
       <file leaf-file-name="AbstractParseTreeVisitor.class" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/../antlr-4.7-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="120">
               <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#347#348#0" expanded="true" />
@@ -87,11 +120,9 @@
       <file leaf-file-name="JuicyBoysParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3807">
-              <caret line="3054" column="0" lean-forward="false" selection-start-line="3054" selection-start-column="0" selection-end-line="3054" selection-end-column="0" />
-              <folding>
-                <marker date="1511556676253" expanded="true" signature="249423:249607" ph="{...}" />
-              </folding>
+            <state relative-caret-position="1505">
+              <caret line="1225" column="0" lean-forward="false" selection-start-line="1225" selection-start-column="0" selection-end-line="1225" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,101 +130,9 @@
       <file leaf-file-name="JuicyBoysBaseVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="564" column="0" lean-forward="false" selection-start-line="564" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
-              <folding>
-                <marker date="1511556676315" expanded="true" signature="16910:16940" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="16942:17083" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="17153:17183" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="17185:17326" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="17404:17434" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="17436:17577" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="17651:17681" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="17683:17824" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="17904:17934" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="17936:18077" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="18163:18193" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="18195:18336" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="18444:18474" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="18476:18617" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="18723:18753" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="18755:18896" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="18974:19004" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="19006:19147" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="19223:19253" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="19255:19396" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="19466:19496" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="19498:19639" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="19731:19761" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="19763:19904" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="19978:20008" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="20010:20151" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="20233:20263" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="20265:20406" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="20490:20520" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="20522:20663" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="20757:20787" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="20789:20930" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="21022:21052" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="21054:21195" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="21271:21301" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="21303:21444" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="21536:21566" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="21568:21709" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="21807:21837" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="21839:21980" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="22082:22112" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="22114:22255" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="22359:22389" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="22391:22532" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="22630:22660" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="22662:22803" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="22901:22931" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="22933:23074" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="23156:23186" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="23188:23329" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="23421:23451" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="23453:23594" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="23680:23710" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="23712:23853" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="23949:23979" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="23981:24122" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="24218:24248" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="24250:24391" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="24471:24501" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="24503:24644" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="24730:24760" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="24762:24903" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="24973:25003" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="25005:25146" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="25238:25268" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="25270:25411" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="25483:25513" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="25515:25656" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="25760:25790" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="25792:25933" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="26015:26045" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="26047:26188" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="26274:26304" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="26306:26447" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="26557:26587" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="26589:26730" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="26814:26844" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="26846:26987" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="27057:27087" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="27089:27230" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="27318:27348" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="27579:27609" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="27840:27870" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="27872:28013" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="28085:28115" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="28117:28258" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="28336:28366" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="28368:28509" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="28627:28657" ph="{...}" />
-                <marker date="1511556676315" expanded="true" signature="28659:28800" ph="/**...*/" />
-                <marker date="1511556676315" expanded="true" signature="28874:28904" ph="{...}" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="410" column="50" lean-forward="false" selection-start-line="410" selection-start-column="44" selection-end-line="410" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -225,36 +164,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>primi</find>
-      <find>LAMAN NI</find>
-      <find>VALUE NI</find>
-      <find>conditiona;</find>
-      <find>localVar</find>
-      <find>visitor</find>
-      <find>visitEqual</find>
-      <find>visitHas</find>
-      <find>Literal</find>
-      <find>conditionalExpre</find>
-      <find>visitCondition</find>
-      <find>Joption</find>
-      <find>INSIDE</find>
-      <find>ADD()</find>
-      <find>AND()</find>
-      <find>ioState</find>
-      <find>iostateme</find>
-      <find>input</find>
+      <find>May</find>
       <find>hashtag</find>
+      <find>I</find>
+      <find>EQUAL</find>
+      <find>'='</find>
+      <find>eq</find>
+      <find>may l</find>
+      <find>+ a.t</find>
+      <find>for</find>
+      <find>do</find>
+      <find>IIIIIIIIIIIIIIIII</find>
+      <find>forupdate</find>
+      <find>IIIIIIIIIIIIII</find>
+      <find>PRINTTTTT</find>
+      <find>may</find>
       <find>data ty</find>
-      <find>iostat</find>
-      <find>lookup</find>
-      <find>string t</find>
-      <find>forini</find>
-      <find>exis</find>
-      <find>visitlocal</find>
-      <find>forinit</find>
-      <find>hashtagF</find>
-      <find>INSIDE</find>
-      <find>inside con</find>
+      <find>forco</find>
+      <find>ASSIG</find>
+      <find>Sup</find>
+      <find>forUpdate</find>
+      <find>IIIIIIIIII</find>
+      <find>forcon</find>
+      <find>expres</find>
+      <find>laman ni assign</find>
+      <find>TRY</find>
+      <find>FRW</find>
+      <find>IIIIIIIIIIIII</find>
+      <find>IIIIIIIIIII</find>
+      <find>IIIIIIII</find>
+      <find>expression</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -465,13 +404,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.42606148" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5043924" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.21961933" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.4956076" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.78038067" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -482,7 +421,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.49707174" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -530,7 +469,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java</url>
-          <line>1153</line>
+          <line>1203</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -540,16 +479,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="5" lean-forward="false" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
-          <folding>
-            <marker date="1511556676253" expanded="true" signature="249423:249607" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.base/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -626,7 +555,7 @@
         <state relative-caret-position="12376">
           <caret line="728" column="5" lean-forward="false" selection-start-line="728" selection-start-column="5" selection-end-line="728" selection-end-column="5" />
           <folding>
-            <element signature="e#0#32414#0" expanded="true" />
+            <element signature="e#0#32471#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -635,9 +564,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152677">
           <caret line="8981" column="0" lean-forward="false" selection-start-line="8981" selection-start-column="0" selection-end-line="8981" selection-end-column="0" />
-          <folding>
-            <marker date="1511556676253" expanded="true" signature="249423:249607" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -717,7 +644,7 @@
         <state relative-caret-position="6511">
           <caret line="383" column="53" lean-forward="false" selection-start-line="383" selection-start-column="34" selection-end-line="383" selection-end-column="53" />
           <folding>
-            <element signature="e#0#32414#0" expanded="true" />
+            <element signature="e#0#32471#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -726,9 +653,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148393">
           <caret line="8729" column="59" lean-forward="false" selection-start-line="8729" selection-start-column="59" selection-end-line="8729" selection-end-column="59" />
-          <folding>
-            <marker date="1511556676253" expanded="true" signature="249423:249607" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -912,16 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3807">
-          <caret line="3054" column="0" lean-forward="false" selection-start-line="3054" selection-start-column="0" selection-end-line="3054" selection-end-column="0" />
-          <folding>
-            <marker date="1511556676253" expanded="true" signature="249423:249607" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Scope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -938,6 +853,40 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.desktop/java/awt/EventQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../antlr-4.7-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#347#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1505">
+          <caret line="1225" column="0" lean-forward="false" selection-start-line="1225" selection-start-column="0" selection-end-line="1225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -950,142 +899,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="564" column="0" lean-forward="false" selection-start-line="564" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
-          <folding>
-            <marker date="1511556676315" expanded="true" signature="16910:16940" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="16942:17083" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="17153:17183" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="17185:17326" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="17404:17434" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="17436:17577" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="17651:17681" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="17683:17824" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="17904:17934" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="17936:18077" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="18163:18193" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="18195:18336" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="18444:18474" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="18476:18617" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="18723:18753" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="18755:18896" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="18974:19004" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="19006:19147" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="19223:19253" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="19255:19396" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="19466:19496" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="19498:19639" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="19731:19761" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="19763:19904" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="19978:20008" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="20010:20151" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="20233:20263" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="20265:20406" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="20490:20520" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="20522:20663" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="20757:20787" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="20789:20930" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="21022:21052" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="21054:21195" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="21271:21301" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="21303:21444" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="21536:21566" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="21568:21709" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="21807:21837" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="21839:21980" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="22082:22112" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="22114:22255" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="22359:22389" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="22391:22532" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="22630:22660" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="22662:22803" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="22901:22931" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="22933:23074" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="23156:23186" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="23188:23329" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="23421:23451" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="23453:23594" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="23680:23710" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="23712:23853" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="23949:23979" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="23981:24122" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="24218:24248" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="24250:24391" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="24471:24501" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="24503:24644" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="24730:24760" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="24762:24903" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="24973:25003" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="25005:25146" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="25238:25268" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="25270:25411" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="25483:25513" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="25515:25656" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="25760:25790" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="25792:25933" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="26015:26045" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="26047:26188" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="26274:26304" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="26306:26447" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="26557:26587" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="26589:26730" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="26814:26844" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="26846:26987" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="27057:27087" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="27089:27230" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="27318:27348" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="27579:27609" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="27840:27870" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="27872:28013" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="28085:28115" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="28117:28258" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="28336:28366" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="28368:28509" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="28627:28657" ph="{...}" />
-            <marker date="1511556676315" expanded="true" signature="28659:28800" ph="/**...*/" />
-            <marker date="1511556676315" expanded="true" signature="28874:28904" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../antlr-4.7-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#347#348#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="410" column="50" lean-forward="false" selection-start-line="410" selection-start-column="44" selection-end-line="410" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="736" column="0" lean-forward="false" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32414#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="671" column="0" lean-forward="false" selection-start-line="656" selection-start-column="0" selection-end-line="671" selection-end-column="0" />
+        <state relative-caret-position="290">
+          <caret line="711" column="81" lean-forward="true" selection-start-line="711" selection-start-column="81" selection-end-line="711" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="763" column="52" lean-forward="true" selection-start-line="763" selection-start-column="52" selection-end-line="763" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#32471#0" expanded="true" />
           </folding>
         </state>
       </provider>

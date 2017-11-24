@@ -720,7 +720,11 @@ switchLabel
 
 forControl
     :   enhancedForControl
+
     |   forInit? ';' expression? ';' forUpdate?
+
+   // |   forInit? ';' expression? ';' expression?
+
     ;
 
 forInit
@@ -761,7 +765,7 @@ expression
     ;
 
 assignmentOperator
-    :   '='
+    :   ASSIGN
     |   '+='
     |   '-='
     |   '*='

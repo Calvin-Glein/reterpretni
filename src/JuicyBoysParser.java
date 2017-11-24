@@ -4749,6 +4749,7 @@ public class JuicyBoysParser extends Parser {
 	}
 
 	public static class AssignmentOperatorContext extends ParserRuleContext {
+		public TerminalNode ASSIGN() { return getToken(JuicyBoysParser.ASSIGN, 0); }
 		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
