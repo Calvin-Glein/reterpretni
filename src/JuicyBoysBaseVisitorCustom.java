@@ -94,6 +94,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }*/
 
 
+
+
     @Override
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
 
@@ -103,10 +105,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     {
                         if ((boolean) super.visit(ctx.parExpression()) == true) {
                             System.out.println("PUMASOK");
-                            return super.visitHashtagIfStatement(ctx);
+                            return super.visit(ctx.statement(0));
+
                         } else if ((boolean) super.visit(ctx.parExpression()) == false) {
                             System.out.println("HINDI PUMASOK");
-                            return null;
+                            Object c = ctx.statement(1);
+                            if(c!=null)
+                                return super.visit(ctx.statement(1));
+                            else
+                                return null;
                         }
                         else
                         {
