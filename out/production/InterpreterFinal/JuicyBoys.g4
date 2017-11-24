@@ -661,7 +661,7 @@ ioStatement
     ;
 
 input_statement
-    :   INPUT LPAREN Identifier RPAREN SEMI
+    :   Identifier '=' INPUT LPAREN RPAREN SEMI
     ;
 
 output_statement

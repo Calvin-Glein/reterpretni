@@ -546,105 +546,86 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return super.visitVariableDeclaratorId(ctx);
     }
 
-/*
+
     @Override
-    public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {
+    public Object visitIoStatement(JuicyBoysParser.IoStatementContext ctx) {
+
+
+      /*  Object a = super.visit(ctx.input_statement());
+        if(a!=null){
 
 
 
-        Boolean trueCollector = true;
-        Object a = super.visit(ctx.inclusiveOrExpression(0));
+            Variable var = (Variable) scopes.peek().lookup(ctx.ide);
+            var.setValue(new Value(newValue));
+        }*/
+        return super.visitIoStatement(ctx);
+    }
 
-        //Object b = null;
-
-
-
-            try{
-                trueCollector = (Boolean) a;
-                if(a instanceof Boolean) {
-
-                    if (super.visit(ctx.AND(0)) != null) {
-
-                        if (a != null) {
-
-                        trueCollector = (Boolean) a;
-                        Object temp = null;
-
-                        //store the non recurive one based CFG
-                        List<JuicyBoysParser.InclusiveOrExpressionContext> inclOrExps = ctx.inclusiveOrExpression();
-                        //Para sa + or -
-
-
-                        for (int j = 1; j < inclOrExps.size(); j++) {
-
-                            //^^ iterating through all multExps kasi *
-
-                            try {
-                                Object b = null;
-                                if (inclOrExps.get(j).exclusiveOrExpression(1) == null)
-                                    b = super.visit(inclOrExps.get(j).exclusiveOrExpression(0));
-
-                                else {
-                                    b = super.visit(inclOrExps.get(j));
-                                }
-
-
-                                Object nextNumber = null;
-
-
-                                try {
-                                    nextNumber = (Boolean) b;
-                                } catch (Exception e) {
-
-                                    hasError = true;
-                                    errorCode += "\n Error in determining if boolean or not";
-                                    e.printStackTrace();
-
-                                }
-                                if (ctx.AND() != null)
-                                    if ((Boolean) nextNumber == true) {
-
-                                        trueCollector = trueCollector && (Boolean) nextNumber;
-                                        System.out.println("------------------------------------------NEXT NUMBER IS TRUE: " + trueCollector);
-
-
-                                    } else if ((Boolean) nextNumber == false) {
-                                        trueCollector = trueCollector && (Boolean) nextNumber;
-                                        System.out.println("------------------------------------------NEXT NUMBER IS FALSE: " + trueCollector);
-                                    }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-
-                            //Object b = super.visitAdditiveExpression()
-                        }
-
-
-                    }
-                    return trueCollector;
-                } else if (super.visit(ctx.AND(0)) == null) {
-                    return super.visitConditionalAndExpression(ctx);
-                } else {
-
-                    hasError = true;
-                    errorCode += "\n + Error in AND visitor";
-                    return null;
-                }
-            }
-
-
-        }
-
-            catch (Exception e){
-                return super.visitConditionalAndExpression(ctx);
-            }
-
-        return super.visitConditionalAndExpression(ctx);
-
+   /* @Override
+    public Object visitInputText(JuicyBoysParser.InputTextContext ctx) {
+        return JOptionPane.showInputDialog("Input").toString();
     }*/
 
+    @Override
+    public Object visitInput_statement(JuicyBoysParser.Input_statementContext ctx) {
+
+       /* Object a = super.visit(ctx.inputText());*/
+        Object input = JOptionPane.showInputDialog("Input");
+        System.out.println("String to contain: "+ ctx.Identifier() + " input text: " + input);
+
+
+        Variable var = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
+
+
+
+
+        if(var!=null){
+
+                Object castChecker = null;
+                try{
+                    castChecker = Integer.parseInt(input.toString());
+                }catch (Exception e){
+                    try{
+                        castChecker = Double.parseDouble(input.toString());
+                    }
+                    catch (Exception e2){
+                        try{
+                            castChecker = input.toString();
+
+                        } catch (Exception e3){
+                            hasError = true;
+                            errorCode += "\n Scanned input cannot be parsed";
+                            e3.printStackTrace();
+                        }
+                    }
+                }
+
+                 if(castChecker instanceof Integer && var.getDataType().equals("int")){
+                     var.setValue(new Value(input));
+                 }
+                 else if(castChecker instanceof Double && var.getDataType().equals("double")){
+                     var.setValue(new Value(input));
+                 }
+                 else if(var.getDataType().equals("String")){
+                     var.setValue(new Value(input));
+                 }
+                 else{
+                     hasError =true;
+                     errorCode += "\n Variable to receive input is incompatible with the scanned input.";
+                 }
+        }
+
+        else if(var==null){
+            hasError = true;
+            errorCode += "\n Variable to contain input does not exist";
+        }
+
+
+        return null;
+        //return super.visitInput_statement(ctx);
+
+    }
 
     @Override
     public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {
@@ -1561,6 +1542,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //return super.visitPrimary(ctx);
     }
+
+
 
     @Override
     public Object visitLiteral(JuicyBoysParser.LiteralContext ctx) {
