@@ -7,11 +7,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.*;
+import java.util.ArrayList;
 
 
 public class UI {
@@ -27,11 +25,11 @@ public class UI {
     private JTable errorTable;
     private JScrollPane errorScrollPane;
     private TextLineNumber textLineNumber;
+    private ArrayList<String> TokenTypes;
 
-    private ArrayList<String> TokenTypes= new ArrayList<String>();
 
     private String code = "";
-    private ArrayList<String> autocompleteWords = new ArrayList<String>();
+    private ArrayList<String> autocompleteWords;
 
     private Thread thread;
 
@@ -292,7 +290,7 @@ public class UI {
 
         //textAreaExceptions.setText("Exceptions: "  + exceptionErrorStrategy.getErrors().toString());
 
-        ArrayList<String> errorList = errorListener.getErrors();
+        ArrayList<ErrorObject> errorList = errorListener.getErrorObjects();
         System.out.println("ErrorList size:" + errorList.size());
 
         DefaultTableModel tableModel = new DefaultTableModel();
@@ -300,8 +298,8 @@ public class UI {
         errorTable = new JTable(tableModel);
 
         for (int i=0; i<errorList.size(); i++){
-            Object[] data = {errorList.get(i)};
-            System.out.println(errorList.get(i));
+            Object[] data = {errorList.get(i).specificError};
+            System.out.println(errorList.get(i).specificError);
             tableModel.addRow(data);
         }
 
@@ -312,6 +310,17 @@ public class UI {
         errorScrollPane.setVisible(true);
 
         // TODO: Set click listener for each row
+
+        errorTable.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable)e.getSource();
+                    int row = target.getSelectedRow();
+                    // do some action if appropriate column
+                    textAreaCodeInput.setCaretPosition(errorList.get(row).lineNumber);
+                }
+            }
+        });
 
         System.out.println("Parser: " + parser.getNumberOfSyntaxErrors());
 

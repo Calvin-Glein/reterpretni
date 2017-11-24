@@ -12,7 +12,8 @@ import java.util.List;
 public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
 
     String output = "";
-    ErrorObject p;
+
+    ArrayList<ErrorObject> errorObjects = new ArrayList<>();
     ArrayList<String> errors = new ArrayList<>();
     Recognizer<?, ?> recognizer;
     Object o;
@@ -62,6 +63,8 @@ public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
     output = output + " \n \n Specific Error: " + msg.toString() + "\n\n ";
 
     errors.add("Error:(" + lineNumber + ", " + charPositionInLine + ") " + msg.toString());
+
+    errorObjects.add(new ErrorObject(lineNumber, charPositionInLine, msg.toString()));
 
     lineErrors.add(lineNumber);
 
@@ -117,6 +120,10 @@ public class JuicyBoysANTLRErrorListener implements ANTLRErrorListener {
 
     public ArrayList<String> getErrors() {
         return errors;
+    }
+
+    public ArrayList<ErrorObject> getErrorObjects() {
+        return errorObjects;
     }
 
     @Override

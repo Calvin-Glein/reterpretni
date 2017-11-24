@@ -78,7 +78,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="46feb" class="javax.swing.JTable" binding="errorTable" custom-create="true">
+              <component id="46feb" class="javax.swing.JTable" binding="errorTable">
                 <constraints/>
                 <properties>
                   <enabled value="true"/>
