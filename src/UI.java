@@ -251,6 +251,20 @@ public class UI {
         tokens.fill();
         //ParseTreeWalker walker = new ParseTreeWalker();
 
+        JFrame frameTree = new JFrame("Antlr AST");
+        JPanel panelTree = new JPanel();
+        JScrollPane scrollPanePanelTree = new JScrollPane( panelTree );
+        TreeViewer viewr = new TreeViewer(Arrays.asList(
+                parser.getRuleNames()),tree);
+        viewr.setScale(1);//scale a little
+        panelTree.add(viewr);
+
+        frameTree.add(scrollPanePanelTree);
+        frameTree.setSize(500,500);
+        frameTree.setVisible(true);
+
+
+
         JuicyBoysBaseVisitorCustom visitor = new JuicyBoysBaseVisitorCustom();
         visitor.visit(tree);
 /*
@@ -269,17 +283,6 @@ public class UI {
         }
 
 
-        JFrame frameTree = new JFrame("Antlr AST");
-        JPanel panelTree = new JPanel();
-        JScrollPane scrollPanePanelTree = new JScrollPane( panelTree );
-        TreeViewer viewr = new TreeViewer(Arrays.asList(
-                parser.getRuleNames()),tree);
-        viewr.setScale(1);//scale a little
-        panelTree.add(viewr);
-
-        frameTree.add(scrollPanePanelTree);
-        frameTree.setSize(500,500);
-        frameTree.setVisible(true);
 
 
         //textAreaTree.setText(tree.toStringTree(parser));

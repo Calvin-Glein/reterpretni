@@ -800,7 +800,13 @@ andExpression
     ;
 
 equalityExpression
-    :   instanceOfExpression ( ('==' | '!=') instanceOfExpression )*
+    :   instanceOfExpression ( equalORnotequal instanceOfExpression )*
+    ;
+
+//added rules
+equalORnotequal
+    : EQUAL
+    | NOTEQUAL
     ;
 
 instanceOfExpression

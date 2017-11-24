@@ -907,6 +907,16 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitEqualityExpression(JuicyBoysParser.EqualityExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#equalORnotequal}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#equalORnotequal}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#instanceOfExpression}.
 	 * @param ctx the parse tree
 	 */

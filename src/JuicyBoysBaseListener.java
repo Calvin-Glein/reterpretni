@@ -1059,6 +1059,18 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInstanceOfExpression(JuicyBoysParser.InstanceOfExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}

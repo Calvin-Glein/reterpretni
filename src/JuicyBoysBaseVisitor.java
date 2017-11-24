@@ -625,6 +625,13 @@ public class JuicyBoysBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitInstanceOfExpression(JuicyBoysParser.InstanceOfExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

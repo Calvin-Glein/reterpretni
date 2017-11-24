@@ -98,14 +98,27 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
 
             if(super.visit(ctx.parExpression())!=null) {
-                if ((boolean) super.visit(ctx.parExpression()) == true) {
-                    System.out.println("PUMASOK");
-                    return super.visitHashtagIfStatement(ctx);
-                } else if ((boolean) super.visit(ctx.parExpression()) == false) {
-                    System.out.println("HINDI PUMASOK");
-                    return null;
+                    JOptionPane.showMessageDialog(null, super.visit((ctx.parExpression())).toString());
+                    if(super.visit(ctx.parExpression()) instanceof Boolean)
+                    {
+                        if ((boolean) super.visit(ctx.parExpression()) == true) {
+                            System.out.println("PUMASOK");
+                            return super.visitHashtagIfStatement(ctx);
+                        } else if ((boolean) super.visit(ctx.parExpression()) == false) {
+                            System.out.println("HINDI PUMASOK");
+                            return null;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
 
-                }
+
             }
         System.out.println("PUMASOK SA HASHTAGIFSTATEMENt");
         return null;
@@ -118,6 +131,183 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         if(a!=null)
             return a;
         return null;
+    }
+
+    @Override
+    public Object visitEqualityExpression(JuicyBoysParser.EqualityExpressionContext ctx) {
+
+
+        Object a = super.visit(ctx.instanceOfExpression(0));
+
+        if(a != null){
+
+
+            Object temp = null;
+            try{
+                temp = Integer.parseInt(a.toString());
+            }catch(Exception e){
+                try{
+                    temp = Double.parseDouble(a.toString());
+                }catch (Exception e1){
+                    try{
+                        temp = a.toString();
+                    }catch(Exception e2){
+                        e2.printStackTrace();
+
+                    }
+                }
+            }
+            //store the non recurive one based CFG
+            List<JuicyBoysParser.InstanceOfExpressionContext> instanceOfExpressionContexts =  ctx.instanceOfExpression();
+            List<JuicyBoysParser.EqualORnotequalContext> equalORnotEqual =  ctx.equalORnotequal();
+
+            for(int j = 1; j < instanceOfExpressionContexts.size(); j++){
+
+                //^^ iterating through all multExps kasi *
+
+                try
+                {
+                    Object b = null;
+                    if(instanceOfExpressionContexts.get(j).relationalExpression()!=null){
+                        b = super.visit(instanceOfExpressionContexts.get(j));
+                    }
+
+                    Object nextNumber = null;
+
+
+                    try{
+                        nextNumber = Integer.parseInt(b.toString());;
+                    }catch(Exception e){
+                        try{
+                            nextNumber = Double.parseDouble(b.toString());
+                        }catch (Exception e1){
+                            try{
+                                nextNumber = a.toString();
+                            }catch(Exception e2){
+                                e2.printStackTrace();
+
+                            }                        }
+                    }
+
+                    if(temp instanceof Integer && nextNumber instanceof  Integer)
+                    {
+                        System.out.println("Instance is an Integer");
+                        if(equalORnotEqual.get(j-1).EQUAL()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside EQUAL with Instance value: " + (int)nextNumber);
+                            if((int)temp == (int)nextNumber) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return true;
+
+                            }else
+                            {
+                                System.out.println("NOT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return false;
+                            }
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        else if(equalORnotEqual.get(j-1).NOTEQUAL()!=null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside NotEqual with Instance value: " + (int) nextNumber);
+                            if ((int) temp != (int) nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                    }
+                    else if(temp instanceof Double && nextNumber instanceof  Double) {
+                        System.out.println("Instance is Double");
+                        if (equalORnotEqual.get(j - 1).EQUAL() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside Equal with Instance value: " + (double) nextNumber);
+                            if ((double) temp == (double) nextNumber) {
+                                return true;
+
+                            } else {
+                                return false;
+                            }
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        } else if (equalORnotEqual.get(j - 1).NOTEQUAL() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside NotEqual with Instance value: " + (double) nextNumber);
+                            if ((double) temp != (double) nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+
+                    }
+
+
+                    else if(temp instanceof String && nextNumber instanceof  String) {
+                        System.out.println("Instance is String");
+                        if (equalORnotEqual.get(j - 1).EQUAL() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside Equal with Instance value: " + (String) nextNumber);
+                            System.out.println("Temp: " + temp);
+                            System.out.println("Next: " + nextNumber);
+
+                            if (temp==nextNumber) {
+                                return true;
+
+                            } else {
+                                return false;
+                            }
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        } else if (equalORnotEqual.get(j - 1).NOTEQUAL() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside NotEqual with Instance value: " + (String) nextNumber);
+                            System.out.println("Temp: " + temp);
+                            System.out.println("Next: " + nextNumber);
+                            if (temp!=nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+
+                    }
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+
+                //Object b = super.visitAdditiveExpression()
+            }
+
+            System.out.println("Answer in Additive Expression: " + temp);
+
+
+            return (temp);
+
+        }
+
+
+
+        return super.visitEqualityExpression(ctx);
     }
 
     @Override
@@ -135,7 +325,17 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 try{
                     temp = Double.parseDouble(a.toString());
                 }catch (Exception e1){
-                    e1.printStackTrace();
+                    try{
+                        System.out.print("You cannot perform relational (>, <, >=, <=) operation on strings.");
+                        hasError = true;
+                        errorCode += "\n You cannot perform relational (>, <, >=, <=) operation on strings.";
+                        return a.toString();
+
+                        //relop for string
+                    }catch (Exception e2){
+                        e2.printStackTrace();
+
+                    }
                 }
             }
             //store the non recurive one based CFG
@@ -165,7 +365,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                         try{
                             nextNumber = Double.parseDouble(b.toString());
                         }catch (Exception e1){
-                            e.printStackTrace();
+                            try{
+                                return nextNumber.toString();
+
+                                //relop for string
+                            }catch (Exception e2){
+                                e2.printStackTrace();
+
+                            }
                         }
                     }
 
@@ -229,17 +436,61 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                             //System.out.println("Added: " + (temp + (int)int1) + " End");
 
                         }
-                        
-
-
                     }
+                    else if(temp instanceof Double && nextNumber instanceof  Double) {
+                        System.out.println("Instance is Double");
+                        if (relops.get(j - 1).LT() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
 
-                    else{
-                        System.out.println("Instance unknown");
-                        hasError = true;
-                        errorCode += "You cannot perform that operation";
+                            System.out.println("inside LT with Instance value: " + (double) nextNumber);
+                            if ((double) temp < (double) nextNumber) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return true;
+
+                            } else {
+                                System.out.println("NOT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                                return false;
+                            }
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        } else if (relops.get(j - 1).GT() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside GT with Instance value: " + (double) nextNumber);
+                            if ((double) temp > (double) nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        if (relops.get(j - 1).LE() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside LE with Instance value: " + (double) nextNumber);
+                            if ((double) temp <= (double) nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        if (relops.get(j - 1).GE() != null) {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside GE with Instance value: " + (double) nextNumber);
+                            if ((double) temp >= (double) nextNumber)
+                                return true;
+                            else
+                                return false;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
                     }
-
                 }
                 catch(Exception e)
                 {

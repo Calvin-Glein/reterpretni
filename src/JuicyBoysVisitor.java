@@ -547,6 +547,12 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitEqualityExpression(JuicyBoysParser.EqualityExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#equalORnotequal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualORnotequal(JuicyBoysParser.EqualORnotequalContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#instanceOfExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
