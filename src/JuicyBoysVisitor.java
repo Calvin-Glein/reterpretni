@@ -274,11 +274,110 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableModifiers(JuicyBoysParser.VariableModifiersContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#statement}.
+	 * Visit a parse tree produced by the {@code hashtagBlock}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(JuicyBoysParser.StatementContext ctx);
+	T visitHashtagBlock(JuicyBoysParser.HashtagBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagAssertStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagAssertStatement(JuicyBoysParser.HashtagAssertStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagIfStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagForStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagForStatement(JuicyBoysParser.HashtagForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagWhileStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagWhileStatement(JuicyBoysParser.HashtagWhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagDoStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagDoStatement(JuicyBoysParser.HashtagDoStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagTryStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagTryStatement(JuicyBoysParser.HashtagTryStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagSwitchStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagSwitchStatement(JuicyBoysParser.HashtagSwitchStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagReturnStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagReturnStatement(JuicyBoysParser.HashtagReturnStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagBreakStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagBreakStatement(JuicyBoysParser.HashtagBreakStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagContinueStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagContinueStatement(JuicyBoysParser.HashtagContinueStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagTerminateStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagTerminateStatement(JuicyBoysParser.HashtagTerminateStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagStatementExpressionStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagStatementExpressionStatement(JuicyBoysParser.HashtagStatementExpressionStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagIdentifierStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagIdentifierStatement(JuicyBoysParser.HashtagIdentifierStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagIOStatement}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#ioStatement}.
 	 * @param ctx the parse tree

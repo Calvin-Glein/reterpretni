@@ -4,14 +4,14 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 
 public class UI {
@@ -23,6 +23,7 @@ public class UI {
     private JTextArea textAreaTree;
     public JTextArea textAreaError;
     private JScrollPane scrollPaneCodeInput;
+    private JScrollPane jtablescrollpane;
     private TextLineNumber textLineNumber;
 
     private ArrayList<String> TokenTypes= new ArrayList<String>();
@@ -103,12 +104,18 @@ public class UI {
                 "      void main(){\n" +
                 "\tint counter = 10;\n" +
                 "\tint counter2 = 20;\n" +
-                "\tint counter3 = counter1 + counter2;\n" +
+                "\tint counter3 = counter + counter2;\n" +
                 "\tint test = 10 + 10;\n" +
                 "\n" +
+                "\n" +
+                "\n" +
+                "\tif(counter  < counter2){\n" +
+                "\ttest = test + 10;\n" +
                 "\t}\n" +
+                "\t\n" +
+                "\t\n" +
                 "\n" +
-                "\n" +
+                "}\n" +
                 "}\t");
 
 
@@ -191,9 +198,9 @@ public class UI {
                      
         textAreaError.setText("");
         textArea2Output.setText("");
-        textAreaTokenTypes.setText("");
 
         code = textAreaCodeInput.getText();
+
 
 
         ANTLRInputStream input = new ANTLRInputStream(code);
@@ -258,7 +265,7 @@ public class UI {
 
         for (Token tok : tokens.getTokens()) {
             textArea2Output.setText(textArea2Output.getText() + tok.getText() + " -> " + lexer.VOCABULARY.getSymbolicName(tok.getType())+ "\n");
-            textAreaTokenTypes.setText(textAreaTokenTypes.getText() + lexer.VOCABULARY.getSymbolicName(tok.getType())+ "\n");
+           // textAreaTokenTypes.setText(textAreaTokenTypes.getText() + lexer.VOCABULARY.getSymbolicName(tok.getType())+ "\n");
         }
 
 
@@ -301,8 +308,37 @@ public class UI {
         }
 
 
-        visitor.printStack();
 
+        String[] columnNames = {"Variable Key", "Variable Value"};
+        DefaultTableModel model = new DefaultTableModel();
+        Set set = visitor.printStack();
+
+        Iterator iterator = set.iterator();
+
+        model.addColumn("Col1");
+        model.addColumn("Col2");
+       while(iterator.hasNext()){
+            Map.Entry mentry = (Map.Entry)iterator.next();
+            System.out.println("key" + mentry.getKey());
+            System.out.println("values" + ((Symbol)mentry.getValue()).getScope());
+
+
+
+            Object[] row = {mentry.getKey(), mentry.getValue()};
+            model.addRow(row);
+
+
+        }
+
+        System.out.println(model.getRowCount());
+
+        JTable variablesTable = new JTable(model);
+
+        model.fireTableDataChanged();
+
+        jtablescrollpane.getViewport ().add (variablesTable);
+        variablesTable.setVisible(true);
+        jtablescrollpane.setVisible(true);
     }
 }
 

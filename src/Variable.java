@@ -30,11 +30,13 @@ public class Variable extends Symbol {
 		return value;
 	}
 
+
+
 	public void setValue(Value value) {
 		this.value = value;
 	}
 	
-	@Override
+
 	public String toString() {
 		// TODO Auto-generated method stub
 		if (value == null)

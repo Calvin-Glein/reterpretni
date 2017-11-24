@@ -3,10 +3,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.naming.event.ObjectChangeListener;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
@@ -39,14 +36,40 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     }
 
-    public void printStack() {
+    public Set printStack() {
 
 
+        ArrayList<Scope> list = new ArrayList(scopes);
 
+
+        System.out.print("Size ni list: " + list.size());
+
+//        for(int i = 0; i < list.size(); i++){
+//            for(int j = 0; j < list.get(i)..getSymbolMap().size(); j++){
+//
+//
+//                Variable var = (Variable) list.get(i).getSymbolMap().get(j);
+//
+//                System.out.println(var.getName());
+//                System.out.println(var.getValue());
+//
+//            }
+//        }
+
+        Set set = scopes.peek().getSymbolMap().entrySet();
+       /* Iterator iterator = set.iterator();
+        while(iterator.hasNext()){
+            Map.Entry mentry = (Map.Entry)iterator.next();
+            System.out.println("key" + mentry.getKey());
+            System.out.println("values" + mentry.getValue());
+        }
+*/
+        return set;
+/*
         // method 2:
        while(!scopes.empty())
-           System.out.println(scopes.pop().getList());
-    }
+               System.out.println(scopes.pop().getList());*/
+}
 
     /*
     @Override
@@ -65,6 +88,155 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 */
 
 
+  /*  @Override
+    public Object visitStatement(JuicyBoysParser.StatementContext ctx) {
+        return super.visitStatement(ctx);
+    }*/
+
+
+    @Override
+    public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
+        return super.visitHashtagIfStatement(ctx);
+    }
+
+/*    @Override
+    public Object visitRelationalExpression(JuicyBoysParser.RelationalExpressionContext ctx) {
+
+        Object a = super.visit(ctx.shiftExpression(0));
+
+        if(a != null){
+
+
+            Object temp = null;
+            try{
+                temp = Integer.parseInt(a.toString());
+            }catch(Exception e){
+                try{
+                    temp = Double.parseDouble(a.toString());
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
+            }
+            //store the non recurive one based CFG
+            List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
+            //Para sa + or -
+            List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
+
+            //        Object b = super.visit(ctx.multiplicativeExpression(1));
+      *//*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*//*
+
+            for(int j = 1; j < multExps.size(); j++){
+
+                //^^ iterating through all multExps kasi *
+
+                try
+                {
+                    Object b = null;
+                    if(multExps.get(j).unaryExpression(1)==null)
+                        b = super.visit(multExps.get(j).unaryExpression(0));
+
+                    else {
+                        b = super.visit(multExps.get(j));
+                    }
+
+                    Object nextNumber = null;
+
+
+                    try{
+                        nextNumber = Integer.parseInt(b.toString());;
+                    }catch(Exception e){
+                        try{
+                            nextNumber = Double.parseDouble(b.toString());
+                        }catch (Exception e1){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if(temp instanceof Integer && nextNumber instanceof  Integer)
+                    {
+                        System.out.println("Instance is an Integer");
+                        if(addORsubs.get(j-1).ADD()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside ADD with Instance value: " + (int)nextNumber);
+                            temp = (int)temp + (int)nextNumber;
+
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        else if(addORsubs.get(j-1).SUB()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside SUB with Instance value: " + nextNumber);
+                            temp = (int)temp - (int)nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                  *//*  if(ctx.SUB()!=null)
+                    {
+                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
+                        //return (int)int1 - (int)int2;
+                    }*//*
+                    }
+                    else  if(temp instanceof Double && nextNumber instanceof Double)
+                    {
+                        System.out.println("Instance is an Integer");
+                        if(addORsubs.get(j-1).ADD()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+
+                            System.out.println("inside ADD with Instance value: " + (double)nextNumber);
+                            temp = (double)temp + (double)nextNumber;
+
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        else if(addORsubs.get(j-1).SUB()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside SUB with Instance value: " + nextNumber);
+                            temp = (double)temp - (double)nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                  *//*  if(ctx.SUB()!=null)
+                    {
+                        System.out.println("Subtracted: " + ((int)int1 - (int)int2));
+                        //return (int)int1 - (int)int2;
+                    }*//*
+                    }
+                    else{
+                        System.out.println("Instance unknown");
+                        hasError = true;
+                        errorCode += "You cannot perform that operation";
+                    }
+
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+
+                //Object b = super.visitAdditiveExpression()
+            }
+
+            System.out.println("Answer in Additive Expression: " + temp);
+
+
+            return (temp);
+
+        }
+
+
+        //
+        return super.visitRelationalExpression(ctx);
+    }*/
 
     @Override
     public Object visitLocalVariableDeclarationStatement(JuicyBoysParser.LocalVariableDeclarationStatementContext ctx) {
@@ -165,6 +337,29 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
         return null;
+    }
+
+
+    @Override
+    public Object visitRelationalOp(JuicyBoysParser.RelationalOpContext ctx) {
+        if(ctx.GE() != null)
+        {
+            return ctx.GE().getText();
+        }
+        else if(ctx.LE() != null)
+        {
+            return ctx.LE().getText();
+        }
+        else if(ctx.GT() != null){
+            return ctx.GT().getText();
+        }
+        else if(ctx.LT() != null){
+            return ctx.LT().getText();
+        }
+        else {
+            return null;
+        }
+
     }
 
     @Override
@@ -630,6 +825,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         else if(ctx.FloatingPointLiteral()!=null) {
             System.out.println("Visit Literal: " + ctx.FloatingPointLiteral().getText().toString());
             return ctx.FloatingPointLiteral().getText();
+        }
+        else if(ctx.StringLiteral() != null){
+            System.out.println("Visit Literal: " + ctx.StringLiteral().getText().toString());
+            return ctx.StringLiteral().getText();
         }
 
 

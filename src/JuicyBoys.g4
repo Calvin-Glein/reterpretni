@@ -632,26 +632,26 @@ variableModifiers
     ;
 
 statement
-    :	block
-    |   ASSERT expression (':' expression)? ';'
-    |   'if' parExpression statement ('else' statement)?
-    |   'for' '(' forControl ')' statement
-    |   'while' parExpression statement
-    |   'do' statement 'while' parExpression ';'
-    |   'try' block (catches finallyBlock? | finallyBlock)
+    :	block                                                  #hashtagBlock
+    |   ASSERT expression (':' expression)? ';'                #hashtagAssertStatement
+    |   'if' parExpression statement ('else' statement)?     #hashtagIfStatement
+    |   'for' '(' forControl ')' statement                      #hashtagForStatement
+    |   'while' parExpression statement                         #hashtagWhileStatement
+    |   'do' statement 'while' parExpression ';'                #hashtagDoStatement
+    |   'try' block (catches finallyBlock? | finallyBlock)       #hashtagTryStatement
 /*
 	|	'try' resourceSpecification block catches? finallyBlock?
 */
-    |   'switch' parExpression '{' switchBlockStatementGroups '}'
-    |   'synchronized' parExpression block
-    |   'return' expression? ';'
-    |   'throw' expression ';'
-    |   'break' Identifier? ';'
-    |   'continue' Identifier? ';'
-    |   ';'
-    |   statementExpression ';'
-    |   Identifier ':' statement
-    |   ioStatement
+    |   'switch' parExpression '{' switchBlockStatementGroups '}' #hashtagSwitchStatement
+    //|   'synchronized' parExpression block
+    |   'return' expression? ';'                                #hashtagReturnStatement
+  //  |   'throw' expression ';'
+    |   'break' Identifier? ';'                                 #hashtagBreakStatement
+    |   'continue' Identifier? ';'                              #hashtagContinueStatement
+    |   ';'                                                     #hashtagTerminateStatement
+    |   statementExpression ';'                                 #hashtagStatementExpressionStatement
+    |   Identifier ':' statement                                #hashtagIdentifierStatement
+    |   ioStatement                                             #hashtagIOStatement
     ;
 
 //ako nag add neto until output statement
@@ -812,10 +812,10 @@ relationalExpression
     ;
 
 relationalOp
-    :   '<='
-    |   '>='
-    |   '<'
-    |   '>'
+    :   LE
+    |   GE
+    |   LT
+    |   GT
     ;
 
 shiftExpression
