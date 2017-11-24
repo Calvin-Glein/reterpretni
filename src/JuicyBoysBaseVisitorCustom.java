@@ -144,9 +144,21 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitEqualityExpression(JuicyBoysParser.EqualityExpressionContext ctx) {
 
 
+
         Object a = super.visit(ctx.instanceOfExpression(0));
 
+
+
         if(a != null){
+
+            if(a instanceof Boolean){
+                if((Boolean) a == true){
+                    return true;
+                }
+                else if ((Boolean) a == false){
+                    return false;
+                }
+            }
 
 
             Object temp = null;
