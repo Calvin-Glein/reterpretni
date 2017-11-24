@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1b5e7de-5acb-4897-bb71-56a5672f3623" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" afterPath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="332">
               <caret line="791" column="5" lean-forward="true" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
               <folding>
                 <element signature="e#0#32410#0" expanded="true" />
@@ -49,27 +49,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="722" column="12" lean-forward="false" selection-start-line="722" selection-start-column="12" selection-end-line="722" selection-end-column="12" />
+            <state relative-caret-position="303">
+              <caret line="735" column="9" lean-forward="false" selection-start-line="735" selection-start-column="9" selection-end-line="735" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+                <element signature="method#visitConditionalOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
                 <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
                 <element signature="method#visitLocalVariableDeclaration#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
                 <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
                 <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+                <marker date="1511554167633" expanded="false" signature="20093:23311" ph="{...}" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -134,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>visitEq</find>
       <find>statem</find>
       <find>variable</find>
       <find>visitVar</find>
@@ -155,7 +156,6 @@
       <find>localVar</find>
       <find>visitor</find>
       <find>visitEqual</find>
-      <find>data ty</find>
       <find>visitHas</find>
       <find>Literal</find>
       <find>conditionalExpre</find>
@@ -164,6 +164,8 @@
       <find>INSIDE</find>
       <find>ADD()</find>
       <find>AND()</find>
+      <find>data ty</find>
+      <find>ioState</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -439,7 +441,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java</url>
-          <line>1015</line>
+          <line>1108</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -478,10 +480,12 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <element signature="method#visitConditionalOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitLocalVariableDeclaration#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <marker date="1511554167633" expanded="false" signature="20093:23311" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -605,10 +609,12 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <element signature="method#visitConditionalOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitLocalVariableDeclaration#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <marker date="1511554167633" expanded="false" signature="20093:23311" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -703,10 +709,12 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <element signature="method#visitConditionalOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitLocalVariableDeclaration#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <marker date="1511554167633" expanded="false" signature="20093:23311" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -877,16 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="791" column="5" lean-forward="true" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#32410#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Variable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -895,17 +893,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="791" column="5" lean-forward="true" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#32410#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="722" column="12" lean-forward="false" selection-start-line="722" selection-start-column="12" selection-end-line="722" selection-end-column="12" />
+        <state relative-caret-position="303">
+          <caret line="735" column="9" lean-forward="false" selection-start-line="735" selection-start-column="9" selection-end-line="735" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <element signature="method#visitConditionalOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitLocalVariableDeclaration#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
+            <marker date="1511554167633" expanded="false" signature="20093:23311" ph="{...}" />
           </folding>
         </state>
       </provider>

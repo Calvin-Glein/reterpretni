@@ -546,24 +546,26 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return super.visitVariableDeclaratorId(ctx);
     }
 
-
- /*   @Override
+/*
+    @Override
     public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {
 
 
 
-        Boolean trueCollector = null;
-        Object a = (Object) super.visit(ctx.inclusiveOrExpression(0));
+        Boolean trueCollector = true;
+        Object a = super.visit(ctx.inclusiveOrExpression(0));
 
         //Object b = null;
 
 
-        if(a instanceof Boolean) {
 
             try{
-                if (super.visit(ctx.AND(0)) != null) {
+                trueCollector = (Boolean) a;
+                if(a instanceof Boolean) {
 
-                    if (a != null) {
+                    if (super.visit(ctx.AND(0)) != null) {
+
+                        if (a != null) {
 
                         trueCollector = (Boolean) a;
                         Object temp = null;
@@ -572,8 +574,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                         List<JuicyBoysParser.InclusiveOrExpressionContext> inclOrExps = ctx.inclusiveOrExpression();
                         //Para sa + or -
 
-                        //        Object b = super.visit(ctx.multiplicativeExpression(1));
-      *//*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*//*
 
                         for (int j = 1; j < inclOrExps.size(); j++) {
 
@@ -632,18 +632,111 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     errorCode += "\n + Error in AND visitor";
                     return null;
                 }
-            }catch (Exception e){
-                return super.visitConditionalAndExpression(ctx);
             }
 
 
         }
 
+            catch (Exception e){
+                return super.visitConditionalAndExpression(ctx);
+            }
 
         return super.visitConditionalAndExpression(ctx);
 
+    }*/
+
+
+    @Override
+    public Object visitConditionalAndExpression(JuicyBoysParser.ConditionalAndExpressionContext ctx) {
+
+
+
+        Boolean trueCollector = true;
+        Object a = super.visit(ctx.inclusiveOrExpression(0));
+
+        //Object b = null;
+
+
+
+        try{
+            trueCollector = (Boolean) a;
+            if(a instanceof Boolean) {
+
+                    if (a != null) {
+
+                        Object temp = null;
+
+                        //store the non recurive one based CFG
+                        List<JuicyBoysParser.InclusiveOrExpressionContext> inclOrExps = ctx.inclusiveOrExpression();
+                        //Para sa + or -
+
+
+                        for (int j = 1; j < inclOrExps.size(); j++) {
+
+                            //^^ iterating through all multExps kasi *
+
+                            try {
+                                Object b = null;
+                                if (inclOrExps.get(j).exclusiveOrExpression(1) == null)
+                                    b = super.visit(inclOrExps.get(j).exclusiveOrExpression(0));
+
+                                else {
+                                    b = super.visit(inclOrExps.get(j));
+                                }
+
+
+                                Object nextNumber = null;
+
+
+                                try {
+                                    nextNumber = (Boolean) b;
+                                } catch (Exception e) {
+
+                                    hasError = true;
+                                    errorCode += "\n Error in determining if boolean or not";
+                                    e.printStackTrace();
+
+                                }
+                                if (ctx.AND() != null)
+                                  /*  if ((Boolean) nextNumber == true) {
+
+                                        trueCollector = trueCollector && (Boolean) nextNumber;
+                                        System.out.println("------------------------------------------NEXT NUMBER IS TRUE: " + trueCollector);
+
+
+                                    } else if ((Boolean) nextNumber == false) {
+                                        trueCollector = trueCollector && (Boolean) nextNumber;
+                                        System.out.println("------------------------------------------NEXT NUMBER IS FALSE: " + trueCollector);
+                                    }*/
+                                    if ((Boolean) nextNumber == false) {
+                                        trueCollector = trueCollector && (Boolean) nextNumber;
+                                    }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                            //Object b = super.visitAdditiveExpression()
+                        }
+
+
+                    }
+
+            }
+
+            return trueCollector;
+
+        }
+
+        catch (Exception e){
+            return super.visitConditionalAndExpression(ctx);
+        }
+
+       // return super.visitConditionalAndExpression(ctx);
+
     }
-*/
+
     @Override
     public Object visitConditionalOrExpression(JuicyBoysParser.ConditionalOrExpressionContext ctx) {
 
