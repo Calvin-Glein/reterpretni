@@ -300,6 +300,9 @@ public class UI {
             System.out.println("Error: " + visitor.getErrorCode());
         }
 
+
+        visitor.printStack();
+
     }
 }
 

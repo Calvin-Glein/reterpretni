@@ -225,23 +225,25 @@ classDeclaration
     ;
 
 normalClassDeclaration
-    :   'class' Identifier typeParameters?
+    :   'class' Identifier /*typeParameters?
         ('extends' type)?
-        ('implements' typeList)?
+        ('implements' typeList)?*/
         classBody
     ;
 
+/*
 typeParameters
     :   '<' typeParameter (',' typeParameter)* '>'
     ;
+*/
 
-typeParameter
+/*typeParameter
     :   Identifier ('extends' typeBound)?
     ;
 
 typeBound
     :   type ('&' type)*
-    ;
+    ;*/
 
 /*
 enumDeclaration
@@ -278,9 +280,11 @@ normalInterfaceDeclaration
     ;
 */
 
+/*
 typeList
     :   type (',' type)*
     ;
+*/
 
 classBody
     :   '{' classBodyDeclaration* '}'
@@ -297,8 +301,10 @@ classBodyDeclaration
     ;
 
 memberDecl
+/*
     :   genericMethodOrConstructorDecl
-    |   memberDeclaration
+*/
+    :   memberDeclaration
     |   'void' Identifier voidMethodDeclaratorRest
     |   Identifier constructorDeclaratorRest
 /*
@@ -311,14 +317,14 @@ memberDeclaration
     :   type (methodDeclaration | fieldDeclaration)
     ;
 
-genericMethodOrConstructorDecl
+/*genericMethodOrConstructorDecl
     :   typeParameters genericMethodOrConstructorRest
-    ;
+    ;*/
 
-genericMethodOrConstructorRest
+/*genericMethodOrConstructorRest
     :   (type | 'void') Identifier methodDeclaratorRest
     |   Identifier constructorDeclaratorRest
-    ;
+    ;*/
 
 methodDeclaration
     :   Identifier methodDeclaratorRest
@@ -367,14 +373,14 @@ voidMethodDeclaratorRest
         )
     ;
 
-interfaceMethodDeclaratorRest
+/*interfaceMethodDeclaratorRest
     :   formalParameters ('[' ']')* ('throws' qualifiedNameList)? ';'
-    ;
-
+    ;*/
+/*
 interfaceGenericMethodDecl
     :   typeParameters (type | 'void') Identifier
         interfaceMethodDeclaratorRest
-    ;
+    ;*/
 
 voidInterfaceMethodDeclaratorRest
     :   formalParameters ('throws' qualifiedNameList)? ';'
@@ -435,7 +441,7 @@ modifier
         )
     ;
 
-packageOrTypeName
+/*packageOrTypeName
     :   qualifiedName
     ;
 
@@ -446,15 +452,15 @@ enumConstantName
 typeName
     :   qualifiedName
     ;
-
+*/
 type
-	:	classOrInterfaceType ('[' ']')*
+	:	/*classOrInterfaceType ('[' ']')**/
 	|	primitiveType ('[' ']')*
 	;
 
-classOrInterfaceType
+/*classOrInterfaceType
 	:	Identifier typeArguments? ('.' Identifier typeArguments? )*
-	;
+	;*/
 
 primitiveType
     :   'boolean'
@@ -477,14 +483,16 @@ variableModifier
 */
     ;
 
+/*
 typeArguments
     :   '<' typeArgument (',' typeArgument)* '>'
     ;
+*/
 
-typeArgument
+/*typeArgument
     :   type
     |   '?' (('extends' | 'super') type)?
-    ;
+    ;*/
 
 qualifiedNameList
     :   qualifiedName (',' qualifiedName)*
@@ -631,7 +639,9 @@ statement
     |   'while' parExpression statement
     |   'do' statement 'while' parExpression ';'
     |   'try' block (catches finallyBlock? | finallyBlock)
+/*
 	|	'try' resourceSpecification block catches? finallyBlock?
+*/
     |   'switch' parExpression '{' switchBlockStatementGroups '}'
     |   'synchronized' parExpression block
     |   'return' expression? ';'
@@ -674,17 +684,17 @@ finallyBlock
 	:	'finally' block
 	;
 
-resourceSpecification
+/*resourceSpecification
 	:	'(' resources ';'? ')'
-	;
+	;*/
 
-resources
+/*resources
 	:	resource (';' resource)*
-	;
+	;*/
 
-resource
+/*resource
 	:	variableModifiers classOrInterfaceType variableDeclaratorId '=' expression
-	;
+	;*/
 
 formalParameter
     :   variableModifiers type variableDeclaratorId
@@ -704,7 +714,7 @@ switchBlockStatementGroup
 
 switchLabel
     :   'case' constantExpression ':'
-    |   'case' enumConstantName ':'
+ /*   |   'case' enumConstantName ':'*/
     |   'default' ':'
     ;
 
@@ -881,8 +891,12 @@ primary
     |   'this' arguments?
     |   'super' superSuffix
     |   literal
+/*
     |   'new' creator
+*/
+/*
 	|	nonWildcardTypeArguments (explicitGenericInvocationSuffix | 'this' arguments)
+*/
     |   Identifier ('.' Identifier)* identifierSuffix?
     |   primitiveType ('[' ']')* '.' 'class'
     |   'void' '.' 'class'
@@ -892,26 +906,29 @@ identifierSuffix
     :   ('[' ']')+ '.' 'class'
     |   '[' expression ']'
     |   arguments
-    |   '.' 'class'
+  /*  |   '.' 'class'
+
     |   '.' explicitGenericInvocation
-    |   '.' 'this'
+*/
+ /*   |   '.' 'this'
     |   '.' 'super' arguments
     |   '.' 'new' nonWildcardTypeArguments? innerCreator
+*/
     ;
 
-creator
+/*creator
     :   nonWildcardTypeArguments createdName classCreatorRest
     |   createdName (arrayCreatorRest | classCreatorRest)
-    ;
+    ;*/
 
-createdName
+/*createdName
     :   Identifier typeArgumentsOrDiamond? ('.' Identifier typeArgumentsOrDiamond?)*
 	|	primitiveType
-    ;
+    ;*/
 
-innerCreator
+/*innerCreator
     :   Identifier nonWildcardTypeArgumentsOrDiamond? classCreatorRest
-    ;
+    ;*/
 
 arrayCreatorRest
     :   '['
@@ -924,31 +941,31 @@ classCreatorRest
     :   arguments classBody?
     ;
 
-explicitGenericInvocation
+/*explicitGenericInvocation
     :   nonWildcardTypeArguments explicitGenericInvocationSuffix
-    ;
+    ;*/
 
-nonWildcardTypeArguments
+/*nonWildcardTypeArguments
     :   '<' typeList '>'
-    ;
+    ;*/
 
-typeArgumentsOrDiamond
+/*typeArgumentsOrDiamond
 	:	'<' '>'
 	|	typeArguments
-	;
+	;*/
 
-nonWildcardTypeArgumentsOrDiamond
+/*nonWildcardTypeArgumentsOrDiamond
 	:	'<' '>'
 	|	nonWildcardTypeArguments
-	;
+	;*/
 
 selector
-    :   '.' Identifier arguments?
+    :  /* '.' Identifier arguments?
 	|	'.' explicitGenericInvocation
     |   '.' 'this'
     |   '.' 'super' superSuffix
     |   '.' 'new' nonWildcardTypeArguments? innerCreator
-    |   '[' expression ']'
+    |   */'[' expression ']'
     ;
 
 superSuffix

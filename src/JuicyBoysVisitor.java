@@ -34,30 +34,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNormalClassDeclaration(JuicyBoysParser.NormalClassDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeParameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeParameters(JuicyBoysParser.TypeParametersContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeParameter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeParameter(JuicyBoysParser.TypeParameterContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeBound}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeBound(JuicyBoysParser.TypeBoundContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeList(JuicyBoysParser.TypeListContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#classBody}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -82,18 +58,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMemberDeclaration(JuicyBoysParser.MemberDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#genericMethodOrConstructorDecl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGenericMethodOrConstructorDecl(JuicyBoysParser.GenericMethodOrConstructorDeclContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#genericMethodOrConstructorRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGenericMethodOrConstructorRest(JuicyBoysParser.GenericMethodOrConstructorRestContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#methodDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -117,18 +81,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVoidMethodDeclaratorRest(JuicyBoysParser.VoidMethodDeclaratorRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceMethodDeclaratorRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMethodDeclaratorRest(JuicyBoysParser.InterfaceMethodDeclaratorRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#interfaceGenericMethodDecl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceGenericMethodDecl(JuicyBoysParser.InterfaceGenericMethodDeclContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#voidInterfaceMethodDeclaratorRest}.
 	 * @param ctx the parse tree
@@ -196,35 +148,11 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitModifier(JuicyBoysParser.ModifierContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#packageOrTypeName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPackageOrTypeName(JuicyBoysParser.PackageOrTypeNameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#enumConstantName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumConstantName(JuicyBoysParser.EnumConstantNameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeName(JuicyBoysParser.TypeNameContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitType(JuicyBoysParser.TypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#classOrInterfaceType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassOrInterfaceType(JuicyBoysParser.ClassOrInterfaceTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#primitiveType}.
 	 * @param ctx the parse tree
@@ -237,18 +165,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVariableModifier(JuicyBoysParser.VariableModifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeArguments}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeArguments(JuicyBoysParser.TypeArgumentsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeArgument}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeArgument(JuicyBoysParser.TypeArgumentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#qualifiedNameList}.
 	 * @param ctx the parse tree
@@ -405,24 +321,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFinallyBlock(JuicyBoysParser.FinallyBlockContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#resourceSpecification}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitResourceSpecification(JuicyBoysParser.ResourceSpecificationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#resources}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitResources(JuicyBoysParser.ResourcesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#resource}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitResource(JuicyBoysParser.ResourceContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#formalParameter}.
 	 * @param ctx the parse tree
@@ -634,24 +532,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIdentifierSuffix(JuicyBoysParser.IdentifierSuffixContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#creator}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCreator(JuicyBoysParser.CreatorContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#createdName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCreatedName(JuicyBoysParser.CreatedNameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#innerCreator}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInnerCreator(JuicyBoysParser.InnerCreatorContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#arrayCreatorRest}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -663,30 +543,6 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitClassCreatorRest(JuicyBoysParser.ClassCreatorRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#explicitGenericInvocation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExplicitGenericInvocation(JuicyBoysParser.ExplicitGenericInvocationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#nonWildcardTypeArguments}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonWildcardTypeArguments(JuicyBoysParser.NonWildcardTypeArgumentsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#typeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeArgumentsOrDiamond(JuicyBoysParser.TypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#nonWildcardTypeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonWildcardTypeArgumentsOrDiamond(JuicyBoysParser.NonWildcardTypeArgumentsOrDiamondContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#selector}.
 	 * @param ctx the parse tree

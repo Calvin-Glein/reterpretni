@@ -4,8 +4,10 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import javax.naming.event.ObjectChangeListener;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+import java.util.concurrent.ExecutionException;
 
 public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
@@ -23,13 +25,27 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         hasError = false;
         //for global siguro
 
+
+
+        masterFuncList = new ArrayList<Function>();
+
         //local or global, this will dictate
         scopes = new Stack<Scope>();
 
         symbolTable = new SymbolTable();
+        scopes.push(new Scope(ScopeType.GLOBAL, "Global", null));
 
 
 
+    }
+
+    public void printStack() {
+
+
+
+        // method 2:
+       while(!scopes.empty())
+           System.out.println(scopes.pop().getList());
     }
 
     /*
@@ -56,12 +72,24 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }
 
     @Override
+    public Object visitVariableDeclaratorId(JuicyBoysParser.VariableDeclaratorIdContext ctx) {
+        JOptionPane.showMessageDialog(null, "Inside VariableDeclaratorIdContext: " + ctx.getText().toString());
+
+        return super.visitVariableDeclaratorId(ctx);
+    }
+
+
+
+
+
+    @Override
     public Object visitLocalVariableDeclaration(JuicyBoysParser.LocalVariableDeclarationContext ctx) {
 
         System.out.println("---------- Visit LocalVariableDeclaration ----------");
         if(ctx.type()!=null)
         {
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
+            System.out.println("Variable a: " + a.toString());
             a.setDataType(ctx.type().getText().toString());
             Object castChecker = null;
             try{
@@ -72,17 +100,26 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     castChecker = Double.parseDouble(a.getValue().toString());
 
                 }catch (Exception e1){
-                    hasError = true;
-                    errorCode += "\n Di sya int or di sya double";
-                    e.printStackTrace();
+                    try{
+                        JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
+
+                    }catch (Exception e2) {
+                        hasError = true;
+                        errorCode += "\n Di sya int or di sya double";
+                        e2.printStackTrace();
+                    }
                 }
             }
 
             if(castChecker instanceof Integer && a.getDataType().equals("int")){
                 JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                scopes.peek().bind(a);
+
             }
             else if (castChecker instanceof Double && a.getDataType().equals("double")) {
                 JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                scopes.peek().bind(a);
+
             }
             else{
                 hasError = true;
@@ -133,6 +170,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitCompilationUnit(@NotNull JuicyBoysParser.CompilationUnitContext ctx) {
         System.out.println("---------- Visited Compilation Unit ----------");
+
+        scopes.push(new Scope(ScopeType.LOCAL, "Main", null));
+
         //create a new scope yata
 //        symbolTable.enterScope();
 //        super.visit(ctx.parent);
@@ -141,6 +181,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 //        symbolTab visitChildren(ctx);le.exitScope();
         return super.visitCompilationUnit(ctx);
     }
+
 
 
 
@@ -316,7 +357,19 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     temp = Double.parseDouble(a.toString());
 
                 }catch (Exception e1){
-                    e.printStackTrace();
+
+                    try{
+                        temp = a.toString();
+                        System.out.println("------------------------------ here " +temp);
+                        if(scopes.peek().getSymbolMap().containsKey(a.toString())){
+                            JOptionPane.showMessageDialog(null, "meron pre");
+
+                        }
+                    }catch (Exception e2){
+                        hasError = true;
+                        errorCode += "\n Di sya int or di sya double or di rin sya variable existing variable";
+                        e2.printStackTrace();
+                    }
                 }
             }
             System.out.println("))))))))))))))))) Temp: " + temp);
@@ -553,7 +606,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             return ctx.literal().getText();
 
         }
-       return null;
+        else{
+
+           // JOptionPane.showMessageDialog(null, "Test: " + scopes.peek().getSymbolMap().get((Object) ctx.getText()));
+
+            Variable var = (Variable) scopes.peek().lookup(ctx.getText());
+            //JOptionPane.showMessageDialog(null, "Test Name: " + scopes.peek().lookup(ctx.getText()).getName());
+            JOptionPane.showMessageDialog(null, "Test Name: " + ctx.getText() + " Test Value: "+ var.getValue());
+            return var.getValue();
+        }
 
         //return super.visitPrimary(ctx);
     }
