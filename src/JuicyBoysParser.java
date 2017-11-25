@@ -4233,8 +4233,8 @@ public class JuicyBoysParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public ForUpdateContext forUpdate() {
-			return getRuleContext(ForUpdateContext.class,0);
+		public LocalVariableDeclarationContext localVariableDeclaration() {
+			return getRuleContext(LocalVariableDeclarationContext.class,0);
 		}
 		public ForControlContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4300,10 +4300,10 @@ public class JuicyBoysParser extends Parser {
 				setState(619);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << SHORT) | (1L << STRING) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << IntegerLiteral) | (1L << FloatingPointLiteral) | (1L << BooleanLiteral) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << NullLiteral) | (1L << LPAREN))) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & ((1L << (BANG - 72)) | (1L << (TILDE - 72)) | (1L << (INC - 72)) | (1L << (DEC - 72)) | (1L << (ADD - 72)) | (1L << (SUB - 72)) | (1L << (Identifier - 72)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << SHORT) | (1L << STRING))) != 0) || _la==Identifier) {
 					{
 					setState(618);
-					forUpdate();
+					localVariableDeclaration();
 					}
 				}
 
@@ -7166,7 +7166,7 @@ public class JuicyBoysParser extends Parser {
 		"q\3\2\2\2\u0263\u0270\5v<\2\u0264\u0266\5t;\2\u0265\u0264\3\2\2\2\u0265"+
 		"\u0266\3\2\2\2\u0266\u0267\3\2\2\2\u0267\u0269\7D\2\2\u0268\u026a\5\u0082"+
 		"B\2\u0269\u0268\3\2\2\2\u0269\u026a\3\2\2\2\u026a\u026b\3\2\2\2\u026b"+
-		"\u026d\7D\2\2\u026c\u026e\5x=\2\u026d\u026c\3\2\2\2\u026d\u026e\3\2\2"+
+		"\u026d\7D\2\2\u026c\u026e\5V,\2\u026d\u026c\3\2\2\2\u026d\u026e\3\2\2"+
 		"\2\u026e\u0270\3\2\2\2\u026f\u0263\3\2\2\2\u026f\u0265\3\2\2\2\u0270s"+
 		"\3\2\2\2\u0271\u0274\5V,\2\u0272\u0274\5|?\2\u0273\u0271\3\2\2\2\u0273"+
 		"\u0272\3\2\2\2\u0274u\3\2\2\2\u0275\u0276\5X-\2\u0276\u0277\5\60\31\2"+

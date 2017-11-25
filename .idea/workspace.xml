@@ -2,36 +2,120 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1b5e7de-5acb-4897-bb71-56a5672f3623" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseListener.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AddORsubContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AddORsubContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AdditiveExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AdditiveExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AndExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AndExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArgumentsContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArgumentsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayCreatorRestContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayCreatorRestContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AssignmentOperatorContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AssignmentOperatorContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CastExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CastExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassCreatorRestContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassCreatorRestContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalAndExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalAndExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalOrExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalOrExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualORnotequalContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualORnotequalContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualityExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualityExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExplicitGenericInvocationSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExplicitGenericInvocationSuffixContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IdentifierSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IdentifierSuffixContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InclusiveOrExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InclusiveOrExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InstanceOfExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InstanceOfExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MulORdivORmodContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MulORdivORmodContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MultiplicativeExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MultiplicativeExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimaryContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimaryContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalOpContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalOpContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SelectorContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SelectorContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftOpContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftOpContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SuperSuffixContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SuperSuffixContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionNotPlusMinusContext.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionNotPlusMinusContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysLexer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AddORsubContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AdditiveExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AndExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArgumentsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$AssignmentOperatorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$BlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$BlockStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CastExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CatchClauseContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CatchTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CatchesContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassBodyDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassCreatorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ClassDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$CompilationUnitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalAndExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConditionalOrExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstantDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstantDeclaratorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstantDeclaratorsRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstantExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstructorBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ConstructorDeclaratorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$DefaultValueContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ElementValueArrayInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ElementValueContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ElementValuePairContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ElementValuePairsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EnhancedForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualORnotequalContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$EqualityExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExclusiveOrExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExplicitGenericInvocationSuffixContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ExpressionListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FieldDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FinallyBlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ForControlContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ForInitContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ForUpdateContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FormalParameterContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FormalParameterDeclsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FormalParameterDeclsRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$FormalParametersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagAssertStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagBlockContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagBreakStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagContinueStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagDoStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagForStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagIOStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagIdentifierStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagIfStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagReturnStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagStatementExpressionStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagSwitchStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagTerminateStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagTryStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$HashtagWhileStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IdentifierSuffixContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InclusiveOrExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$Input_statementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$InstanceOfExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$IoStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$LiteralContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$LocalVariableDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$LocalVariableDeclarationStatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MemberDeclContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MemberDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MethodBodyContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MethodDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MethodDeclaratorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ModifiersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MulORdivORmodContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$MultiplicativeExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$NormalClassDeclarationContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$Output_statementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ParExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimaryContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$PrimitiveTypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$QualifiedNameContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$QualifiedNameListContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$RelationalOpContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SelectorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$ShiftOpContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$StatementContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$StatementExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SuperSuffixContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SwitchBlockStatementGroupContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SwitchBlockStatementGroupsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$SwitchLabelContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$TypeContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$UnaryExpressionNotPlusMinusContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableDeclaratorContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableDeclaratorIdContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableDeclaratorsContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableInitializerContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableModifierContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VariableModifiersContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VoidInterfaceMethodDeclaratorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser$VoidMethodDeclaratorRestContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysParser.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoys.g4" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoys.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoys.g4" afterPath="$PROJECT_DIR$/src/JuicyBoys.g4" />
@@ -60,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="711" column="81" lean-forward="true" selection-start-line="711" selection-start-column="81" selection-end-line="711" selection-end-column="81" />
+            <state relative-caret-position="256">
+              <caret line="649" column="75" lean-forward="false" selection-start-line="649" selection-start-column="75" selection-end-line="649" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
@@ -76,13 +160,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventDispatchThread.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.desktop/java/awt/EventDispatchThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="96" column="9" lean-forward="false" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="763" column="52" lean-forward="true" selection-start-line="763" selection-start-column="52" selection-end-line="763" selection-end-column="52" />
+            <state relative-caret-position="195">
+              <caret line="724" column="65" lean-forward="false" selection-start-line="724" selection-start-column="65" selection-end-line="724" selection-end-column="65" />
               <folding>
-                <element signature="e#0#32471#0" expanded="true" />
+                <element signature="e#0#32550#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,9 +214,11 @@
       <file leaf-file-name="JuicyBoysParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1505">
-              <caret line="1225" column="0" lean-forward="false" selection-start-line="1225" selection-start-column="0" selection-end-line="1225" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="128">
+              <caret line="4235" column="32" lean-forward="false" selection-start-line="4235" selection-start-column="32" selection-end-line="4235" selection-end-column="32" />
+              <folding>
+                <marker date="1511569285840" expanded="true" signature="249159:249343" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,53 +243,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Scope.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Scope.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding>
-                <element signature="e#1728#1729#0" expanded="true" />
-                <element signature="e#1761#1762#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>May</find>
-      <find>hashtag</find>
-      <find>I</find>
-      <find>EQUAL</find>
-      <find>'='</find>
-      <find>eq</find>
-      <find>may l</find>
-      <find>+ a.t</find>
-      <find>for</find>
-      <find>do</find>
-      <find>IIIIIIIIIIIIIIIII</find>
-      <find>forupdate</find>
-      <find>IIIIIIIIIIIIII</find>
-      <find>PRINTTTTT</find>
-      <find>may</find>
-      <find>data ty</find>
-      <find>forco</find>
-      <find>ASSIG</find>
-      <find>Sup</find>
-      <find>forUpdate</find>
-      <find>IIIIIIIIII</find>
-      <find>forcon</find>
       <find>expres</find>
       <find>laman ni assign</find>
       <find>TRY</find>
       <find>FRW</find>
       <find>IIIIIIIIIIIII</find>
-      <find>IIIIIIIIIII</find>
       <find>IIIIIIII</find>
       <find>expression</find>
+      <find>forcon</find>
+      <find>assignment</find>
+      <find>assi</find>
+      <find>int</find>
+      <find>T</find>
+      <find>forupda</find>
+      <find>print</find>
+      <find>printStac</find>
+      <find>Set</find>
+      <find>set set</find>
+      <find>IIIIIIIIIIIIIII</find>
+      <find>joption</find>
+      <find>forContr</find>
+      <find>forcontrol</find>
+      <find>JOption</find>
+      <find>type</find>
+      <find>update</find>
+      <find>data ty</find>
+      <find>forupdate</find>
+      <find>Joption</find>
+      <find>hashtagf</find>
+      <find>for</find>
+      <find>IIIIIIIIIII</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -404,13 +487,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.42606148" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.39751098" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.21961933" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.27232796" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.78038067" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.72767204" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -469,7 +552,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java</url>
-          <line>1203</line>
+          <line>1214</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -479,13 +562,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.base/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -555,7 +631,7 @@
         <state relative-caret-position="12376">
           <caret line="728" column="5" lean-forward="false" selection-start-line="728" selection-start-column="5" selection-end-line="728" selection-end-column="5" />
           <folding>
-            <element signature="e#0#32471#0" expanded="true" />
+            <element signature="e#0#32550#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -564,7 +640,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152677">
           <caret line="8981" column="0" lean-forward="false" selection-start-line="8981" selection-start-column="0" selection-end-line="8981" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1511569285840" expanded="true" signature="249159:249343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,7 +722,7 @@
         <state relative-caret-position="6511">
           <caret line="383" column="53" lean-forward="false" selection-start-line="383" selection-start-column="34" selection-end-line="383" selection-end-column="53" />
           <folding>
-            <element signature="e#0#32471#0" expanded="true" />
+            <element signature="e#0#32550#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,7 +731,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148393">
           <caret line="8729" column="59" lean-forward="false" selection-start-line="8729" selection-start-column="59" selection-end-line="8729" selection-end-column="59" />
-          <folding />
+          <folding>
+            <marker date="1511569285840" expanded="true" signature="249159:249343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -879,11 +959,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="410" column="50" lean-forward="false" selection-start-line="410" selection-start-column="44" selection-end-line="410" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1505">
-          <caret line="1225" column="0" lean-forward="false" selection-start-line="1225" selection-start-column="0" selection-end-line="1225" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="128">
+          <caret line="4235" column="32" lean-forward="false" selection-start-line="4235" selection-start-column="32" selection-end-line="4235" selection-end-column="32" />
+          <folding>
+            <marker date="1511569285840" expanded="true" signature="249159:249343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -897,34 +987,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitor.java">
+    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.desktop/java/awt/EventDispatchThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="410" column="50" lean-forward="false" selection-start-line="410" selection-start-column="44" selection-end-line="410" selection-end-column="50" />
+        <state relative-caret-position="220">
+          <caret line="96" column="9" lean-forward="false" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="724" column="65" lean-forward="false" selection-start-line="724" selection-start-column="65" selection-end-line="724" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#32550#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="711" column="81" lean-forward="true" selection-start-line="711" selection-start-column="81" selection-end-line="711" selection-end-column="81" />
+        <state relative-caret-position="256">
+          <caret line="649" column="75" lean-forward="false" selection-start-line="649" selection-start-column="75" selection-end-line="649" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitInclusiveOrExpression#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="method#visitPrimitiveType#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="763" column="52" lean-forward="true" selection-start-line="763" selection-start-column="52" selection-end-line="763" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#32471#0" expanded="true" />
           </folding>
         </state>
       </provider>

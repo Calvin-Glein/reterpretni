@@ -721,9 +721,11 @@ switchLabel
 forControl
     :   enhancedForControl
 
-    |   forInit? ';' expression? ';' forUpdate?
+    //|   forInit? ';' expression? ';' forUpdate?
+        |   forInit? ';' expression? ';' localVariableDeclaration?
 
-   // |   forInit? ';' expression? ';' expression?
+
+  //  |   forInit? ';' expression? ';' variableDeclarators?
 
     ;
 

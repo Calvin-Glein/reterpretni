@@ -97,6 +97,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
+    public void printNoPop(){
+
+        /*Stack<Scope> scopesCopy = scopes;
+        while(!scopesCopy.empty())
+            System.out.println(scopesCopy.pop().getList());*/
+    }
 
     @Override
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
@@ -640,7 +646,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 do {
                     super.visit(ctx.statement());
                     condition = super.visit(ctx.forControl());
-                   super.visit(ctx.forControl().forUpdate());
+                   // super.visit(ctx.forControl().forUpdate().expressionList().expression(0));
+                    super.visit(ctx.forControl().localVariableDeclaration());
                     // super.visit(ctx.forControl().expression(1));
 
                     System.out.print("INSIDE LOOPPPPPPPPPPPPPPPPPPP pPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP true paren");
@@ -686,7 +693,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
     }
 
-    @Override
+   /* @Override
     public Object visitAssignmentOperator(JuicyBoysParser.AssignmentOperatorContext ctx) {
         if(ctx.ASSIGN()!=null)
             return ctx.ASSIGN().getText();
@@ -711,7 +718,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                     Variable var = (Variable) scopes.peek().lookup(a.toString());
 
-                    var.setValue(new Value(super.visit(ctx.expression())));
+                    var.setValue(new Value(20));
                     System.out.println("TRY NATIN I PRINTTTTTTTTTTTTTTTTTTTTTTTTT: "+ var.getValue());
                 }
             }
@@ -720,8 +727,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
 
-        return super.visitExpression(ctx);
-    }
+        return null;
+    }*/
 
     @Override
     public Object visitForInit(JuicyBoysParser.ForInitContext ctx) {
@@ -957,18 +964,22 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                 if(castChecker instanceof Integer && a.getDataType().equals("int")){
                     JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    printNoPop();
                     scopes.peek().bind(a);
 
 
                 }
                 else if (castChecker instanceof Double && a.getDataType().equals("double")) {
                     JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    printNoPop();
+
                     scopes.peek().bind(a);
 
                 }
 
                 else if(castChecker instanceof String && a.getDataType().equals("String")){
                     JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    printNoPop();
                     scopes.peek().bind(a);
                 }
                 else{
@@ -1045,7 +1056,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                  }
 
                  if(var.getDataType().equals("int") && newValue instanceof Integer){
-                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
                      //check if variable exist
@@ -1057,7 +1068,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                  }
                  else if(var.getDataType().equals("double") && newValue instanceof Double){
-                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
                      //check if variable exist
@@ -1067,7 +1078,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                      var.setValue(new Value(newValue));
                  }
                  else if(var.getDataType().equals("String")){
-                     JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
                      //check if variable exist
