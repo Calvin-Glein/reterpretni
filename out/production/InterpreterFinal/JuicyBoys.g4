@@ -471,9 +471,10 @@ primitiveType
     |   LONG
     |   FLOAT
     |   DOUBLE
-
     //added string as primitive
     |   STRING
+    |   CONSTINT
+    |   FLOATINT
     ;
 
 variableModifier
@@ -1013,6 +1014,8 @@ CHAR : 'char';
 CLASS : 'class';
 CONST : 'const';
 CONTINUE : 'continue';
+CONSTINT: 'const int';//added
+FLOATINT: 'const double'; //added
 DEFAULT : 'default';
 DO : 'do';
 DOUBLE : 'double';

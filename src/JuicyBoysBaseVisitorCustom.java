@@ -111,7 +111,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
 
             if(super.visit(ctx.parExpression())!=null) {
-                    JOptionPane.showMessageDialog(null, "Here: " + super.visit((ctx.parExpression())).toString());
+                   // JOptionPane.showMessageDialog(null, "Here: " + super.visit((ctx.parExpression())).toString());
                     if(super.visit(ctx.parExpression()) instanceof Boolean)
                     {
                         if ((boolean) super.visit(ctx.parExpression()) == true) {
@@ -558,7 +558,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     @Override
     public Object visitVariableDeclaratorId(JuicyBoysParser.VariableDeclaratorIdContext ctx) {
-        JOptionPane.showMessageDialog(null, "Inside VariableDeclaratorIdContext: " + ctx.getText().toString());
+       // JOptionPane.showMessageDialog(null, "Inside VariableDeclaratorIdContext: " + ctx.getText().toString());
 
         return super.visitVariableDeclaratorId(ctx);
     }
@@ -1090,14 +1090,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             if(var==null){
 
                 if(castChecker instanceof Integer && a.getDataType().equals("int")){
-                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
                     printNoPop();
                     scopes.peek().bind(a);
-
-
                 }
                 else if (castChecker instanceof Double && a.getDataType().equals("double")) {
-                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
                     printNoPop();
 
                     scopes.peek().bind(a);
@@ -1105,10 +1103,23 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
 
                 else if(castChecker instanceof String && a.getDataType().equals("String")){
-                    JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
                     printNoPop();
                     scopes.peek().bind(a);
                 }
+                else if(castChecker instanceof Integer && a.getDataType().equals("const int")){
+                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    printNoPop();
+                    scopes.peek().bind(a);
+                }
+
+                else if(castChecker instanceof Double && a.getDataType().equals("const double")){
+                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                    printNoPop();
+                    scopes.peek().bind(a);
+                }
+
+
                 else{
                     hasError = true;
                     errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Not compatible with value: " + a.getValue();
@@ -1131,7 +1142,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
         else
         {
-            System.out.println("null syaaaaaaaaaaaaaaa");
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
             System.out.println("VALUE NI A: " + a.getValue());
             System.out.println("Existing Variable a: " + a.toString());
@@ -1157,7 +1167,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
             Variable var = (Variable) scopes.peek().lookup(a.getName());
 
-            System.out.println("Dapat si test etooooooooooooooooooooo: " + var.toString());
 
             if(var!=null){
 
@@ -1192,6 +1201,37 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                      var = (Variable) scopes.peek().lookup(a.getName()
                      );
                      var.setValue(new Value(newValue));
+
+                 }
+
+                else if(var.getDataType().equals("const int") && newValue instanceof Integer){
+                     //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+
+
+                     //check if variable exist
+
+                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                 /*   var = (Variable) scopes.peek().lookup(a.getName()
+                    );
+                    var.setValue(new Value(newValue));*/
+                     hasError = true;
+                     errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
+
+
+                 }
+                 else if(var.getDataType().equals("const float") && newValue instanceof Double){
+                     //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+
+
+                     //check if variable exist
+
+                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                 /*   var = (Variable) scopes.peek().lookup(a.getName()
+                    );
+                    var.setValue(new Value(newValue));*/
+                     hasError = true;
+                     errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
+
 
                  }
                  else if(var.getDataType().equals("double") && newValue instanceof Double){
@@ -1263,6 +1303,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             return ctx.DOUBLE().getText();
         else if(ctx.STRING()!=null)
             return ctx.STRING().getText();
+        else if(ctx.CONSTINT()!=null){
+            return ctx.CONSTINT().getText();
+        }
+        else if(ctx.FLOATINT()!=null){
+            return ctx.FLOATINT().getText();
+        }
         else
             return null;
     }
@@ -1784,7 +1830,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             }
             else{
                 hasError = true;
-                errorCode += "\n Variable: " + ctx.getText() + "is Null";
+                String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
+
+                if (!errorCode.contains(newErrorCode)) {
+
+
+                    errorCode += newErrorCode;
+                }
                 return null;
             }
         }

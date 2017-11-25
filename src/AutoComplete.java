@@ -57,7 +57,10 @@ public class AutoComplete {
                 "hindi",
                 "kunstant",
                 "totoo",
-                "talon"*/};
+                "talon"*/
+            "int", "double", "const int", "const double","if","for","while","do","if", "else", "input", "output"
+
+        };
 
         Object[] data = new Object[25];
         int dataCount = 0;
