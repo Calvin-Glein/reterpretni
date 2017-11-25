@@ -22,6 +22,7 @@ public class AutoComplete {
         popupMenu.setBorder(null);
         popupMenu.add(list = createSuggestionList(position, subWord), BorderLayout.CENTER);
         popupMenu.show(textarea, location.x, textarea.getBaseline(0, 0) + location.y);
+        popupMenu.show(textarea, location.x, textarea.getBaseline(0, 0) + location.y);
     }
 
     public void hide() {
@@ -32,7 +33,7 @@ public class AutoComplete {
     }
 
     private JList createSuggestionList(final int position, final String subWord) {
-        String[] myStringArray = {";istop",
+        String[] myStringArray = {/*";istop",
                 "balik",
                 "numero",
                 "bolyan",
@@ -56,7 +57,7 @@ public class AutoComplete {
                 "hindi",
                 "kunstant",
                 "totoo",
-                "talon"};
+                "talon"*/};
 
         Object[] data = new Object[25];
         int dataCount = 0;

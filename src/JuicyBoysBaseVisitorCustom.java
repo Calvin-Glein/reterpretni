@@ -693,7 +693,38 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
     }
 
-   /* @Override
+    @Override
+    public Object visitHashtagDoStatement(JuicyBoysParser.HashtagDoStatementContext ctx) {
+        super.visit(ctx.statement());
+
+
+        Object condition = super.visit(ctx.parExpression());
+
+        if(condition!=null){
+            if (condition instanceof Boolean) {
+                System.out.println("inside condition instance of boolean");
+                if ((Boolean) condition == true) {
+                    System.out.println("for condition is true");
+                    do {
+                        super.visit(ctx.statement());
+                        condition = super.visit(ctx.parExpression());
+                    } while ((Boolean) condition == true);
+                }
+
+                System.out.println("LOOOOOOOOOOOOOOOOOOPZ");
+            }
+            else
+                System.out.println("not inside condition instance of boolean");
+        }
+        else{
+            hasError = true;
+            errorCode += "\n Something is wrong with your do while syntax";
+        }
+
+        return null;
+    }
+
+    /* @Override
     public Object visitAssignmentOperator(JuicyBoysParser.AssignmentOperatorContext ctx) {
         if(ctx.ASSIGN()!=null)
             return ctx.ASSIGN().getText();
