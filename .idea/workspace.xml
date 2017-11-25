@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1b5e7de-5acb-4897-bb71-56a5672f3623" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoComplete.java" afterPath="$PROJECT_DIR$/src/AutoComplete.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" afterPath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="720" column="73" lean-forward="false" selection-start-line="720" selection-start-column="73" selection-end-line="720" selection-end-column="73" />
+            <state relative-caret-position="292">
+              <caret line="749" column="59" lean-forward="false" selection-start-line="749" selection-start-column="59" selection-end-line="749" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
@@ -70,8 +69,8 @@
       <file leaf-file-name="JuicyBoys.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="645" column="30" lean-forward="false" selection-start-line="645" selection-start-column="25" selection-end-line="645" selection-end-column="30" />
+            <state relative-caret-position="93">
+              <caret line="638" column="39" lean-forward="false" selection-start-line="638" selection-start-column="30" selection-end-line="638" selection-end-column="39" />
               <folding>
                 <element signature="e#0#32550#0" expanded="true" />
               </folding>
@@ -137,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>assignment</find>
       <find>assi</find>
       <find>int</find>
       <find>T</find>
@@ -163,10 +161,11 @@
       <find>dobo</find>
       <find>looo</find>
       <find>hash</find>
-      <find>parex</find>
       <find>parExpression</find>
       <find>parExpre</find>
       <find>insta</find>
+      <find>hashtagdo</find>
+      <find>parex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -442,7 +441,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java</url>
-          <line>1245</line>
+          <line>1277</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -899,8 +898,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoys.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="645" column="30" lean-forward="false" selection-start-line="645" selection-start-column="25" selection-end-line="645" selection-end-column="30" />
+        <state relative-caret-position="93">
+          <caret line="638" column="39" lean-forward="false" selection-start-line="638" selection-start-column="30" selection-end-line="638" selection-end-column="39" />
           <folding>
             <element signature="e#0#32550#0" expanded="true" />
           </folding>
@@ -909,8 +908,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="720" column="73" lean-forward="false" selection-start-line="720" selection-start-column="73" selection-end-line="720" selection-end-column="73" />
+        <state relative-caret-position="292">
+          <caret line="749" column="59" lean-forward="false" selection-start-line="749" selection-start-column="59" selection-end-line="749" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#visitVariableDeclaratorId#0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
