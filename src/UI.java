@@ -24,6 +24,7 @@ public class UI {
     public JTextArea textAreaError;
     private JScrollPane scrollPaneCodeInput;
     private JScrollPane jtablescrollpane;
+    public JTextArea outputArea;
     private TextLineNumber textLineNumber;
 
     private ArrayList<String> TokenTypes= new ArrayList<String>();
@@ -166,6 +167,7 @@ public class UI {
 
         textLineNumber = new TextLineNumber(textAreaCodeInput);
         scrollPaneCodeInput.setRowHeaderView(textLineNumber);
+        scrollPaneCodeInput.setMinimumSize(new Dimension(300, 500));
     }
 
     public void initializeUI(){
@@ -197,7 +199,6 @@ public class UI {
 
                      
         textAreaError.setText("");
-        textArea2Output.setText("");
 
         code = textAreaCodeInput.getText();
 
@@ -265,7 +266,7 @@ public class UI {
 
 
 
-        JuicyBoysBaseVisitorCustom visitor = new JuicyBoysBaseVisitorCustom();
+        JuicyBoysBaseVisitorCustom visitor = new JuicyBoysBaseVisitorCustom(outputArea);
         visitor.visit(tree);
 /*
         if(thread != null)
@@ -277,10 +278,10 @@ public class UI {
         }*/
 
 
-        for (Token tok : tokens.getTokens()) {
+    /*    for (Token tok : tokens.getTokens()) {
             textArea2Output.setText(textArea2Output.getText() + tok.getText() + " -> " + lexer.VOCABULARY.getSymbolicName(tok.getType())+ "\n");
            // textAreaTokenTypes.setText(textAreaTokenTypes.getText() + lexer.VOCABULARY.getSymbolicName(tok.getType())+ "\n");
-        }
+        }*/
 
 
 

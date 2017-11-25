@@ -391,11 +391,33 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInput_statement(JuicyBoysParser.Input_statementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * Visit a parse tree produced by the {@code hashtagOutputVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	T visitHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagOutputLNVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagOutputString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code hashtagOutputLNString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#catches}.
 	 * @param ctx the parse tree

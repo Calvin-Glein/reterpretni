@@ -665,7 +665,11 @@ input_statement
     ;
 
 output_statement
-    :   OUTPUT LPAREN Identifier RPAREN SEMI
+    :   OUTPUT LPAREN Identifier RPAREN SEMI  #hashtagOutputVariable
+    |   OUTPUTLN LPAREN Identifier RPAREN SEMI #hashtagOutputLNVariable
+    |   OUTPUT LPAREN StringLiteral RPAREN SEMI #hashtagOutputString
+    |   OUTPUTLN LPAREN StringLiteral RPAREN SEMI #hashtagOutputLNString
+
     ;
 
 catches
@@ -1050,6 +1054,7 @@ VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
 OUTPUT : 'output';
+OUTPUTLN : 'outputln';
 INPUT : 'input';
 
 // §3.10.1 Integer Literals

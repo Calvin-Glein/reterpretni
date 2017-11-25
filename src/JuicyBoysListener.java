@@ -647,15 +647,53 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitInput_statement(JuicyBoysParser.Input_statementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * Enter a parse tree produced by the {@code hashtagOutputVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	void enterHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JuicyBoysParser#output_statement}.
+	 * Exit a parse tree produced by the {@code hashtagOutputVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitOutput_statement(JuicyBoysParser.Output_statementContext ctx);
+	void exitHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code hashtagOutputLNVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code hashtagOutputLNVariable}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code hashtagOutputString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code hashtagOutputString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code hashtagOutputLNString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code hashtagOutputLNString}
+	 * labeled alternative in {@link JuicyBoysParser#output_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#catches}.
 	 * @param ctx the parse tree

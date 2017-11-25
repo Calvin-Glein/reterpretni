@@ -15,10 +15,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     private String errorCode = "";
     private ArrayList<Function> masterFuncList;
 
+    private JTextArea outputArea;
+
     private ParseTree parseTree;
 
-    public JuicyBoysBaseVisitorCustom() {
+    public JuicyBoysBaseVisitorCustom(JTextArea outputArea) {
 
+        this.outputArea = outputArea;
         hasError = false;
         //for global siguro
 
@@ -755,8 +758,61 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
        // return super.visitHashtagWhileStatement(ctx);
     }
 
+    @Override
+    public Object visitHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx) {
 
-    /* @Override
+        Object a = ctx.Identifier();
+
+        Variable var = (Variable) scopes.peek().lookup(a.toString());
+
+        if(var!=null){
+            outputArea.setText(outputArea.getText() + var.getValue());
+        }
+        else{
+            hasError = true;
+            errorCode += "\n Variable to be printed does not exist";
+        }
+
+
+        return null;
+    }
+
+    @Override
+    public Object visitHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx) {
+        Object a = ctx.Identifier();
+
+        Variable var = (Variable) scopes.peek().lookup(a.toString());
+
+        if(var!=null){
+            outputArea.setText(outputArea.getText() + var.getValue() + "\n");
+        }
+        else{
+            hasError = true;
+            errorCode += "\n Variable to be printed does not exist";
+        }
+
+
+        return null;
+    }
+
+    @Override
+    public Object visitHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx) {
+        Object a = ctx.StringLiteral();
+
+        outputArea.setText(outputArea.getText() + a.toString());
+
+        return null;
+    }
+
+    @Override
+    public Object visitHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx) {
+        Object a = ctx.StringLiteral();
+
+        outputArea.setText(outputArea.getText()  + a.toString() + "\n");
+
+        return null;    }
+
+   /* @Override
     public Object visitAssignmentOperator(JuicyBoysParser.AssignmentOperatorContext ctx) {
         if(ctx.ASSIGN()!=null)
             return ctx.ASSIGN().getText();

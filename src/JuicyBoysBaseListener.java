@@ -747,13 +747,49 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOutput_statement(JuicyBoysParser.Output_statementContext ctx) { }
+	@Override public void enterHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOutput_statement(JuicyBoysParser.Output_statementContext ctx) { }
+	@Override public void exitHashtagOutputVariable(JuicyBoysParser.HashtagOutputVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHashtagOutputLNVariable(JuicyBoysParser.HashtagOutputLNVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHashtagOutputString(JuicyBoysParser.HashtagOutputStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHashtagOutputLNString(JuicyBoysParser.HashtagOutputLNStringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
