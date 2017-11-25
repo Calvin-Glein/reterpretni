@@ -293,7 +293,8 @@ public class UI {
         ArrayList<ErrorObject> errorList = errorListener.getErrorObjects();
         System.out.println("ErrorList size:" + errorList.size());
 
-        DefaultTableModel tableModel = new DefaultTableModel();
+        //DefaultTableModel tableModel = new DefaultTableModel();
+        UneditableTableModel tableModel = new UneditableTableModel();
         tableModel.addColumn("Errors");
         errorTable = new JTable(tableModel);
 
@@ -317,7 +318,12 @@ public class UI {
                     JTable target = (JTable)e.getSource();
                     int row = target.getSelectedRow();
                     // do some action if appropriate column
-                    textAreaCodeInput.setCaretPosition(errorList.get(row).lineNumber);
+                    textAreaCodeInput.requestFocusInWindow();
+                    textAreaCodeInput.setCaretPosition(errorList.get(row).lineNumber*errorList.get(row).characterPosition);
+                    System.out.println("ERROOOOOR " + errorList.get(row).specificError);
+                    System.out.println("LIINE ERROR " + errorList.get(row).lineNumber*errorList.get(row).characterPosition);
+                    System.out.println("Carret: " + textAreaCodeInput.getCaretPosition());
+
                 }
             }
         });
