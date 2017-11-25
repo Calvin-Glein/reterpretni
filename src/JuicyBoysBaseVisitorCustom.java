@@ -356,9 +356,17 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     temp = Double.parseDouble(a.toString());
                 }catch (Exception e1){
                     try{
-                        System.out.print("You cannot perform relational (>, <, >=, <=) operation on strings.");
+                        temp = a.toString();
+                        System.out.print("You cannot perform relational (>, <, >=, <=) operation on strings: " +temp);
                         hasError = true;
-                        errorCode += "\n You cannot perform relational (>, <, >=, <=) operation on strings.";
+
+                            String newErrorCode = "\n You cannot perform relational (>, <, >=, <=) operation on strings: ";
+
+                        if (!errorCode.contains(newErrorCode)) {
+
+
+                            errorCode += newErrorCode;
+                        }
                         return a.toString();
 
                         //relop for string
@@ -1103,12 +1111,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
                 else{
                     hasError = true;
-                    errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
+                    errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Not compatible with value: " + a.getValue();
                 }
             }
             else if(var!=null){
                 hasError = true;
-                errorCode += "\n Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Exists already";
+                errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Exists already";
             }
 
 
@@ -1455,9 +1463,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 else{
                     System.out.println("Instance unknown");
                     hasError = true;
-                    errorCode += "You cannot perform that operation";
+                    errorCode += "\nYou cannot perform the arithmetic using different variable data types: " + temp;
                 }
-
             }
             catch(Exception e)
             {
@@ -1512,13 +1519,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     try{
                         temp = a.toString();
                         System.out.println("------------------------------ here " +temp);
-                        if(scopes.peek().getSymbolMap().containsKey(a.toString())){
+                      /*  if(scopes.peek().getSymbolMap().containsKey(a.toString())){
                             JOptionPane.showMessageDialog(null, "meron pre");
 
-                        }
+                        }*/
                     }catch (Exception e2){
                         hasError = true;
-                        errorCode += "\n Di sya int or di sya double or di rin sya variable existing variable";
+                        errorCode += "\nUnable to determine data type [Not int, double, string]: " + temp.toString();
                         e2.printStackTrace();
                     }
                 }
@@ -1615,7 +1622,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     else{
                         System.out.println("Error in casting");
                         hasError = true;
-                        errorCode += "You cannot perform that operation";
+                        errorCode += "\nYou cannot perform the arithmetic using different variable data types: " + temp;
                     }
 
                 } catch (Exception e) {
