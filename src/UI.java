@@ -271,6 +271,7 @@ public class UI {
 
         JuicyBoysBaseVisitorCustom visitor = new JuicyBoysBaseVisitorCustom(outputArea);
         visitor.visit(tree);
+
 /*
         if(thread != null)
             thread.stop();
@@ -317,6 +318,7 @@ public class UI {
         }
 
 
+        visitor.thirdPass();
 
         String[] columnNames = {"Variable Key", "Variable Value"};
         DefaultTableModel model = new DefaultTableModel();
@@ -330,7 +332,6 @@ public class UI {
             Map.Entry mentry = (Map.Entry)iterator.next();
             System.out.println("key" + mentry.getKey());
             System.out.println("values" + ((Symbol)mentry.getValue()).getScope());
-
 
 
             Object[] row = {mentry.getKey(), mentry.getValue()};

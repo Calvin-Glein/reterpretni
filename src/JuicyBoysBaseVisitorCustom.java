@@ -42,7 +42,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         Object a = super.visit(ctx.memberDeclaration());
 
-
         if(a!=null){
             Function function = (Function) a;
 
@@ -102,6 +101,11 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         ArrayList<Variable> a = (ArrayList<Variable>) super.visit(ctx.formalParameters());
 
+
+        //uncomment to visit the code
+        //super.visit(ctx.methodBody());
+        //we do not visit this kasi if we did, marurun yung code, which we do not want kasi dapaat sa second or third pass pa. anyway
+
         return a;
     }
 
@@ -117,37 +121,20 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //
 
-            //store the non recurive one based CFG
-            List<JuicyBoysParser.FormalParameterDeclsContext> formalParameters = ctx.formalParameterDecls();
+        //store the non recurive one based CFG
+        List<JuicyBoysParser.FormalParameterDeclsContext> formalParameters = ctx.formalParameterDecls();
 
-            for (int j = 0; j < formalParameters.size(); j++) {
+        for (int j = 0; j < formalParameters.size(); j++) {
 
-                Variable v = new Variable(formalParameters.get(j).type().primitiveType().getText(), formalParameters.get(j).variableDeclaratorId().Identifier().getText());
-                params.add(v);
-            }
+            Variable v = new Variable(formalParameters.get(j).type().primitiveType().getText(), formalParameters.get(j).variableDeclaratorId().Identifier().getText());
+            params.add(v);
+        }
 
-            //JOptionPane.showMessageDialog(null,params.size());
-            return params;
+        //JOptionPane.showMessageDialog(null,params.size());
+        return params;
     }
 
-   /* @Override
-    public Object visitFormalParameterDecls(JuicyBoysParser.FormalParameterDeclsContext ctx) {
 
-
-        Object a = super.visit(ctx.type());
-        Object b = ctx.formalParameterDeclsRest().variableDeclaratorId().Identifier().getText();
-
-        Variable c = new Variable(a.toString(), b.toString(), null);
-
-
-      *//*  JOptionPane.showMessageDialog(null, a.toString());
-        JOptionPane.showMessageDialog(null, b.toString());*//*
-
-        return null;
-
-
-    }
-*/
 
     @Override
     public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {
@@ -155,6 +142,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         Object a = super.visit(ctx.block());
 
+        JOptionPane.showMessageDialog(null, "inside method body shiz");
 
         if(a!= null){
             return a;
@@ -1512,6 +1500,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
+
+
+
     @Override public Object visitAdditiveExpression(JuicyBoysParser.AdditiveExpressionContext ctx)
     {
         System.out.println("---------- Visit Additive Expression ----------");
@@ -1944,6 +1935,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             return ctx.literal().getText();
 
         }
+
         //for variables
         else{
 
@@ -1957,6 +1949,21 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 return var.getValue();
             }
             else{
+
+                for(int i = 0; i < masterFuncList.size(); i++){
+
+                    JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.Identifier(0).getText().toString() );
+                    /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
+                        visit(masterFuncList.get(i).getContext());
+                    }*/
+
+                    if(masterFuncList.get(i).getSignature().contains(ctx.Identifier(0).getText().toString())) {
+                        super.visit(masterFuncList.get(i).getContext());
+                        JOptionPane.showMessageDialog(null, "nag resume");
+                    }
+                }
+            }
+            /*else{*/
                 hasError = true;
                 String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
 
@@ -1966,7 +1973,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     errorCode += newErrorCode;
                 }
                 return null;
-            }
+           /* }*/
         }
 
 
@@ -2006,5 +2013,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     public String getErrorCode(){
         return errorCode;
+    }
+
+
+
+    //since di natin vinisit yung code block, we visit it after saving the functions, so we name this function third pass
+
+
+
+    public void thirdPass(){
+        visit(masterFuncList.get(0).getContext().block());
     }
 }
