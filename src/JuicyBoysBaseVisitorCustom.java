@@ -46,7 +46,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         if(a!=null){
             Function function = (Function) a;
 
-            System.out.println("function name: " + function.getSignature());
+            JOptionPane.showMessageDialog(null, ctx.memberDeclaration().type().getText().toString() + " " + ctx.memberDeclaration().methodDeclaration().Identifier().getText().toString() + " " + function.getContext().getText().toString());
+
             scopes.push(new Scope(ScopeType.GLOBAL, function.getSignature(), null));
 
             masterFuncList.add(function);
@@ -56,11 +57,13 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
     }
 
+
+
+
     @Override
     public Object visitMemberDeclaration(JuicyBoysParser.MemberDeclarationContext ctx) {
 
         Object returnType = super.visit(ctx.type());
-        JOptionPane.showMessageDialog(null, ctx.type().getText().toString());
 //        Object functionName = ctx.methodDeclaration().Identifier();
 //
 //        //save parameters here
@@ -68,14 +71,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //should be traversed when function is called
         JuicyBoysParser.MethodBodyContext getMethodBody = ctx.methodDeclaration().methodDeclaratorRest().methodBody();
-        JOptionPane.showMessageDialog(null, "CTX: "+getMethodBody.getText());
 
-        Function methodDec = (Function) super.visit(ctx.methodDeclaration());
+        Object methodDec = (Object) super.visit(ctx.methodDeclaration());
 
+        ArrayList<Variable> params = (ArrayList<Variable>) methodDec;
 
         Function newFunction = new Function(ctx.type().getText().toString(),
-                methodDec.getSignature(),
-                methodDec.getParameters(),
+                ctx.methodDeclaration().Identifier().getText().toString(),
+                params,
                 getMethodBody);
 
         return newFunction;
@@ -87,10 +90,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //Object funcName = ctx.Identifier();
         ArrayList<Variable> params = (ArrayList<Variable>) super.visit(ctx.methodDeclaratorRest());
 
-        Function function = new Function(null, ctx.Identifier().getText(), params, null);
-        JOptionPane.showMessageDialog(null, "LAMAN NI FUNCTION - identifier: " + ctx.Identifier().getText());
+        //Function function = new Function(null, ctx.Identifier().getText(), params, null);
+        //JOptionPane.showMessageDialog(null, "LAMAN NI FUNCTION - identifier: " + ctx.Identifier().getText());
 
-        return function;
+        return params;
     }
 
     @Override
@@ -123,7 +126,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 params.add(v);
             }
 
-            JOptionPane.showMessageDialog(null,params.size());
+            //JOptionPane.showMessageDialog(null,params.size());
             return params;
     }
 

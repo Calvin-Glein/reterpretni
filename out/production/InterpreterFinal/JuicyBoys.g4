@@ -304,8 +304,9 @@ memberDecl
 /*
     :   genericMethodOrConstructorDecl
 */
-    :   memberDeclaration
-    |   'void' Identifier voidMethodDeclaratorRest
+
+    //:   'void' Identifier voidMethodDeclaratorRest
+    :  memberDeclaration
     |   Identifier constructorDeclaratorRest
 /*
     |   interfaceDeclaration
@@ -475,6 +476,7 @@ primitiveType
     |   STRING
     |   CONSTINT
     |   FLOATINT
+    |   VOID
     ;
 
 variableModifier
