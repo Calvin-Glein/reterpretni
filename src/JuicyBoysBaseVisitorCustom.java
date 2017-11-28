@@ -40,72 +40,94 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitMemberDecl(JuicyBoysParser.MemberDeclContext ctx) {
 
-        System.out.println("KAHIT ANO");
-        Object a = ctx.Identifier();
+        Object a = super.visit(ctx.memberDeclaration());
+
+
         if(a!=null){
-            System.out.println("Void function name: " + a.toString());
-            scopes.push(new Scope(ScopeType.GLOBAL, a.toString(), null));
+            Function function = (Function) a;
+
+            System.out.println("function name: " + function.getSignature());
+            scopes.push(new Scope(ScopeType.GLOBAL, function.getSignature(), null));
+
+            masterFuncList.add(function);
         }
 
 
-        return super.visitMemberDecl(ctx);
+        return null;
     }
 
     @Override
     public Object visitMemberDeclaration(JuicyBoysParser.MemberDeclarationContext ctx) {
 
-   /*     Object a = super.visit(ctx.formalParameters());
-
-        Object b = super.visit(ctx.methodBody());
-        	public Function(String return_type, String signature,  ArrayList<Variable> parameters, JuicyBoysParser.MemberDeclContext ctx) {
-
-            Function newFunction = new Function()*/
-        Object returnType = super.visit(ctx.type().primitiveType());
-        Object functionName = super.visit(ctx.methodDeclaration().Identifier());
-
-        //save parameters here
-        Object getParameters = super.visit(ctx.methodDeclaration().methodDeclaratorRest());
+        Object returnType = super.visit(ctx.type());
+        JOptionPane.showMessageDialog(null, ctx.type().getText().toString());
+//        Object functionName = ctx.methodDeclaration().Identifier();
+//
+//        //save parameters here
+//        Object getParameters = super.visit(ctx.methodDeclaration());
 
         //should be traversed when function is called
         JuicyBoysParser.MethodBodyContext getMethodBody = ctx.methodDeclaration().methodDeclaratorRest().methodBody();
+        JOptionPane.showMessageDialog(null, "CTX: "+getMethodBody.getText());
+
+        Function methodDec = (Function) super.visit(ctx.methodDeclaration());
 
 
-        Function newFunction = new Function(returnType.toString(), functionName.toString(),)
+        Function newFunction = new Function(ctx.type().getText().toString(),
+                methodDec.getSignature(),
+                methodDec.getParameters(),
+                getMethodBody);
 
+        return newFunction;
     }
 
     @Override
     public Object visitMethodDeclaration(JuicyBoysParser.MethodDeclarationContext ctx) {
 
-        Object a = ctx.Identifier();
-        if(a!=null){
-            System.out.println("Non void function name: " + a.toString());
-            scopes.push(new Scope(ScopeType.GLOBAL, a.toString(), null));
-        }
+        //Object funcName = ctx.Identifier();
+        ArrayList<Variable> params = (ArrayList<Variable>) super.visit(ctx.methodDeclaratorRest());
 
-        Object returned = super.visit(ctx.methodDeclaratorRest());
-        if(returned != null){
-            System.out.println(returned.toString());
+        Function function = new Function(null, ctx.Identifier().getText(), params, null);
+        JOptionPane.showMessageDialog(null, "LAMAN NI FUNCTION - identifier: " + ctx.Identifier().getText());
 
-        }
-        return super.visitMethodDeclaration(ctx);
+        return function;
     }
 
     @Override
     public Object visitMethodDeclaratorRest(JuicyBoysParser.MethodDeclaratorRestContext ctx) {
 
-        return super.visitMethodDeclaratorRest(ctx);
+
+        ArrayList<Variable> a = (ArrayList<Variable>) super.visit(ctx.formalParameters());
+
+        return a;
     }
 
     @Override
     public Object visitFormalParameters(JuicyBoysParser.FormalParametersContext ctx) {
         ArrayList<Variable> params = new ArrayList<Variable>();
 
-        params = (ArrayList<Variable>) super.visit(ctx.formalParameterDecls());
+        /*params = (ArrayList<Variable>) super.visit(ctx.formalParameterDecls());*/
+/*
         return params;
+*/
+
+
+        //
+
+            //store the non recurive one based CFG
+            List<JuicyBoysParser.FormalParameterDeclsContext> formalParameters = ctx.formalParameterDecls();
+
+            for (int j = 0; j < formalParameters.size(); j++) {
+
+                Variable v = new Variable(formalParameters.get(j).type().primitiveType().getText(), formalParameters.get(j).variableDeclaratorId().Identifier().getText());
+                params.add(v);
+            }
+
+            JOptionPane.showMessageDialog(null,params.size());
+            return params;
     }
 
-    @Override
+   /* @Override
     public Object visitFormalParameterDecls(JuicyBoysParser.FormalParameterDeclsContext ctx) {
 
 
@@ -115,14 +137,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         Variable c = new Variable(a.toString(), b.toString(), null);
 
 
-      /*  JOptionPane.showMessageDialog(null, a.toString());
-        JOptionPane.showMessageDialog(null, b.toString());*/
+      *//*  JOptionPane.showMessageDialog(null, a.toString());
+        JOptionPane.showMessageDialog(null, b.toString());*//*
 
         return null;
 
 
     }
-
+*/
 
     @Override
     public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {

@@ -499,13 +499,21 @@ qualifiedNameList
     :   qualifiedName (',' qualifiedName)*
     ;
 
-formalParameters
+/*formalParameters
     :   '(' formalParameterDecls? ')'
-    ;
+    ;*/
 
+formalParameters
+    : '(' (formalParameterDecls (',' formalParameterDecls)* )? ')'
+    ;
+/*
 formalParameterDecls
     :   variableModifiers type formalParameterDeclsRest
-    ;
+    ;*/
+
+    formalParameterDecls
+        :   variableModifiers type variableDeclaratorId
+        ;
 
 formalParameterDeclsRest
     :   variableDeclaratorId (',' formalParameterDecls)?
