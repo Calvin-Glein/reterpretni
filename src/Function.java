@@ -5,9 +5,9 @@ public class Function extends Symbol {
 	private String signature;
 	private String return_type;
 	private ArrayList<Variable> parameters;
-	private JuicyBoysParser.NormalClassDeclarationContext ctx;
+	private JuicyBoysParser.MethodBodyContext ctx;
 	
-	public Function(String return_type, String signature,  ArrayList<Variable> parameters, JuicyBoysParser.NormalClassDeclarationContext ctx) {
+	public Function(String return_type, String signature,  ArrayList<Variable> parameters, JuicyBoysParser.MethodBodyContext ctx) {
 		super();
 		this.return_type = return_type;
 		this.signature = signature;
@@ -32,11 +32,11 @@ public class Function extends Symbol {
 		return parameters;
 	}
 	
-	public JuicyBoysParser.NormalClassDeclarationContext getContext() {
+	public JuicyBoysParser.MethodBodyContext getContext() {
 		return ctx;
 	}
 	
-	public void setContext(JuicyBoysParser.NormalClassDeclarationContext ctx){
+	public void setContext(JuicyBoysParser.MethodBodyContext ctx){
 		this.ctx = ctx;
 	}
 

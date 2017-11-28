@@ -34,8 +34,108 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         symbolTable = new SymbolTable();
         scopes.push(new Scope(ScopeType.GLOBAL, "Global", null));
+    }
 
 
+    @Override
+    public Object visitMemberDecl(JuicyBoysParser.MemberDeclContext ctx) {
+
+        System.out.println("KAHIT ANO");
+        Object a = ctx.Identifier();
+        if(a!=null){
+            System.out.println("Void function name: " + a.toString());
+            scopes.push(new Scope(ScopeType.GLOBAL, a.toString(), null));
+        }
+
+
+        return super.visitMemberDecl(ctx);
+    }
+
+    @Override
+    public Object visitMemberDeclaration(JuicyBoysParser.MemberDeclarationContext ctx) {
+
+   /*     Object a = super.visit(ctx.formalParameters());
+
+        Object b = super.visit(ctx.methodBody());
+        	public Function(String return_type, String signature,  ArrayList<Variable> parameters, JuicyBoysParser.MemberDeclContext ctx) {
+
+            Function newFunction = new Function()*/
+        Object returnType = super.visit(ctx.type().primitiveType());
+        Object functionName = super.visit(ctx.methodDeclaration().Identifier());
+
+        //save parameters here
+        Object getParameters = super.visit(ctx.methodDeclaration().methodDeclaratorRest());
+
+        //should be traversed when function is called
+        JuicyBoysParser.MethodBodyContext getMethodBody = ctx.methodDeclaration().methodDeclaratorRest().methodBody();
+
+
+        Function newFunction = new Function(returnType.toString(), functionName.toString(),)
+
+    }
+
+    @Override
+    public Object visitMethodDeclaration(JuicyBoysParser.MethodDeclarationContext ctx) {
+
+        Object a = ctx.Identifier();
+        if(a!=null){
+            System.out.println("Non void function name: " + a.toString());
+            scopes.push(new Scope(ScopeType.GLOBAL, a.toString(), null));
+        }
+
+        Object returned = super.visit(ctx.methodDeclaratorRest());
+        if(returned != null){
+            System.out.println(returned.toString());
+
+        }
+        return super.visitMethodDeclaration(ctx);
+    }
+
+    @Override
+    public Object visitMethodDeclaratorRest(JuicyBoysParser.MethodDeclaratorRestContext ctx) {
+
+        return super.visitMethodDeclaratorRest(ctx);
+    }
+
+    @Override
+    public Object visitFormalParameters(JuicyBoysParser.FormalParametersContext ctx) {
+        ArrayList<Variable> params = new ArrayList<Variable>();
+
+        params = (ArrayList<Variable>) super.visit(ctx.formalParameterDecls());
+        return params;
+    }
+
+    @Override
+    public Object visitFormalParameterDecls(JuicyBoysParser.FormalParameterDeclsContext ctx) {
+
+
+        Object a = super.visit(ctx.type());
+        Object b = ctx.formalParameterDeclsRest().variableDeclaratorId().Identifier().getText();
+
+        Variable c = new Variable(a.toString(), b.toString(), null);
+
+
+      /*  JOptionPane.showMessageDialog(null, a.toString());
+        JOptionPane.showMessageDialog(null, b.toString());*/
+
+        return null;
+
+
+    }
+
+
+    @Override
+    public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {
+
+
+        Object a = super.visit(ctx.block());
+
+
+        if(a!= null){
+            return a;
+        }
+
+        return null;
 
     }
 
@@ -75,6 +175,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
        while(!scopes.empty())
                System.out.println(scopes.pop().getList());*/
 }
+
+
+
 
     /*
     @Override
@@ -294,7 +397,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                             System.out.println("Temp: " + temp);
                             System.out.println("Next: " + nextNumber);
 
-                            if (temp==nextNumber) {
+                            if (temp.equals(nextNumber)) {
                                 return true;
 
                             } else {
@@ -1428,7 +1531,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             try
             {
                 Object b = null;
-                if(multExps.get(j).unaryExpression(1)==null)
+                 if(multExps.get(j).unaryExpression(1)==null)
                  b = super.visit(multExps.get(j).unaryExpression(0));
 
                 else {

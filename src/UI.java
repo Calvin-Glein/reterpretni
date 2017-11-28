@@ -102,20 +102,21 @@ public class UI {
         });
 
         textAreaCodeInput.setText("class joanna{\n" +
+                "    int func1(int x, int y){\n" +
+                "       return x + y;\n" +
+                "    }\n" +
                 "      void main(){\n" +
                 "\tint counter = 10;\n" +
                 "\tint counter2 = 20;\n" +
                 "\tint counter3 = counter + counter2;\n" +
                 "\tint test = 10 + 10;\n" +
                 "\n" +
-                "\n" +
-                "\n" +
                 "\tif(counter  < counter2){\n" +
                 "\ttest = test + 10;\n" +
                 "\t}\n" +
                 "\t\n" +
                 "\t\n" +
-                "\n" +
+                " \tfunc1(1,2);\n" +
                 "}\n" +
                 "}\t");
 
