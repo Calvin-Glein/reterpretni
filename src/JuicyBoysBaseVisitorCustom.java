@@ -134,7 +134,27 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return params;
     }
 
+    @Override
+    public Object visitBlockStatement(JuicyBoysParser.BlockStatementContext ctx) {
 
+        Object a = ctx.statement();
+        Object b = ctx.localVariableDeclarationStatement();
+
+        if ( a != null) {
+            JOptionPane.showMessageDialog(null, "inside visitBlockStatement, statement");
+            return super.visit(ctx.statement());
+        }
+        else if ( b != null) {
+            return super.visit(ctx.localVariableDeclarationStatement());
+        }
+
+        return null;
+    }
+
+    @Override
+    public Object visitBlock(JuicyBoysParser.BlockContext ctx) {
+       return super.visitBlock(ctx);
+    }
 
     @Override
     public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {
@@ -146,7 +166,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         Object a = super.visit(ctx.block());
 
-        JOptionPane.showMessageDialog(null, "Going to visit: ");
 
         if(a!= null){
             return a;
@@ -161,6 +180,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitHashtagReturnStatement(JuicyBoysParser.HashtagReturnStatementContext ctx) {
 
         Object toBeReturned = super.visit(ctx.expression());
+
 
         if(toBeReturned!=null){
             JOptionPane.showMessageDialog(null, "Return: " + toBeReturned.toString());
@@ -185,16 +205,32 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                 //create its scope
                 scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
-                super.visit(masterFuncList.get(i).getContext());
+
+                List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+
+                super.visit(masterFuncList.get(i).getContext().block());
+                JOptionPane.showMessageDialog(null, "block is executed");
+
+
+                    Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
+                    JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue);
+
+
                 scopes.pop();
                 //pop its scope
 
+                return returnedValue.toString();
+
             }
+
         }
+        JOptionPane.showMessageDialog(null, "for loop has ended");
 
         return null;
 
     }
+
+
 
     public Set printStack() {
 
@@ -941,8 +977,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             errorCode += "\n Variable to be printed does not exist";
         }
 
-
-        return null;
+        return "OutputLN executed";
     }
 
     @Override
@@ -960,7 +995,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
 
-        return null;
+        return "OutputLN executed";
     }
 
     @Override
@@ -969,7 +1004,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         outputArea.setText(outputArea.getText() + a.toString());
 
-        return null;
+        return "OutputLN executed";
     }
 
     @Override
@@ -978,7 +1013,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         outputArea.setText(outputArea.getText()  + a.toString() + "\n");
 
-        return null;    }
+        return "OutputLN executed";
+    }
 
    /* @Override
     public Object visitAssignmentOperator(JuicyBoysParser.AssignmentOperatorContext ctx) {
@@ -1478,12 +1514,42 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         Object a = null;
         Object b = null;
 
-        if(ctx.variableDeclaratorId() != null){
+        if(ctx.variableDeclaratorId() != null) {
             a = ctx.variableDeclaratorId().getText();
         }
-        if(ctx.variableInitializer() != null){
+        if(ctx.variableInitializer().functionCall() != null){
+            JOptionPane.showMessageDialog(null, "nentered functioncall");
+
+            b = super.visit(ctx.variableInitializer().functionCall());
+
+
+          /*  for(int i = 0; i < masterFuncList.size(); i++){
+
+                JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.variableInitializer().functionCall().Identifier().getText().toString() );
+               if(masterFuncList.get(i).getSignature().contains(ctx.variableInitializer().functionCall().Identifier().getText().toString())) {
+
+                    //create its scope
+                    scopes.push(new Scope(ScopeType.LOCAL, ctx.variableInitializer().functionCall().Identifier().getText().toString(), null));
+
+                    try{
+                        Object returnedValue = super.visit(masterFuncList.get(i).getContext()).toString();
+                        JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue.toString());
+
+                    }catch (Exception e){
+
+                    }
+                    scopes.pop();
+                    //pop its scope
+
+                }
+            }*/
+
+        }
+
+        else if(ctx.variableInitializer() != null){
             b = super.visit(ctx.variableInitializer());
         }
+
 
         Variable v = new Variable(null, a.toString(), new Value(b));
         return v;
@@ -2053,7 +2119,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public void thirdPass(){
 
 
-        super.visit(masterFuncList.get(masterFuncList.size()-1).getContext());
+        super.visit(masterFuncList.get(masterFuncList.size()-1).getContext().block());
 
         JOptionPane.showMessageDialog(null,  masterFuncList.get(masterFuncList.size()-1).getSignature().toString() + masterFuncList.get(masterFuncList.size()-1).getContext().getText().toString());
         JOptionPane.showMessageDialog(null, "continued");

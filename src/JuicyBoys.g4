@@ -411,6 +411,7 @@ variableDeclaratorId
 variableInitializer
     :   arrayInitializer
     |   expression
+    |   functionCall
     ;
 
 arrayInitializer
@@ -620,6 +621,7 @@ localVariableDeclarationStatement
 
 localVariableDeclaration
     :   variableModifiers type variableDeclarators
+
     ;
 
 variableModifiers
@@ -639,7 +641,7 @@ statement
 */
     |   'switch' parExpression '{' switchBlockStatementGroups '}' #hashtagSwitchStatement
     //|   'synchronized' parExpression block
-    |   'return' expression? ';'                                #hashtagReturnStatement
+    |   RETURN expression? ';'                                #hashtagReturnStatement
   //  |   'throw' expression ';'
     |   'break' Identifier? ';'                                 #hashtagBreakStatement
     |   'continue' Identifier? ';'                              #hashtagContinueStatement
@@ -648,10 +650,11 @@ statement
     |   Identifier ':' statement                                #hashtagIdentifierStatement
     |   ioStatement                                             #hashtagIOStatement
     |   functionCall                                            #hashtagFunctionCall
+
     ;
 
 functionCall
-    :   'function' Identifier '(' (expression (',' expression)* )? ')'
+    :   FUNCTION Identifier '(' (expression (',' expression)* )? ')'
     ;
 
 //ako nag add neto until output statement
@@ -1014,6 +1017,8 @@ CONST : 'const';
 CONTINUE : 'continue';
 CONSTINT: 'const int';//added
 FLOATINT: 'const double'; //added
+FUNCTION: 'function';//added
+
 DEFAULT : 'default';
 DO : 'do';
 DOUBLE : 'double';
@@ -1364,6 +1369,8 @@ BITAND : '&';
 BITOR : '|';
 CARET : '^';
 MOD : '%';
+
+
 
 ADD_ASSIGN : '+=';
 SUB_ASSIGN : '-=';
