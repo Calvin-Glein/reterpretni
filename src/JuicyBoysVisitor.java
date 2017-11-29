@@ -379,6 +379,19 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code hashtagFunctionCall}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagFunctionCall(JuicyBoysParser.HashtagFunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(JuicyBoysParser.FunctionCallContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#ioStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

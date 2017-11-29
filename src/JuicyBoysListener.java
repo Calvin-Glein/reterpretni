@@ -627,6 +627,28 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code hashtagFunctionCall}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterHashtagFunctionCall(JuicyBoysParser.HashtagFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code hashtagFunctionCall}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitHashtagFunctionCall(JuicyBoysParser.HashtagFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(JuicyBoysParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(JuicyBoysParser.FunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#ioStatement}.
 	 * @param ctx the parse tree
 	 */

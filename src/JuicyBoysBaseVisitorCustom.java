@@ -140,12 +140,56 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {
 
 
+/*
+        Object a = super.visit(ctx.block());
+*/
+
         Object a = super.visit(ctx.block());
 
-        JOptionPane.showMessageDialog(null, "inside method body shiz");
+        JOptionPane.showMessageDialog(null, "Going to visit: ");
 
         if(a!= null){
             return a;
+        }
+
+        return null;
+
+    }
+
+
+    @Override
+    public Object visitHashtagReturnStatement(JuicyBoysParser.HashtagReturnStatementContext ctx) {
+
+        Object toBeReturned = super.visit(ctx.expression());
+
+        if(toBeReturned!=null){
+            JOptionPane.showMessageDialog(null, "Return: " + toBeReturned.toString());
+            return toBeReturned;
+        }
+        return null;
+
+    }
+
+    @Override
+    public Object visitFunctionCall(JuicyBoysParser.FunctionCallContext ctx) {
+        //return super.visitFunctionCall(ctx);
+
+        for(int i = 0; i < masterFuncList.size(); i++){
+
+            JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.Identifier().getText().toString() );
+                    /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
+                        visit(masterFuncList.get(i).getContext());
+                    }*/
+
+            if(masterFuncList.get(i).getSignature().contains(ctx.Identifier().getText().toString())) {
+
+                //create its scope
+                scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
+                super.visit(masterFuncList.get(i).getContext());
+                scopes.pop();
+                //pop its scope
+
+            }
         }
 
         return null;
@@ -1927,60 +1971,45 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
         //return super.visitUnaryExpressionNotPlusMinus(ctx);
     }
+
+
+
+
+
     @Override
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
         if(ctx.literal() != null)
         {
             System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
             return ctx.literal().getText();
-
         }
-
         //for variables
         else{
+            Variable var = null;
+            try{
+                 var  = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
 
-           // JOptionPane.showMessageDialog(null, "Test: " + scopes.peek().getSymbolMap().get((Object) ctx.getText()));
+            }catch (Exception e){
 
-            Variable var = (Variable) scopes.peek().lookup(ctx.getText());
-            //JOptionPane.showMessageDialog(null, "Test Name: " + scopes.peek().lookup(ctx.getText()).getName());
-           // JOptionPane.showMessageDialog(null, "Test Name: " + ctx.getText() + " Test Value: "+ var.getValue());
-
+            }
             if(var !=null){
                 return var.getValue();
             }
             else{
+            hasError = true;
+            String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
 
-                for(int i = 0; i < masterFuncList.size(); i++){
-
-                    JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.Identifier(0).getText().toString() );
-                    /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
-                        visit(masterFuncList.get(i).getContext());
-                    }*/
-
-                    if(masterFuncList.get(i).getSignature().contains(ctx.Identifier(0).getText().toString())) {
-                        super.visit(masterFuncList.get(i).getContext());
-                        JOptionPane.showMessageDialog(null, "nag resume");
-                    }
-                }
+            if (!errorCode.contains(newErrorCode)) {
+                errorCode += newErrorCode;
             }
-            /*else{*/
-                hasError = true;
-                String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
-
-                if (!errorCode.contains(newErrorCode)) {
-
-
-                    errorCode += newErrorCode;
-                }
-                return null;
-           /* }*/
+            return null;
+            }
         }
 
 
 
         //return super.visitPrimary(ctx);
     }
-
 
 
     @Override
@@ -2022,6 +2051,12 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
     public void thirdPass(){
-        visit(masterFuncList.get(0).getContext().block());
+
+
+        super.visit(masterFuncList.get(masterFuncList.size()-1).getContext());
+
+        JOptionPane.showMessageDialog(null,  masterFuncList.get(masterFuncList.size()-1).getSignature().toString() + masterFuncList.get(masterFuncList.size()-1).getContext().getText().toString());
+        JOptionPane.showMessageDialog(null, "continued");
+
     }
 }

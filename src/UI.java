@@ -271,6 +271,8 @@ public class UI {
 
         JuicyBoysBaseVisitorCustom visitor = new JuicyBoysBaseVisitorCustom(outputArea);
         visitor.visit(tree);
+        visitor.thirdPass();
+
 
 /*
         if(thread != null)
@@ -318,7 +320,6 @@ public class UI {
         }
 
 
-        visitor.thirdPass();
 
         String[] columnNames = {"Variable Key", "Variable Value"};
         DefaultTableModel model = new DefaultTableModel();
@@ -349,6 +350,8 @@ public class UI {
         jtablescrollpane.getViewport ().add (variablesTable);
         variablesTable.setVisible(true);
         jtablescrollpane.setVisible(true);
+
+
     }
 }
 

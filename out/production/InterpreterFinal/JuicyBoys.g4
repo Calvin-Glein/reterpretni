@@ -2,7 +2,6 @@
  [The "BSD licence"]
  Copyright (c) 2007-2008 Terence Parr
  All rights reserved.
-
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -13,7 +12,6 @@
     documentation and/or other materials provided with the distribution.
  3. The name of the author may not be used to endorse or promote products
     derived from this software without specific prior written permission.
-
  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
@@ -185,7 +183,6 @@ compilationUnit
 /*packageDeclaration
     :   'package' qualifiedName ';'
     ;
-
 importDeclaration
     :   'import' 'static'? qualifiedName ('.' '*')? ';'
     ;*/
@@ -194,15 +191,12 @@ typeDeclaration
     :   classOrInterfaceDeclaration
     |   ';'
     ;
-
 classOrInterfaceDeclaration
     :   classOrInterfaceModifiers (classDeclaration | interfaceDeclaration)
     ;
-
 classOrInterfaceModifiers
     :   classOrInterfaceModifier*
     ;
-
 classOrInterfaceModifier
     :   annotation       // class or interface
     |   (   'public'     // class or interface
@@ -240,7 +234,6 @@ typeParameters
 /*typeParameter
     :   Identifier ('extends' typeBound)?
     ;
-
 typeBound
     :   type ('&' type)*
     ;*/
@@ -445,11 +438,9 @@ modifier
 /*packageOrTypeName
     :   qualifiedName
     ;
-
 enumConstantName
     :   Identifier
     ;
-
 typeName
     :   qualifiedName
     ;
@@ -580,16 +571,13 @@ elementValueArrayInitializer
 annotationTypeDeclaration
     :   '@' 'interface' Identifier annotationTypeBody
     ;
-
 annotationTypeBody
     :   '{' (annotationTypeElementDeclaration)* '}'
     ;
-
 annotationTypeElementDeclaration
     :   modifiers annotationTypeElementRest
 	|	';' // this is not allowed by the grammar, but apparently allowed by the actual compiler
     ;
-
 annotationTypeElementRest
     :   type annotationMethodOrConstantRest ';'
     |   normalClassDeclaration ';'?
@@ -597,20 +585,16 @@ annotationTypeElementRest
     |   enumDeclaration ';'?
     |   annotationTypeDeclaration ';'?
     ;
-
 annotationMethodOrConstantRest
     :   annotationMethodRest
     |   annotationConstantRest
     ;
-
 annotationMethodRest
     :   Identifier '(' ')' defaultValue?
     ;
-
 annotationConstantRest
     :   variableDeclarators
     ;
-
 */
 defaultValue
     :   'default' elementValue
@@ -663,6 +647,11 @@ statement
     |   statementExpression ';'                                 #hashtagStatementExpressionStatement
     |   Identifier ':' statement                                #hashtagIdentifierStatement
     |   ioStatement                                             #hashtagIOStatement
+    |   functionCall                                            #hashtagFunctionCall
+    ;
+
+functionCall
+    :   'function' Identifier '(' (expression (',' expression)* )? ')'
     ;
 
 //ako nag add neto until output statement
@@ -924,7 +913,7 @@ primary
 /*
 	|	nonWildcardTypeArguments (explicitGenericInvocationSuffix | 'this' arguments)
 */
-    |   Identifier ('.' Identifier)* identifierSuffix?
+    |   Identifier identifierSuffix?
     |   primitiveType ('[' ']')* '.' 'class'
     |   'void' '.' 'class'
     ;
@@ -934,7 +923,6 @@ identifierSuffix
     |   '[' expression ']'
     |   arguments
   /*  |   '.' 'class'
-
     |   '.' explicitGenericInvocation
 */
  /*   |   '.' 'this'
@@ -1085,17 +1073,14 @@ fragment
 DecimalIntegerLiteral
 	:	DecimalNumeral IntegerTypeSuffix?
 	;
-
 fragment
 HexIntegerLiteral
 	:	HexNumeral IntegerTypeSuffix?
 	;
-
 fragment
 OctalIntegerLiteral
 	:	OctalNumeral IntegerTypeSuffix?
 	;
-
 fragment
 BinaryIntegerLiteral
 	:	BinaryNumeral IntegerTypeSuffix?
@@ -1304,26 +1289,20 @@ fragment
 SingleCharacter
 	:	~['\\]
 	;
-
 // §3.10.5 String Literals
-
 StringLiteral
 	:	'"' StringCharacters? '"'
 	;
-
 fragment
 StringCharacters
 	:	StringCharacter+
 	;
-
 fragment
 StringCharacter
 	:	~["\\]
 	|	EscapeSequence
 	;
-
 // §3.10.6 Escape Sequences for Character and String Literals
-
 fragment
 EscapeSequence
 	:	'\\' [btnfr"'\\]
