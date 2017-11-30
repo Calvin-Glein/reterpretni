@@ -1,5 +1,4 @@
-/*
- [The "BSD licence"]
+/* [The "BSD licence"]
  Copyright (c) 2007-2008 Terence Parr
  All rights reserved.
  Redistribution and use in source and binary forms, with or without
@@ -650,6 +649,7 @@ statement
     |   Identifier ':' statement                                #hashtagIdentifierStatement
     |   ioStatement                                             #hashtagIOStatement
     |   functionCall                                            #hashtagFunctionCall
+
     ;
 
 functionCall
@@ -919,7 +919,6 @@ primary
     |   primitiveType ('[' ']')* '.' 'class'
     |   'void' '.' 'class'
     |   functionCall
-
     ;
 
 identifierSuffix

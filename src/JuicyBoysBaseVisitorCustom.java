@@ -151,7 +151,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     @Override
     public Object visitBlock(JuicyBoysParser.BlockContext ctx) {
-       return super.visitBlock(ctx);
+        return super.visitBlock(ctx);
     }
 
     @Override
@@ -191,26 +191,25 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitFunctionCall(JuicyBoysParser.FunctionCallContext ctx) {
         //return super.visitFunctionCall(ctx);
 
-        for(int i = 0; i < masterFuncList.size(); i++){
-             /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
-                        visit(masterFuncList.get(i).getContext());
-                    }*/
-
+        int i =0;
+        while(true){
             if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
-                JOptionPane.showMessageDialog(null, "master: "+ masterFuncList.get(i).getSignature() + " and ctx iden: " + ctx.Identifier().getText().toString());
-
-                JOptionPane.showMessageDialog(null, ".equals");
                 //create its scope
                 scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
 
-                List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+
                 super.visit(masterFuncList.get(i).getContext().block());
 
+                //  List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+                //  JOptionPane.showMessageDialog(null, "BLOCK STATEMENTS SIZE: " + blockStmts.size() + " Function: " + masterFuncList.get(i).getSignature().toString());
 
-                Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
-                JOptionPane.showMessageDialog(null, "Entering context: " + masterFuncList.get(i).getSignature() + "\n "  + masterFuncList.get(i).getContext().getText());
+
+
+
+                Object returnedValue = super.visit(masterFuncList.get(i).getContext().block().blockStatement().get(masterFuncList.get(i).getContext().block().blockStatement().size()-1));
 
                 if(masterFuncList.get(i).getReturn_type().equals("void")){
+
                     scopes.pop();
                     return null;
                 }
@@ -253,39 +252,84 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     }
                 }
 
-break;
+                break;
 
 
 
             }
-            }
 
-/*
 
-            if(masterFuncList.get(i).getSignature().contains(ctx.Identifier().getText().toString())) {
 
-                //create its scope
+            i++;
+        }
+        /*for(int i = 0; i < masterFuncList.size(); i++){*/
+
+
+
+            /*if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
+               //create its scope
                 scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
 
-                List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
 
                 super.visit(masterFuncList.get(i).getContext().block());
-                JOptionPane.showMessageDialog(null, "block is executed");
+
+              //  List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+              //  JOptionPane.showMessageDialog(null, "BLOCK STATEMENTS SIZE: " + blockStmts.size() + " Function: " + masterFuncList.get(i).getSignature().toString());
 
 
-                Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
-                JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue);
+
+                Object returnedValue = super.visit(masterFuncList.get(i).getContext().block().blockStatement().get(masterFuncList.get(i).getContext().block().blockStatement().size()-1));
+
+                if(masterFuncList.get(i).getReturn_type().equals("void")){
+
+                    scopes.pop();
+                    return null;
+                }
+
+                Object castChecker = null;
+
+                try{
+                    castChecker = Integer.parseInt(returnedValue.toString());
+                    if(masterFuncList.get(i).getReturn_type().equals("int") && castChecker instanceof Integer) {
+                        scopes.pop();
+                        //pop its scope
+                        return castChecker.toString();
+                    }
+
+                }catch (Exception e){
+                    try{
+                        castChecker = Double.parseDouble(returnedValue.toString());
+                        if(masterFuncList.get(i).getReturn_type().equals("double") && castChecker instanceof Double) {
+                            scopes.pop();
+                            //pop its scope
+                            return castChecker.toString();
+                        }
+                    }
+                    catch (Exception e2){
+                        try{
+                            castChecker = returnedValue.toString();
+                            scopes.pop();
+                            //pop its scope
+                            return castChecker.toString();
 
 
-                scopes.pop();
-                //pop its scope
+                        } catch (Exception e3){
+                            scopes.pop();
+                            hasError = true;
+                            errorCode += "\n Returned input type for function cannot be read";
+                            e3.printStackTrace();
 
-                return returnedValue.toString();
+                            return null;
+                        }
+                    }
+                }
 
-            }
-        }*/
+                break;
 
 
+
+            }*/
+        /*}*/
         return null;
 
     }
@@ -327,7 +371,7 @@ break;
         // method 2:
        while(!scopes.empty())
                System.out.println(scopes.pop().getList());*/
-}
+    }
 
 
 
@@ -366,34 +410,34 @@ break;
     @Override
     public Object visitHashtagIfStatement(JuicyBoysParser.HashtagIfStatementContext ctx) {
 
-            if(super.visit(ctx.parExpression())!=null) {
-                   // JOptionPane.showMessageDialog(null, "Here: " + super.visit((ctx.parExpression())).toString());
-                    if(super.visit(ctx.parExpression()) instanceof Boolean)
-                    {
-                        if ((boolean) super.visit(ctx.parExpression()) == true) {
-                            System.out.println("PUMASOK");
-                            return super.visit(ctx.statement(0));
+        if(super.visit(ctx.parExpression())!=null) {
+            // JOptionPane.showMessageDialog(null, "Here: " + super.visit((ctx.parExpression())).toString());
+            if(super.visit(ctx.parExpression()) instanceof Boolean)
+            {
+                if ((boolean) super.visit(ctx.parExpression()) == true) {
+                    System.out.println("PUMASOK");
+                    return super.visit(ctx.statement(0));
 
-                        } else if ((boolean) super.visit(ctx.parExpression()) == false) {
-                            System.out.println("HINDI PUMASOK");
-                            Object c = ctx.statement(1);
-                            if(c!=null)
-                                return super.visit(ctx.statement(1));
-                            else
-                                return null;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
+                } else if ((boolean) super.visit(ctx.parExpression()) == false) {
+                    System.out.println("HINDI PUMASOK");
+                    Object c = ctx.statement(1);
+                    if(c!=null)
+                        return super.visit(ctx.statement(1));
                     else
-                    {
                         return null;
-                    }
-
-
+                }
+                else
+                {
+                    return null;
+                }
             }
+            else
+            {
+                return null;
+            }
+
+
+        }
         System.out.println("PUMASOK SA HASHTAGIFSTATEMENt");
         return null;
     }
@@ -616,7 +660,7 @@ break;
                         System.out.print("You cannot perform relational (>, <, >=, <=) operation on strings: " +temp);
                         hasError = true;
 
-                            String newErrorCode = "\n You cannot perform relational (>, <, >=, <=) operation on strings: ";
+                        String newErrorCode = "\n You cannot perform relational (>, <, >=, <=) operation on strings: ";
 
                         if (!errorCode.contains(newErrorCode)) {
 
@@ -814,7 +858,7 @@ break;
 
     @Override
     public Object visitVariableDeclaratorId(JuicyBoysParser.VariableDeclaratorIdContext ctx) {
-       // JOptionPane.showMessageDialog(null, "Inside VariableDeclaratorIdContext: " + ctx.getText().toString());
+        // JOptionPane.showMessageDialog(null, "Inside VariableDeclaratorIdContext: " + ctx.getText().toString());
 
         return super.visitVariableDeclaratorId(ctx);
     }
@@ -855,38 +899,38 @@ break;
 
         if(var!=null){
 
-                Object castChecker = null;
+            Object castChecker = null;
+            try{
+                castChecker = Integer.parseInt(input.toString());
+            }catch (Exception e){
                 try{
-                    castChecker = Integer.parseInt(input.toString());
-                }catch (Exception e){
+                    castChecker = Double.parseDouble(input.toString());
+                }
+                catch (Exception e2){
                     try{
-                        castChecker = Double.parseDouble(input.toString());
-                    }
-                    catch (Exception e2){
-                        try{
-                            castChecker = input.toString();
+                        castChecker = input.toString();
 
-                        } catch (Exception e3){
-                            hasError = true;
-                            errorCode += "\n Scanned input cannot be parsed";
-                            e3.printStackTrace();
-                        }
+                    } catch (Exception e3){
+                        hasError = true;
+                        errorCode += "\n Scanned input cannot be parsed";
+                        e3.printStackTrace();
                     }
                 }
+            }
 
-                 if(castChecker instanceof Integer && var.getDataType().equals("int")){
-                     var.setValue(new Value(input));
-                 }
-                 else if(castChecker instanceof Double && var.getDataType().equals("double")){
-                     var.setValue(new Value(input));
-                 }
-                 else if(var.getDataType().equals("String")){
-                     var.setValue(new Value(input));
-                 }
-                 else{
-                     hasError =true;
-                     errorCode += "\n Variable to receive input is incompatible with the scanned input.";
-                 }
+            if(castChecker instanceof Integer && var.getDataType().equals("int")){
+                var.setValue(new Value(input));
+            }
+            else if(castChecker instanceof Double && var.getDataType().equals("double")){
+                var.setValue(new Value(input));
+            }
+            else if(var.getDataType().equals("String")){
+                var.setValue(new Value(input));
+            }
+            else{
+                hasError =true;
+                errorCode += "\n Variable to receive input is incompatible with the scanned input.";
+            }
         }
 
         else if(var==null){
@@ -903,7 +947,7 @@ break;
     @Override
     public Object visitHashtagForStatement(JuicyBoysParser.HashtagForStatementContext ctx) {
 
-       super.visit(ctx.forControl().forInit());
+        super.visit(ctx.forControl().forInit());
         Object condition = super.visit(ctx.forControl());
 
         if (condition instanceof Boolean) {
@@ -913,7 +957,7 @@ break;
                 do {
                     super.visit(ctx.statement());
                     condition = super.visit(ctx.forControl());
-                   // super.visit(ctx.forControl().forUpdate().expressionList().expression(0));
+                    // super.visit(ctx.forControl().forUpdate().expressionList().expression(0));
                     super.visit(ctx.forControl().localVariableDeclaration());
                     // super.visit(ctx.forControl().expression(1));
 
@@ -921,8 +965,8 @@ break;
 
 
 
-                Variable var = (Variable) scopes.peek().lookup("i");
-                System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII: " + var.getValue());
+                    Variable var = (Variable) scopes.peek().lookup("i");
+                    System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII: " + var.getValue());
                 } while ((Boolean) condition == true);
             }
         }
@@ -951,7 +995,7 @@ break;
         if(secondParam!=null)
             try{
                 castChecker = (Boolean) secondParam;
-                    return castChecker;
+                return castChecker;
             }catch(Exception e){
                 hasError = true;
                 errorCode += "\n Error in For loop 2nd parameter";
@@ -1019,7 +1063,7 @@ break;
 
         return null;
 
-       // return super.visitHashtagWhileStatement(ctx);
+        // return super.visitHashtagWhileStatement(ctx);
     }
 
     @Override
@@ -1136,42 +1180,42 @@ break;
             trueCollector = (Boolean) a;
             if(a instanceof Boolean) {
 
-                    if (a != null) {
+                if (a != null) {
 
-                        Object temp = null;
+                    Object temp = null;
 
-                        //store the non recurive one based CFG
-                        List<JuicyBoysParser.InclusiveOrExpressionContext> inclOrExps = ctx.inclusiveOrExpression();
-                        //Para sa + or -
+                    //store the non recurive one based CFG
+                    List<JuicyBoysParser.InclusiveOrExpressionContext> inclOrExps = ctx.inclusiveOrExpression();
+                    //Para sa + or -
 
 
-                        for (int j = 1; j < inclOrExps.size(); j++) {
+                    for (int j = 1; j < inclOrExps.size(); j++) {
 
-                            //^^ iterating through all multExps kasi *
+                        //^^ iterating through all multExps kasi *
+
+                        try {
+                            Object b = null;
+                            if (inclOrExps.get(j).exclusiveOrExpression(1) == null)
+                                b = super.visit(inclOrExps.get(j).exclusiveOrExpression(0));
+
+                            else {
+                                b = super.visit(inclOrExps.get(j));
+                            }
+
+
+                            Object nextNumber = null;
+
 
                             try {
-                                Object b = null;
-                                if (inclOrExps.get(j).exclusiveOrExpression(1) == null)
-                                    b = super.visit(inclOrExps.get(j).exclusiveOrExpression(0));
+                                nextNumber = (Boolean) b;
+                            } catch (Exception e) {
 
-                                else {
-                                    b = super.visit(inclOrExps.get(j));
-                                }
+                                hasError = true;
+                                errorCode += "\n Error in determining if boolean or not";
+                                e.printStackTrace();
 
-
-                                Object nextNumber = null;
-
-
-                                try {
-                                    nextNumber = (Boolean) b;
-                                } catch (Exception e) {
-
-                                    hasError = true;
-                                    errorCode += "\n Error in determining if boolean or not";
-                                    e.printStackTrace();
-
-                                }
-                                if (ctx.AND() != null)
+                            }
+                            if (ctx.AND() != null)
                                   /*  if ((Boolean) nextNumber == true) {
 
                                         trueCollector = trueCollector && (Boolean) nextNumber;
@@ -1182,20 +1226,20 @@ break;
                                         trueCollector = trueCollector && (Boolean) nextNumber;
                                         System.out.println("------------------------------------------NEXT NUMBER IS FALSE: " + trueCollector);
                                     }*/
-                                    if ((Boolean) nextNumber == false) {
-                                        trueCollector = trueCollector && (Boolean) nextNumber;
-                                    }
+                                if ((Boolean) nextNumber == false) {
+                                    trueCollector = trueCollector && (Boolean) nextNumber;
+                                }
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-
-                            //Object b = super.visitAdditiveExpression()
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
 
 
+                        //Object b = super.visitAdditiveExpression()
                     }
+
+
+                }
 
             }
 
@@ -1207,7 +1251,7 @@ break;
             return super.visitConditionalAndExpression(ctx);
         }
 
-       // return super.visitConditionalAndExpression(ctx);
+        // return super.visitConditionalAndExpression(ctx);
 
     }
 
@@ -1287,7 +1331,7 @@ break;
 
 
 
-       //    return super.visitConditionalOrExpression(ctx);
+        //    return super.visitConditionalOrExpression(ctx);
     }
 
 
@@ -1331,7 +1375,7 @@ break;
 
                 }catch (Exception e1){
                     try{
-                       // JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
+                        // JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
                         castChecker = a.getValue().toString();
                     }catch (Exception e2) {
                         hasError = true;
@@ -1445,79 +1489,79 @@ break;
                     }
 
 
-                 }
+                }
 
-                 if(var.getDataType().equals("int") && newValue instanceof Integer){
-                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                if(var.getDataType().equals("int") && newValue instanceof Integer){
+                    //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
-                     //check if variable exist
+                    //check if variable exist
 
-                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
-                     var = (Variable) scopes.peek().lookup(a.getName()
-                     );
-                     var.setValue(new Value(newValue));
+                    //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                    var = (Variable) scopes.peek().lookup(a.getName()
+                    );
+                    var.setValue(new Value(newValue));
 
-                 }
+                }
 
                 else if(var.getDataType().equals("const int") && newValue instanceof Integer){
-                     //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                    //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
-                     //check if variable exist
+                    //check if variable exist
 
-                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                    //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
                  /*   var = (Variable) scopes.peek().lookup(a.getName()
                     );
                     var.setValue(new Value(newValue));*/
-                     hasError = true;
-                     errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
+                    hasError = true;
+                    errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
 
 
-                 }
-                 else if(var.getDataType().equals("const float") && newValue instanceof Double){
-                     //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                }
+                else if(var.getDataType().equals("const float") && newValue instanceof Double){
+                    //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
-                     //check if variable exist
+                    //check if variable exist
 
-                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                    //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
                  /*   var = (Variable) scopes.peek().lookup(a.getName()
                     );
                     var.setValue(new Value(newValue));*/
-                     hasError = true;
-                     errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
+                    hasError = true;
+                    errorCode += "\n [Exisiting variable] Name: " + a.getName() + " cannot be changed to: " + a.getValue() +  " since it is a constant.";
 
 
-                 }
-                 else if(var.getDataType().equals("double") && newValue instanceof Double){
-                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                }
+                else if(var.getDataType().equals("double") && newValue instanceof Double){
+                    //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
-                     //check if variable exist
+                    //check if variable exist
 
-                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
-                     var = (Variable) scopes.peek().lookup(a.getName());
-                     var.setValue(new Value(newValue));
-                 }
-                 else if(var.getDataType().equals("String")){
-                 //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
+                    //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                    var = (Variable) scopes.peek().lookup(a.getName());
+                    var.setValue(new Value(newValue));
+                }
+                else if(var.getDataType().equals("String")){
+                    //    JOptionPane.showMessageDialog(null, " Type: " + var.getDataType().toString() + "Name: " + var.getName() + "Value: " + newValue);
 
 
-                     //check if variable exist
+                    //check if variable exist
 
-                     //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
-                     var = (Variable) scopes.peek().lookup(a.getName());
-                     var.setValue(new Value(newValue));
-                 }
+                    //scopes.peek().getSymbolMap().get(var.getName()).getScope().getSymbolMap().;
+                    var = (Variable) scopes.peek().lookup(a.getName());
+                    var.setValue(new Value(newValue));
+                }
 /*
             if(var.getDataType().equals(a.getDataType())){
 
                 }*/
-            else{
-                hasError = true;
-                errorCode += "\n [Exisiting variable] Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
-            }
+                else{
+                    hasError = true;
+                    errorCode += "\n [Exisiting variable] Error, Name: " + a.getName() + " with data type: "+ a.getDataType() +" Not compatible with value: " + a.getValue();
+                }
 
 
 
@@ -1577,10 +1621,14 @@ break;
         if(ctx.variableDeclaratorId() != null) {
             a = ctx.variableDeclaratorId().getText();
         }
-//        if(ctx.variableInitializer().functionCall() != null){
-//            JOptionPane.showMessageDialog(null, "nentered functioncall");
-//            b = super.visit(ctx.variableInitializer().functionCall());
-//        }
+    /*    if(ctx.variableInitializer().functionCall() != null){
+            JOptionPane.showMessageDialog(null, "nentered functioncall");
+
+            b = super.visit(ctx.variableInitializer().functionCall());
+
+
+        }*/
+
         if(ctx.variableInitializer() != null){
             b = super.visit(ctx.variableInitializer());
         }
@@ -1659,7 +1707,7 @@ break;
         if(a != null){
 
 
-        Object temp = null;
+            Object temp = null;
             try{
                 temp = Integer.parseInt(a.toString());
             }catch(Exception e){
@@ -1678,117 +1726,117 @@ break;
                 }
             }
             //store the non recurive one based CFG
-        List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
-        //Para sa + or -
-        List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
+            List<JuicyBoysParser.MultiplicativeExpressionContext> multExps =  ctx.multiplicativeExpression();
+            //Para sa + or -
+            List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
 
-        //        Object b = super.visit(ctx.multiplicativeExpression(1));
+            //        Object b = super.visit(ctx.multiplicativeExpression(1));
       /*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*/
 
-        for(int j = 1; j < multExps.size(); j++){
+            for(int j = 1; j < multExps.size(); j++){
 
-            //^^ iterating through all multExps kasi *
+                //^^ iterating through all multExps kasi *
 
-            try
-            {
-                Object b = null;
-                 if(multExps.get(j).unaryExpression(1)==null)
-                 b = super.visit(multExps.get(j).unaryExpression(0));
+                try
+                {
+                    Object b = null;
+                    if(multExps.get(j).unaryExpression(1)==null)
+                        b = super.visit(multExps.get(j).unaryExpression(0));
 
-                else {
-                    b = super.visit(multExps.get(j));
-                }
+                    else {
+                        b = super.visit(multExps.get(j));
+                    }
 
-                Object nextNumber = null;
+                    Object nextNumber = null;
 
 
-                try{
-                    nextNumber = Integer.parseInt(b.toString());;
-                }catch(Exception e){
                     try{
-                        nextNumber = Double.parseDouble(b.toString());
-                    }catch (Exception e1){
-                        e.printStackTrace();
+                        nextNumber = Integer.parseInt(b.toString());;
+                    }catch(Exception e){
+                        try{
+                            nextNumber = Double.parseDouble(b.toString());
+                        }catch (Exception e1){
+                            e.printStackTrace();
+                        }
                     }
-                }
 
-                if(temp instanceof Integer && nextNumber instanceof  Integer)
-                {
-                    System.out.println("Instance is an Integer");
-                    if(addORsubs.get(j-1).ADD()!=null)
+                    if(temp instanceof Integer && nextNumber instanceof  Integer)
                     {
-                        // 3 (+ 1)
-                        //return (int)int1 + (int)int2;
+                        System.out.println("Instance is an Integer");
+                        if(addORsubs.get(j-1).ADD()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
 
-                        System.out.println("inside ADD with Instance value: " + (int)nextNumber);
-                        temp = (int)temp + (int)nextNumber;
+                            System.out.println("inside ADD with Instance value: " + (int)nextNumber);
+                            temp = (int)temp + (int)nextNumber;
 
-                        //System.out.println("Added: " + (temp + (int)int1) + " End");
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
 
-                    }
-                    else if(addORsubs.get(j-1).SUB()!=null)
-                    {
-                        // 3 (+ 1)
-                        //return (int)int1 + (int)int2;
-                        System.out.println("inside SUB with Instance value: " + nextNumber);
-                        temp = (int)temp - (int)nextNumber;
-                        //System.out.println("Added: " + (temp + (int)int1) + " End");
+                        }
+                        else if(addORsubs.get(j-1).SUB()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside SUB with Instance value: " + nextNumber);
+                            temp = (int)temp - (int)nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
 
-                    }
+                        }
                   /*  if(ctx.SUB()!=null)
                     {
                         System.out.println("Subtracted: " + ((int)int1 - (int)int2));
                         //return (int)int1 - (int)int2;
                     }*/
-                }
-                else  if(temp instanceof Double && nextNumber instanceof Double)
-                {
-                    System.out.println("Instance is an Integer");
-                    if(addORsubs.get(j-1).ADD()!=null)
-                    {
-                        // 3 (+ 1)
-                        //return (int)int1 + (int)int2;
-
-                        System.out.println("inside ADD with Instance value: " + (double)nextNumber);
-                        temp = (double)temp + (double)nextNumber;
-
-                        //System.out.println("Added: " + (temp + (int)int1) + " End");
-
                     }
-                    else if(addORsubs.get(j-1).SUB()!=null)
+                    else  if(temp instanceof Double && nextNumber instanceof Double)
                     {
-                        // 3 (+ 1)
-                        //return (int)int1 + (int)int2;
-                        System.out.println("inside SUB with Instance value: " + nextNumber);
-                        temp = (double)temp - (double)nextNumber;
-                        //System.out.println("Added: " + (temp + (int)int1) + " End");
+                        System.out.println("Instance is an Integer");
+                        if(addORsubs.get(j-1).ADD()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
 
-                    }
+                            System.out.println("inside ADD with Instance value: " + (double)nextNumber);
+                            temp = (double)temp + (double)nextNumber;
+
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
+                        else if(addORsubs.get(j-1).SUB()!=null)
+                        {
+                            // 3 (+ 1)
+                            //return (int)int1 + (int)int2;
+                            System.out.println("inside SUB with Instance value: " + nextNumber);
+                            temp = (double)temp - (double)nextNumber;
+                            //System.out.println("Added: " + (temp + (int)int1) + " End");
+
+                        }
                   /*  if(ctx.SUB()!=null)
                     {
                         System.out.println("Subtracted: " + ((int)int1 - (int)int2));
                         //return (int)int1 - (int)int2;
                     }*/
+                    }
+                    else{
+                        System.out.println("Instance unknown");
+                        hasError = true;
+                        errorCode += "\nYou cannot perform the arithmetic using different variable data types: " + temp;
+                    }
                 }
-                else{
-                    System.out.println("Instance unknown");
-                    hasError = true;
-                    errorCode += "\nYou cannot perform the arithmetic using different variable data types: " + temp;
+                catch(Exception e)
+                {
+                    e.printStackTrace();
                 }
+
+
+                //Object b = super.visitAdditiveExpression()
             }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
+
+            System.out.println("Answer in Additive Expression: " + temp);
 
 
-            //Object b = super.visitAdditiveExpression()
-        }
-
-        System.out.println("Answer in Additive Expression: " + temp);
-
-
-        return (temp);
+            return (temp);
 
         }
         return null;
@@ -1902,7 +1950,7 @@ break;
                         }
                     }
 
-                   else if (temp instanceof Double && nextNumber instanceof Double) {
+                    else if (temp instanceof Double && nextNumber instanceof Double) {
                         System.out.println("Instance is a Double");
                         if (mulORdivORmod.get(j - 1).MUL() != null) {
                             // 3 (+ 1)
@@ -2079,6 +2127,8 @@ break;
 
     @Override
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
+
+
         if(ctx.literal() != null)
         {
             System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
@@ -2086,28 +2136,30 @@ break;
         }
 
         else if(ctx.functionCall()!=null){
+            Object functionReturnValue = super.visit(ctx.functionCall());
 
-                Object functionReturnValue = super.visit(ctx.functionCall());
-                // Object functionReturnValue = 1;
+            JOptionPane.showMessageDialog(null, "Primary daw function: " + ctx.getText().toString());
+            // Object functionReturnValue = 1;
 
-                if(functionReturnValue!=null) {
-                    return functionReturnValue.toString();
+            if(functionReturnValue!=null) {
+                return functionReturnValue.toString();
+            }
+            else {
+                hasError = true;
+                String newErrorCode = "\n Function not returning any value";
+
+                if (!errorCode.contains(newErrorCode)) {
+                    errorCode += newErrorCode;
                 }
-                else {
-                    hasError = true;
-                    String newErrorCode = "\n Function not returning any value";
+                return null;
+            }
+      }
 
-                    if (!errorCode.contains(newErrorCode)) {
-                        errorCode += newErrorCode;
-                    }
-                    return null;
-                }
-        }
         //for variables
         else{
             Variable var = null;
             try{
-                 var  = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
+                var  = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
 
             }catch (Exception e){
 
@@ -2116,18 +2168,18 @@ break;
                 return var.getValue();
             }
             else{
-            hasError = true;
-            String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
+                hasError = true;
+                String newErrorCode = "\n Variable: " + ctx.getText() + "is Null";
 
-            if (!errorCode.contains(newErrorCode)) {
-                errorCode += newErrorCode;
-            }
-            return null;
+                if (!errorCode.contains(newErrorCode)) {
+                    errorCode += newErrorCode;
+                }
+                return null;
             }
         }
 
 
-        //return null;
+
         //return super.visitPrimary(ctx);
     }
 
@@ -2183,10 +2235,11 @@ break;
         for(int i = 0; i < masterFuncList.size(); i++){
             if(masterFuncList.get(i).getSignature().toString().equals("main")){
                 JOptionPane.showMessageDialog(null, "Found Main, entering context");
-                super.visit(masterFuncList.get(i).getContext().block());
+               super.visit(masterFuncList.get(i).getContext());
                 break;
             }
         }
+
 
 
 
