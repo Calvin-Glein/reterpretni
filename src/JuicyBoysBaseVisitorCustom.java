@@ -43,12 +43,30 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         Object a = super.visit(ctx.memberDeclaration());
 
         if(a!=null){
+
+
             Function function = (Function) a;
 
+            //visit main
+            if(function.getSignature().toString().equals("main")){
+                masterFuncList.add(function);
 
-            scopes.push(new Scope(ScopeType.GLOBAL, function.getSignature(), null));
+                JOptionPane.showMessageDialog(null, "\n Function Name: " + function.getSignature().toString() +
+                        " \n Return Type: " + function.getReturn_type() + " \n Code: " + function.getContext().block().getText().toString());
 
-            masterFuncList.add(function);
+                super.visit(masterFuncList.get(masterFuncList.size()-1).getContext());
+
+            }
+            else{
+                scopes.push(new Scope(ScopeType.LOCAL, function.getSignature(), null));
+
+                masterFuncList.add(function);
+
+            }
+
+
+
+
         }
 
 
@@ -74,12 +92,18 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         ArrayList<Variable> params = (ArrayList<Variable>) methodDec;
 
-        Function newFunction = new Function(ctx.type().getText().toString(),
-                ctx.methodDeclaration().Identifier().getText().toString(),
-                params,
-                getMethodBody);
 
-        return newFunction;
+            Function newFunction = new Function(ctx.type().getText().toString(),
+                    ctx.methodDeclaration().Identifier().getText().toString(),
+                    params,
+                    getMethodBody);
+
+
+            return newFunction;
+
+
+
+
     }
 
     @Override
@@ -136,31 +160,38 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitBlockStatement(JuicyBoysParser.BlockStatementContext ctx) {
 
+        JOptionPane.showMessageDialog(null, "-----------------inside block statement :" + ctx.getText());
         Object a = ctx.statement();
         Object b = ctx.localVariableDeclarationStatement();
 
         if ( a != null) {
+            JOptionPane.showMessageDialog(null, "-----------------inside statement :" + ctx.statement().getText());
             return super.visit(ctx.statement());
         }
         else if ( b != null) {
+            JOptionPane.showMessageDialog(null, "-----------------inside localVariableshit :" + ctx.localVariableDeclarationStatement().getText());
             return super.visit(ctx.localVariableDeclarationStatement());
         }
 
         return null;
     }
 
-    @Override
+  /*  @Override
     public Object visitBlock(JuicyBoysParser.BlockContext ctx) {
-        return super.visitBlock(ctx);
-    }
 
+      return super.visitBlock(ctx);
+
+
+
+    }*/
+/*
     @Override
     public Object visitMethodBody(JuicyBoysParser.MethodBodyContext ctx) {
 
 
-/*
+*//*
         Object a = super.visit(ctx.block());
-*/
+*//*
 
         Object a = super.visit(ctx.block());
 
@@ -171,7 +202,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         return null;
 
-    }
+    }*/
 
 
     @Override
@@ -179,6 +210,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         Object toBeReturned = super.visit(ctx.expression());
 
+        JOptionPane.showMessageDialog(null, "inside hashtagreturn");
 
         if(toBeReturned!=null){
             return toBeReturned;
@@ -189,8 +221,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     @Override
     public Object visitFunctionCall(JuicyBoysParser.FunctionCallContext ctx) {
+        JOptionPane.showMessageDialog(null, "vinisit si function call");
         //return super.visitFunctionCall(ctx);
-
+/*
         int i =0;
         while(true){
             if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
@@ -261,15 +294,16 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
             i++;
-        }
-        /*for(int i = 0; i < masterFuncList.size(); i++){*/
+        }*/
+        for(int i = 0; i < masterFuncList.size()-1; i++){
 
 
 
-            /*if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
+            if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
                //create its scope
                 scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
 
+                JOptionPane.showMessageDialog(null, "function block content: " + masterFuncList.get(i).getContext().block().getText());
 
                 super.visit(masterFuncList.get(i).getContext().block());
 
@@ -279,6 +313,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
                 Object returnedValue = super.visit(masterFuncList.get(i).getContext().block().blockStatement().get(masterFuncList.get(i).getContext().block().blockStatement().size()-1));
+
+
+            //    JOptionPane.showMessageDialog(null, "IDentifier: " + ctx.Identifier().getText() + "Returned from functionvisitor: " + returnedValue.toString());
+
 
                 if(masterFuncList.get(i).getReturn_type().equals("void")){
 
@@ -328,8 +366,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
-            }*/
-        /*}*/
+            }
+        }
         return null;
 
     }
@@ -393,10 +431,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 */
 
 
-  /*  @Override
-    public Object visitStatement(JuicyBoysParser.StatementContext ctx) {
-        return super.visitStatement(ctx);
-    }*/
 
 
 
@@ -490,6 +524,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //store the non recurive one based CFG
             List<JuicyBoysParser.InstanceOfExpressionContext> instanceOfExpressionContexts =  ctx.instanceOfExpression();
             List<JuicyBoysParser.EqualORnotequalContext> equalORnotEqual =  ctx.equalORnotequal();
+
+            JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
+
 
             for(int j = 1; j < instanceOfExpressionContexts.size(); j++){
 
@@ -637,7 +674,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
-        return super.visitEqualityExpression(ctx);
+        return a;
     }
 
     @Override
@@ -679,6 +716,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //store the non recurive one based CFG
             List<JuicyBoysParser.ShiftExpressionContext> shiftExps =  ctx.shiftExpression();
             List<JuicyBoysParser.RelationalOpContext> relops =  ctx.relationalOp();
+
+            JOptionPane.showMessageDialog(null, "inside relational, size ni shiftExps: " + shiftExps.size());
 
             for(int j = 1; j < shiftExps.size(); j++){
 
@@ -848,7 +887,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
         //
-        return super.visitRelationalExpression(ctx);
+        return a;
     }
 
     @Override
@@ -1157,6 +1196,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
     }*/
 
+
+
+
     @Override
     public Object visitForInit(JuicyBoysParser.ForInitContext ctx) {
 
@@ -1189,6 +1231,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     //Para sa + or -
 
 
+                    JOptionPane.showMessageDialog(null, "inside conditional and, size ni inclusive: " + inclOrExps.size());
                     for (int j = 1; j < inclOrExps.size(); j++) {
 
                         //^^ iterating through all multExps kasi *
@@ -1248,7 +1291,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
         catch (Exception e){
-            return super.visitConditionalAndExpression(ctx);
+
+            return a;
         }
 
         // return super.visitConditionalAndExpression(ctx);
@@ -1274,6 +1318,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                     //store the non recurive one based CFG
                     List<JuicyBoysParser.ConditionalAndExpressionContext> conAndExps = ctx.conditionalAndExpression();
+                    JOptionPane.showMessageDialog(null, "inside conditional or, size ni inclusive: " + conAndExps.size());
+
+
                     //Para sa + or -
 
                     //        Object b = super.visit(ctx.multiplicativeExpression(1));
@@ -1326,7 +1373,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             return trueCollector;
 
         } catch(Exception e){
-            return super.visitConditionalOrExpression(ctx);
+            return a;
         }
 
 
@@ -1334,22 +1381,22 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //    return super.visitConditionalOrExpression(ctx);
     }
 
+//
+//    @Override
+//    public Object visitInclusiveOrExpression(JuicyBoysParser.InclusiveOrExpressionContext ctx) {
+//        return super.visitInclusiveOrExpression(ctx);
+//    }
+//
+//    @Override
+//    public Object visitExclusiveOrExpression(JuicyBoysParser.ExclusiveOrExpressionContext ctx) {
+//        return super.visitExclusiveOrExpression(ctx);
+//    }
 
-    @Override
-    public Object visitInclusiveOrExpression(JuicyBoysParser.InclusiveOrExpressionContext ctx) {
-        return super.visitInclusiveOrExpression(ctx);
-    }
-
-    @Override
-    public Object visitExclusiveOrExpression(JuicyBoysParser.ExclusiveOrExpressionContext ctx) {
-        return super.visitExclusiveOrExpression(ctx);
-    }
-
-    @Override
-    public Object visitAndExpression(JuicyBoysParser.AndExpressionContext ctx) {
-        return super.visitAndExpression(ctx);
-    }
-
+//    @Override
+//    public Object visitAndExpression(JuicyBoysParser.AndExpressionContext ctx) {
+//        return super.visitAndExpression(ctx);
+//    }
+//
 
 
     @Override
@@ -1732,6 +1779,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
             //        Object b = super.visit(ctx.multiplicativeExpression(1));
       /*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*/
+            JOptionPane.showMessageDialog(null, "inside additive exp, size ni multExps: " + multExps.size());
 
             for(int j = 1; j < multExps.size(); j++){
 
@@ -1839,7 +1887,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             return (temp);
 
         }
-        return null;
+        return a;
         /*
         if(ctx.ADD() != null && super.visit(ctx.multiplicativeExpression(0))!= null && super.visit(ctx.multiplicativeExpression(1))!= null){
             Object addend = super.visit(ctx.multiplicativeExpression(0));
@@ -1893,6 +1941,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //store the non recurive one based CFG
             List<JuicyBoysParser.UnaryExpressionContext> unaryExps = ctx.unaryExpression();
             List<JuicyBoysParser.MulORdivORmodContext> mulORdivORmod = ctx.mulORdivORmod();
+            JOptionPane.showMessageDialog(null, "inside multiplicative exp, size ni unaryExps: " + unaryExps.size());
 
             //        Object b = super.visit(ctx.multiplicativeExpression(1));
             //for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
@@ -2000,7 +2049,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
 
-        return null;
+        return a;
 
     }
 
@@ -2128,18 +2177,21 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
 
-
+        JOptionPane.showMessageDialog(null, "vinisit si primary");
         if(ctx.literal() != null)
         {
+            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng literal");
             System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
             return ctx.literal().getText();
         }
 
         else if(ctx.functionCall()!=null){
+            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng function call");
+/*
             Object functionReturnValue = super.visit(ctx.functionCall());
-
-            JOptionPane.showMessageDialog(null, "Primary daw function: " + ctx.getText().toString());
+*/
             // Object functionReturnValue = 1;
+            Object functionReturnValue = super.visit(ctx.functionCall());
 
             if(functionReturnValue!=null) {
                 return functionReturnValue.toString();
@@ -2157,6 +2209,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //for variables
         else{
+            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng else which is variable");
             Variable var = null;
             try{
                 var  = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
@@ -2225,20 +2278,23 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public void thirdPass(){
 
 
-        for(int i = 0; i < masterFuncList.size(); i++){
+    /*    for(int i = 0; i < masterFuncList.size(); i++){
             JOptionPane.showMessageDialog(null, "MasterFunc entry: " + i + "\n Function Name: " + masterFuncList.get(i).getSignature().toString() +
                     " \n Return Type: " + masterFuncList.get(i).getReturn_type() + " \n Code: " + masterFuncList.get(i).getContext().block().getText().toString());
 
         }
 
-
-        for(int i = 0; i < masterFuncList.size(); i++){
+*/
+/*        for(int i = 0; i < masterFuncList.size(); i++){
             if(masterFuncList.get(i).getSignature().toString().equals("main")){
                 JOptionPane.showMessageDialog(null, "Found Main, entering context");
                super.visit(masterFuncList.get(i).getContext());
                 break;
             }
-        }
+        }*/
+
+
+        //super.visit(masterFuncList.get(masterFuncList.size()-1).getContext());
 
 
 

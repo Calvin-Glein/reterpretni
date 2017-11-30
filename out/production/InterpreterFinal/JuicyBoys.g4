@@ -648,7 +648,7 @@ statement
     |   statementExpression ';'                                 #hashtagStatementExpressionStatement
     |   Identifier ':' statement                                #hashtagIdentifierStatement
     |   ioStatement                                             #hashtagIOStatement
-    |   functionCall                                            #hashtagFunctionCall
+ //   |   functionCall                                            #hashtagFunctionCall
 
     ;
 

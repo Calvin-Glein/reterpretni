@@ -723,18 +723,6 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHashtagFunctionCall(JuicyBoysParser.HashtagFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitHashtagFunctionCall(JuicyBoysParser.HashtagFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterFunctionCall(JuicyBoysParser.FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
