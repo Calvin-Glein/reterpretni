@@ -293,12 +293,24 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                 super.visit(masterFuncList.get(i).getContext().block());
 
-              //  List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+                //List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
               //  JOptionPane.showMessageDialog(null, "BLOCK STATEMENTS SIZE: " + blockStmts.size() + " Function: " + masterFuncList.get(i).getSignature().toString());
 
 
 
+                //use the last ctx which is return dapat
                 Object returnedValue = super.visit(masterFuncList.get(i).getContext().block().blockStatement().get(masterFuncList.get(i).getContext().block().blockStatement().size()-1));
+
+
+
+
+                //for recursive attempt
+
+              /*  for(int b = blockStmts.size()-1; b > 0; b--){
+                    if(blockStmts.get(b).statement().getText().contains("return")) {
+                        returnedValue = super.visit(blockStmts.get(b));
+                    }
+                }*/
 
 
             //    JOptionPane.showMessageDialog(null, "IDentifier: " + ctx.Identifier().getText() + "Returned from functionvisitor: " + returnedValue.toString());

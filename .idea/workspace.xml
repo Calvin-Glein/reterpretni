@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1b5e7de-5acb-4897-bb71-56a5672f3623" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/AutoComplete.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/AutoComplete.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AutoComplete.java" afterPath="$PROJECT_DIR$/src/AutoComplete.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/InterpreterFinal/JuicyBoysBaseVisitorCustom.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" afterPath="$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,17 +38,18 @@
       <file leaf-file-name="JuicyBoysBaseVisitorCustom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="249" column="122" lean-forward="false" selection-start-line="249" selection-start-column="122" selection-end-line="249" selection-end-column="122" />
+            <state relative-caret-position="-8">
+              <caret line="304" column="0" lean-forward="true" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3931#3941#0" expanded="true" />
                 <element signature="e#6479#6489#0" expanded="true" />
                 <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
-                <element signature="e#76731#76732#0" expanded="true" />
-                <element signature="e#76762#76763#0" expanded="true" />
-                <element signature="e#76797#76798#0" expanded="true" />
-                <element signature="e#76829#76830#0" expanded="true" />
+                <element signature="e#77096#77097#0" expanded="true" />
+                <element signature="e#77127#77128#0" expanded="true" />
+                <element signature="e#77162#77163#0" expanded="true" />
+                <element signature="e#77194#77195#0" expanded="true" />
+                <marker date="1512080603321" expanded="true" signature="6398:11633" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -345,13 +343,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.14055637" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.13909224" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25386998" sideWeight="0.3191801" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42569658" sideWeight="0.32650074" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25386998" sideWeight="0.6808199" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42569658" sideWeight="0.6734993" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -524,10 +522,11 @@
             <element signature="e#3931#3941#0" expanded="true" />
             <element signature="e#6479#6489#0" expanded="true" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
-            <element signature="e#76731#76732#0" expanded="true" />
-            <element signature="e#76762#76763#0" expanded="true" />
-            <element signature="e#76797#76798#0" expanded="true" />
-            <element signature="e#76829#76830#0" expanded="true" />
+            <element signature="e#77096#77097#0" expanded="true" />
+            <element signature="e#77127#77128#0" expanded="true" />
+            <element signature="e#77162#77163#0" expanded="true" />
+            <element signature="e#77194#77195#0" expanded="true" />
+            <marker date="1512080603321" expanded="true" signature="6398:11633" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -620,10 +619,11 @@
             <element signature="e#3931#3941#0" expanded="true" />
             <element signature="e#6479#6489#0" expanded="true" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
-            <element signature="e#76731#76732#0" expanded="true" />
-            <element signature="e#76762#76763#0" expanded="true" />
-            <element signature="e#76797#76798#0" expanded="true" />
-            <element signature="e#76829#76830#0" expanded="true" />
+            <element signature="e#77096#77097#0" expanded="true" />
+            <element signature="e#77127#77128#0" expanded="true" />
+            <element signature="e#77162#77163#0" expanded="true" />
+            <element signature="e#77194#77195#0" expanded="true" />
+            <marker date="1512080603321" expanded="true" signature="6398:11633" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -857,17 +857,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JuicyBoysBaseVisitorCustom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="249" column="122" lean-forward="false" selection-start-line="249" selection-start-column="122" selection-end-line="249" selection-end-column="122" />
+        <state relative-caret-position="-8">
+          <caret line="304" column="0" lean-forward="true" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3931#3941#0" expanded="true" />
             <element signature="e#6479#6489#0" expanded="true" />
             <element signature="initializer##0;class#JuicyBoysBaseVisitorCustom#0" expanded="false" />
-            <element signature="e#76731#76732#0" expanded="true" />
-            <element signature="e#76762#76763#0" expanded="true" />
-            <element signature="e#76797#76798#0" expanded="true" />
-            <element signature="e#76829#76830#0" expanded="true" />
+            <element signature="e#77096#77097#0" expanded="true" />
+            <element signature="e#77127#77128#0" expanded="true" />
+            <element signature="e#77162#77163#0" expanded="true" />
+            <element signature="e#77194#77195#0" expanded="true" />
+            <marker date="1512080603321" expanded="true" signature="6398:11633" ph="{...}" />
           </folding>
         </state>
       </provider>
