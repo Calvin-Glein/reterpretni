@@ -58,7 +58,7 @@ public class AutoComplete {
                 "kunstant",
                 "totoo",
                 "talon"*/
-            "int", "double", "const int", "const double","if","for","while","do","if", "else", "input", "output"
+
 
         };
 

@@ -3,6 +3,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.naming.event.ObjectChangeListener;
 import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -51,9 +52,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             if(function.getSignature().toString().equals("main")){
                 masterFuncList.add(function);
 
-                JOptionPane.showMessageDialog(null, "\n Function Name: " + function.getSignature().toString() +
+          /*      JOptionPane.showMessageDialog(null, "\n Function Name: " + function.getSignature().toString() +
                         " \n Return Type: " + function.getReturn_type() + " \n Code: " + function.getContext().block().getText().toString());
-
+*/
                 super.visit(masterFuncList.get(masterFuncList.size()-1).getContext());
 
             }
@@ -160,16 +161,16 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitBlockStatement(JuicyBoysParser.BlockStatementContext ctx) {
 
-        JOptionPane.showMessageDialog(null, "-----------------inside block statement :" + ctx.getText());
+       // JOptionPane.showMessageDialog(null, "-----------------inside block statement :" + ctx.getText());
         Object a = ctx.statement();
         Object b = ctx.localVariableDeclarationStatement();
 
         if ( a != null) {
-            JOptionPane.showMessageDialog(null, "-----------------inside statement :" + ctx.statement().getText());
+       //     JOptionPane.showMessageDialog(null, "-----------------inside statement :" + ctx.statement().getText());
             return super.visit(ctx.statement());
         }
         else if ( b != null) {
-            JOptionPane.showMessageDialog(null, "-----------------inside localVariableshit :" + ctx.localVariableDeclarationStatement().getText());
+        //    JOptionPane.showMessageDialog(null, "-----------------inside localVariableshit :" + ctx.localVariableDeclarationStatement().getText());
             return super.visit(ctx.localVariableDeclarationStatement());
         }
 
@@ -210,7 +211,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         Object toBeReturned = super.visit(ctx.expression());
 
-        JOptionPane.showMessageDialog(null, "inside hashtagreturn");
+     //   JOptionPane.showMessageDialog(null, "inside hashtagreturn");
 
         if(toBeReturned!=null){
             return toBeReturned;
@@ -221,89 +222,74 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
     @Override
     public Object visitFunctionCall(JuicyBoysParser.FunctionCallContext ctx) {
-        JOptionPane.showMessageDialog(null, "vinisit si function call");
-        //return super.visitFunctionCall(ctx);
-/*
-        int i =0;
-        while(true){
+        for(int i = 0; i < masterFuncList.size()-1; i++){
             if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
+
+
+
+                ArrayList<Variable> parametersToBePassedList = new ArrayList<Variable>();
+
+                for(int parameterCounter = 0; parameterCounter < ctx.expression().size(); parameterCounter++){
+
+                 /*   Object valueToBePassed = ctx.expression(parameterCounter).getText().toString();
+                    JOptionPane.showMessageDialog(null, "VAlue to be passed: " + valueToBePassed.toString());
+
+                    Variable c = masterFuncList.get(i).getParameters().get(parameterCounter);
+                    scopes.peek().bind();
+*/
+
+
+
+
+                    //Variable var = (Variable) scopes.peek().lookup(ctx.expression(parameterCounter).getText().toString());
+
+
+                    Object obj = (Object) super.visit(ctx.expression(parameterCounter));
+
+
+                    Variable var = new Variable( masterFuncList.get(i).getParameters().get(parameterCounter).getDataType().toString(),masterFuncList.get(i).getParameters().get(parameterCounter).getName().toString(), new Value(obj.toString()));
+
+
+
+
+                    JOptionPane.showMessageDialog(null, "Parameter to be passed: " + ctx.expression(parameterCounter).getText().toString() +
+                            "Value of paramater: " + var.getValue());
+
+
+                    var.setName(masterFuncList.get(i).getParameters().get(parameterCounter).getName().toString());
+                    JOptionPane.showMessageDialog(null, "Parameter received: " + var.getName() +
+                            "Value of paramater: " + var.getValue());
+
+
+
+                    parametersToBePassedList.add(var);
+
+
+                    if(var!=null){
+
+                    }
+                    else{
+                        hasError = true;
+                        errorCode += "\n Error in parameter passing";
+                    }
+
+
+
+                }
+
                 //create its scope
                 scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
 
+                //bind passed parameters to the new scope
 
-                super.visit(masterFuncList.get(i).getContext().block());
-
-                //  List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
-                //  JOptionPane.showMessageDialog(null, "BLOCK STATEMENTS SIZE: " + blockStmts.size() + " Function: " + masterFuncList.get(i).getSignature().toString());
-
-
-
-
-                Object returnedValue = super.visit(masterFuncList.get(i).getContext().block().blockStatement().get(masterFuncList.get(i).getContext().block().blockStatement().size()-1));
-
-                if(masterFuncList.get(i).getReturn_type().equals("void")){
-
-                    scopes.pop();
-                    return null;
+                for(int parameterCounter = 0; parameterCounter<parametersToBePassedList.size(); parameterCounter++){
+                    scopes.peek().bind(parametersToBePassedList.get(parameterCounter));
                 }
 
-                Object castChecker = null;
-
-                try{
-                    castChecker = Integer.parseInt(returnedValue.toString());
-                    if(masterFuncList.get(i).getReturn_type().equals("int") && castChecker instanceof Integer) {
-                        scopes.pop();
-                        //pop its scope
-                        return castChecker.toString();
-                    }
-
-                }catch (Exception e){
-                    try{
-                        castChecker = Double.parseDouble(returnedValue.toString());
-                        if(masterFuncList.get(i).getReturn_type().equals("double") && castChecker instanceof Double) {
-                            scopes.pop();
-                            //pop its scope
-                            return castChecker.toString();
-                        }
-                    }
-                    catch (Exception e2){
-                        try{
-                            castChecker = returnedValue.toString();
-                            scopes.pop();
-                            //pop its scope
-                            return castChecker.toString();
-
-
-                        } catch (Exception e3){
-                            scopes.pop();
-                            hasError = true;
-                            errorCode += "\n Returned input type for function cannot be read";
-                            e3.printStackTrace();
-
-                            return null;
-                        }
-                    }
-                }
-
-                break;
 
 
 
-            }
-
-
-
-            i++;
-        }*/
-        for(int i = 0; i < masterFuncList.size()-1; i++){
-
-
-
-            if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
-               //create its scope
-                scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
-
-                JOptionPane.showMessageDialog(null, "function block content: " + masterFuncList.get(i).getContext().block().getText());
+           //     JOptionPane.showMessageDialog(null, "function block content: " + masterFuncList.get(i).getContext().block().getText());
 
                 super.visit(masterFuncList.get(i).getContext().block());
 
@@ -525,7 +511,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             List<JuicyBoysParser.InstanceOfExpressionContext> instanceOfExpressionContexts =  ctx.instanceOfExpression();
             List<JuicyBoysParser.EqualORnotequalContext> equalORnotEqual =  ctx.equalORnotequal();
 
-            JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
+         //   JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
 
 
             for(int j = 1; j < instanceOfExpressionContexts.size(); j++){
@@ -717,7 +703,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             List<JuicyBoysParser.ShiftExpressionContext> shiftExps =  ctx.shiftExpression();
             List<JuicyBoysParser.RelationalOpContext> relops =  ctx.relationalOp();
 
-            JOptionPane.showMessageDialog(null, "inside relational, size ni shiftExps: " + shiftExps.size());
+      //      JOptionPane.showMessageDialog(null, "inside relational, size ni shiftExps: " + shiftExps.size());
 
             for(int j = 1; j < shiftExps.size(); j++){
 
@@ -1231,7 +1217,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                     //Para sa + or -
 
 
-                    JOptionPane.showMessageDialog(null, "inside conditional and, size ni inclusive: " + inclOrExps.size());
+              //      JOptionPane.showMessageDialog(null, "inside conditional and, size ni inclusive: " + inclOrExps.size());
                     for (int j = 1; j < inclOrExps.size(); j++) {
 
                         //^^ iterating through all multExps kasi *
@@ -1318,7 +1304,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
                     //store the non recurive one based CFG
                     List<JuicyBoysParser.ConditionalAndExpressionContext> conAndExps = ctx.conditionalAndExpression();
-                    JOptionPane.showMessageDialog(null, "inside conditional or, size ni inclusive: " + conAndExps.size());
+              //      JOptionPane.showMessageDialog(null, "inside conditional or, size ni inclusive: " + conAndExps.size());
 
 
                     //Para sa + or -
@@ -1777,9 +1763,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //Para sa + or -
             List<JuicyBoysParser.AddORsubContext> addORsubs =  ctx.addORsub();
 
-            //        Object b = super.visit(ctx.multiplicativeExpression(1));
-      /*  for(JuicyBoysParser.MultiplicativeExpressionContext multExp : multExps)*/
-            JOptionPane.showMessageDialog(null, "inside additive exp, size ni multExps: " + multExps.size());
+
+        //    JOptionPane.showMessageDialog(null, "inside additive exp, size ni multExps: " + multExps.size());
 
             for(int j = 1; j < multExps.size(); j++){
 
@@ -1941,7 +1926,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             //store the non recurive one based CFG
             List<JuicyBoysParser.UnaryExpressionContext> unaryExps = ctx.unaryExpression();
             List<JuicyBoysParser.MulORdivORmodContext> mulORdivORmod = ctx.mulORdivORmod();
-            JOptionPane.showMessageDialog(null, "inside multiplicative exp, size ni unaryExps: " + unaryExps.size());
+           // JOptionPane.showMessageDialog(null, "inside multiplicative exp, size ni unaryExps: " + unaryExps.size());
 
             //        Object b = super.visit(ctx.multiplicativeExpression(1));
             //for (JuicyBoysParser.UnaryExpressionContext unaryExp : unaryExps)
@@ -2177,16 +2162,16 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     @Override
     public Object visitPrimary(JuicyBoysParser.PrimaryContext ctx) {
 
-        JOptionPane.showMessageDialog(null, "vinisit si primary");
+        //JOptionPane.showMessageDialog(null, "vinisit si primary");
         if(ctx.literal() != null)
         {
-            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng literal");
+            //JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng literal");
             System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
             return ctx.literal().getText();
         }
 
         else if(ctx.functionCall()!=null){
-            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng function call");
+            //JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng function call");
 /*
             Object functionReturnValue = super.visit(ctx.functionCall());
 */
@@ -2209,7 +2194,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         //for variables
         else{
-            JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng else which is variable");
+           // JOptionPane.showMessageDialog(null, "vinisit si primary, nasa loob ng else which is variable");
             Variable var = null;
             try{
                 var  = (Variable) scopes.peek().lookup(ctx.Identifier().toString());
