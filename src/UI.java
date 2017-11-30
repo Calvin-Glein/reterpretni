@@ -102,22 +102,50 @@ public class UI {
         });
 
         textAreaCodeInput.setText("class joanna{\n" +
-                "    int func1(int x, int y){\n" +
-                "       return x + y;\n" +
-                "    }\n" +
-                "      void main(){\n" +
-                "\tint counter = 10;\n" +
-                "\tint counter2 = 20;\n" +
-                "\tint counter3 = counter + counter2;\n" +
-                "\tint test = 10 + 10;\n" +
+                "    int func1(){\n" +
+                "        int x = 2 + 2;\n" +
+                "        int y = 4; \n" +
                 "\n" +
-                "\tif(counter  < counter2){\n" +
-                "\ttest = test + 10;\n" +
-                "\t}\n" +
-                "\t\n" +
-                "\t\n" +
-                " \tfunc1(1,2);\n" +
-                "}\n" +
+                "        outputln(\"first\");\n" +
+                "\n" +
+                "        int z = x + y;\n" +
+                "\n" +
+                "        output(z);\n" +
+                "\n" +
+                "        int test  = function func2();\n" +
+                "        \n" +
+                "        return test + 4;\n" +
+                "    }\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "    int func2(){\n" +
+                "\n" +
+                "    int z = 4 + 4 + 4; \n" +
+                "    return z;\n" +
+                "\n" +
+                "\n" +
+                "    }\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "    void main(){\n" +
+                "        int counter = 10;\n" +
+                "        int counter2 = 20;\n" +
+                "        int counter3 = counter + counter2;\n" +
+                "        int test = 10 + 10;\n" +
+                "\n" +
+                "        if(counter  < counter2){\n" +
+                "        test = test + 10;\n" +
+                "        }\n" +
+                "\n" +
+                "\n" +
+                "        int sc = function func1();\n" +
+                "        output(sc);\n" +
+                "    }\n" +
                 "}\t");
 
 

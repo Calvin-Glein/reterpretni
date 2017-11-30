@@ -411,7 +411,7 @@ variableDeclaratorId
 variableInitializer
     :   arrayInitializer
     |   expression
-    |   functionCall
+//    |   functionCall
     ;
 
 arrayInitializer
@@ -650,7 +650,6 @@ statement
     |   Identifier ':' statement                                #hashtagIdentifierStatement
     |   ioStatement                                             #hashtagIOStatement
     |   functionCall                                            #hashtagFunctionCall
-
     ;
 
 functionCall
@@ -919,6 +918,8 @@ primary
     |   Identifier identifierSuffix?
     |   primitiveType ('[' ']')* '.' 'class'
     |   'void' '.' 'class'
+    |   functionCall
+
     ;
 
 identifierSuffix

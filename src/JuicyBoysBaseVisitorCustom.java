@@ -45,7 +45,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         if(a!=null){
             Function function = (Function) a;
 
-            JOptionPane.showMessageDialog(null, ctx.memberDeclaration().type().getText().toString() + " " + ctx.memberDeclaration().methodDeclaration().Identifier().getText().toString() + " " + function.getContext().getText().toString());
 
             scopes.push(new Scope(ScopeType.GLOBAL, function.getSignature(), null));
 
@@ -141,7 +140,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         Object b = ctx.localVariableDeclarationStatement();
 
         if ( a != null) {
-            JOptionPane.showMessageDialog(null, "inside visitBlockStatement, statement");
             return super.visit(ctx.statement());
         }
         else if ( b != null) {
@@ -183,7 +181,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
         if(toBeReturned!=null){
-            JOptionPane.showMessageDialog(null, "Return: " + toBeReturned.toString());
             return toBeReturned;
         }
         return null;
@@ -195,11 +192,75 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         //return super.visitFunctionCall(ctx);
 
         for(int i = 0; i < masterFuncList.size(); i++){
-
-            JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.Identifier().getText().toString() );
-                    /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
+             /*if(ctx.Identifier(0).getText().toString() == masterFuncList.get(i).getSignature()){
                         visit(masterFuncList.get(i).getContext());
                     }*/
+
+            if(masterFuncList.get(i).getSignature().equals(ctx.Identifier().getText().toString())) {
+                JOptionPane.showMessageDialog(null, "master: "+ masterFuncList.get(i).getSignature() + " and ctx iden: " + ctx.Identifier().getText().toString());
+
+                JOptionPane.showMessageDialog(null, ".equals");
+                //create its scope
+                scopes.push(new Scope(ScopeType.LOCAL, ctx.Identifier().getText().toString(), null));
+
+                List<JuicyBoysParser.BlockStatementContext> blockStmts =  masterFuncList.get(i).getContext().block().blockStatement();
+                super.visit(masterFuncList.get(i).getContext().block());
+
+
+                Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
+                JOptionPane.showMessageDialog(null, "Entering context: " + masterFuncList.get(i).getSignature() + "\n "  + masterFuncList.get(i).getContext().getText());
+
+                if(masterFuncList.get(i).getReturn_type().equals("void")){
+                    scopes.pop();
+                    return null;
+                }
+
+                Object castChecker = null;
+
+                try{
+                    castChecker = Integer.parseInt(returnedValue.toString());
+                    if(masterFuncList.get(i).getReturn_type().equals("int") && castChecker instanceof Integer) {
+                        scopes.pop();
+                        //pop its scope
+                        return castChecker.toString();
+                    }
+
+                }catch (Exception e){
+                    try{
+                        castChecker = Double.parseDouble(returnedValue.toString());
+                        if(masterFuncList.get(i).getReturn_type().equals("double") && castChecker instanceof Double) {
+                            scopes.pop();
+                            //pop its scope
+                            return castChecker.toString();
+                        }
+                    }
+                    catch (Exception e2){
+                        try{
+                            castChecker = returnedValue.toString();
+                            scopes.pop();
+                            //pop its scope
+                            return castChecker.toString();
+
+
+                        } catch (Exception e3){
+                            scopes.pop();
+                            hasError = true;
+                            errorCode += "\n Returned input type for function cannot be read";
+                            e3.printStackTrace();
+
+                            return null;
+                        }
+                    }
+                }
+
+break;
+
+
+
+            }
+            }
+
+/*
 
             if(masterFuncList.get(i).getSignature().contains(ctx.Identifier().getText().toString())) {
 
@@ -212,8 +273,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 JOptionPane.showMessageDialog(null, "block is executed");
 
 
-                    Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
-                    JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue);
+                Object returnedValue = super.visit(blockStmts.get(blockStmts.size()-1));
+                JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue);
 
 
                 scopes.pop();
@@ -222,9 +283,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 return returnedValue.toString();
 
             }
+        }*/
 
-        }
-        JOptionPane.showMessageDialog(null, "for loop has ended");
 
         return null;
 
@@ -1517,36 +1577,11 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         if(ctx.variableDeclaratorId() != null) {
             a = ctx.variableDeclaratorId().getText();
         }
-        if(ctx.variableInitializer().functionCall() != null){
-            JOptionPane.showMessageDialog(null, "nentered functioncall");
-
-            b = super.visit(ctx.variableInitializer().functionCall());
-
-
-          /*  for(int i = 0; i < masterFuncList.size(); i++){
-
-                JOptionPane.showMessageDialog(null, "signature: " + masterFuncList.get(i).getSignature() + " " + ctx.variableInitializer().functionCall().Identifier().getText().toString() );
-               if(masterFuncList.get(i).getSignature().contains(ctx.variableInitializer().functionCall().Identifier().getText().toString())) {
-
-                    //create its scope
-                    scopes.push(new Scope(ScopeType.LOCAL, ctx.variableInitializer().functionCall().Identifier().getText().toString(), null));
-
-                    try{
-                        Object returnedValue = super.visit(masterFuncList.get(i).getContext()).toString();
-                        JOptionPane.showMessageDialog(null, "What we got from return: " + returnedValue.toString());
-
-                    }catch (Exception e){
-
-                    }
-                    scopes.pop();
-                    //pop its scope
-
-                }
-            }*/
-
-        }
-
-        else if(ctx.variableInitializer() != null){
+//        if(ctx.variableInitializer().functionCall() != null){
+//            JOptionPane.showMessageDialog(null, "nentered functioncall");
+//            b = super.visit(ctx.variableInitializer().functionCall());
+//        }
+        if(ctx.variableInitializer() != null){
             b = super.visit(ctx.variableInitializer());
         }
 
@@ -2049,6 +2084,25 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCChecker kung pumasok: " + ctx.literal().getText());
             return ctx.literal().getText();
         }
+
+        else if(ctx.functionCall()!=null){
+
+                Object functionReturnValue = super.visit(ctx.functionCall());
+                // Object functionReturnValue = 1;
+
+                if(functionReturnValue!=null) {
+                    return functionReturnValue.toString();
+                }
+                else {
+                    hasError = true;
+                    String newErrorCode = "\n Function not returning any value";
+
+                    if (!errorCode.contains(newErrorCode)) {
+                        errorCode += newErrorCode;
+                    }
+                    return null;
+                }
+        }
         //for variables
         else{
             Variable var = null;
@@ -2073,7 +2127,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         }
 
 
-
+        //return null;
         //return super.visitPrimary(ctx);
     }
 
@@ -2119,10 +2173,24 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public void thirdPass(){
 
 
-        super.visit(masterFuncList.get(masterFuncList.size()-1).getContext().block());
+        for(int i = 0; i < masterFuncList.size(); i++){
+            JOptionPane.showMessageDialog(null, "MasterFunc entry: " + i + "\n Function Name: " + masterFuncList.get(i).getSignature().toString() +
+                    " \n Return Type: " + masterFuncList.get(i).getReturn_type() + " \n Code: " + masterFuncList.get(i).getContext().block().getText().toString());
 
-        JOptionPane.showMessageDialog(null,  masterFuncList.get(masterFuncList.size()-1).getSignature().toString() + masterFuncList.get(masterFuncList.size()-1).getContext().getText().toString());
-        JOptionPane.showMessageDialog(null, "continued");
+        }
+
+
+        for(int i = 0; i < masterFuncList.size(); i++){
+            if(masterFuncList.get(i).getSignature().toString().equals("main")){
+                JOptionPane.showMessageDialog(null, "Found Main, entering context");
+                super.visit(masterFuncList.get(i).getContext().block());
+                break;
+            }
+        }
+
+
+
+
 
     }
 }
