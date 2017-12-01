@@ -25,7 +25,7 @@ public class Value {
 
 	public void setValueAt(int index, Object value) {
 		valArray[index] = value;
-		JOptionPane.showMessageDialog(null, "naset: " + valArray[index].toString());
+		//JOptionPane.showMessageDialog(null, "naset: " + valArray[index].toString());
 	}
 
 	public Object getValueAt(int index) {

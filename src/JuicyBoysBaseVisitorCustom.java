@@ -212,24 +212,43 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         // return super.visitArrayInitializer(ctx);
 
-        List<JuicyBoysParser.VariableInitializerContext> variablesList = ctx.variableInitializer();
 
-        //   JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
-        Value b = new Value(null, variablesList.size());
+        if(ctx.SETEMPTYARRAY()==null){
+            List<JuicyBoysParser.VariableInitializerContext> variablesList = ctx.variableInitializer();
 
-        JOptionPane.showMessageDialog(null, "INside visitarray, size ni array:   " + variablesList.size() );
+            //   JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
+            Value b = new Value(null, variablesList.size());
 
-        for (int j = 0; j < variablesList.size(); j++) {
-            Object a = super.visit(variablesList.get(j).expression());
-            JOptionPane.showMessageDialog(null, "-------------a is: " + a.toString());
-            b.setValueAt(j, a.toString());
+//        JOptionPane.showMessageDialog(null, "INside visitarray, size ni array:   " + variablesList.size() );
 
-            JOptionPane.showMessageDialog(null, "LAST NA ETO: " +  b.getValueAt(j).toString());
+            for (int j = 0; j < variablesList.size(); j++) {
+                Object a = super.visit(variablesList.get(j).expression());
+                //        JOptionPane.showMessageDialog(null, "-------------a is: " + a.toString());
+                b.setValueAt(j, a.toString());
+
+                //          JOptionPane.showMessageDialog(null, "LAST NA ETO: " +  b.getValueAt(j).toString());
 //            JOptionPane.showMessageDialog(null, "Showing inside array: " + b.getValueAt(j).toString());
+            }
+
+
+            return b;
         }
+        else if(ctx.SETEMPTYARRAY()!=null) {
 
+            JOptionPane.showMessageDialog(null, "empty intialization of array");
+            Object initialSize = super.visit(ctx.expression());
+            int initialSizeInteger = Integer.parseInt(initialSize.toString());
+            Value b = new Value(null, initialSizeInteger);
 
-        return b;
+            for (int j = 0; j < initialSizeInteger; j++) {
+                JOptionPane.showMessageDialog(null, "populate empty: " + j);
+
+                b.setValueAt(j, 2);
+            }
+            return b;
+        }else{
+            return null;
+        }
     }
 
     @Override
@@ -239,11 +258,11 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         Object b = ctx.expression();
 
         if ( a != null) {
-                 JOptionPane.showMessageDialog(null, "-----------------inside arrayInit :" + ctx.arrayInitializer().getText());
+     //            JOptionPane.showMessageDialog(null, "-----------------inside arrayInit :" + ctx.arrayInitializer().getText());
             return super.visit(ctx.arrayInitializer());
         }
         else if ( b != null) {
-                JOptionPane.showMessageDialog(null, "-----------------inside expression :" + ctx.expression().getText());
+   //             JOptionPane.showMessageDialog(null, "-----------------inside expression :" + ctx.expression().getText());
             return super.visit(ctx.expression());
         }
 
@@ -295,15 +314,15 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
-
+/*
                     JOptionPane.showMessageDialog(null, "Parameter to be passed: " + ctx.expression(parameterCounter).getText().toString() +
-                            "Value of paramater: " + var.getValue());
+                            "Value of paramater: " + var.getValue());*/
 
 
                     var.setName(masterFuncList.get(i).getParameters().get(parameterCounter).getName().toString());
-                    JOptionPane.showMessageDialog(null, "Parameter received: " + var.getName() +
+                  /*  JOptionPane.showMessageDialog(null, "Parameter received: " + var.getName() +
                             "Value of paramater: " + var.getValue());
-
+*/
 
 
                     parametersToBePassedList.add(var);
@@ -1462,7 +1481,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         if(super.visit(ctx.type())!=null)
         {
-            JOptionPane.showMessageDialog(null, "inside super visit ctx type");
+           // JOptionPane.showMessageDialog(null, "inside super visit ctx type");
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
             a.setDataType(ctx.type().getText().toString());
 
@@ -1475,10 +1494,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 castChecker = Integer.parseInt(a.getValue().getValueAt(0).toString());
 
                 scopes.peek().bind(a);
-                JOptionPane.showMessageDialog(null, "a is try: " + a.getName());
+      //          JOptionPane.showMessageDialog(null, "a is try: " + a.getName());
 
             }catch (Exception t){
-                JOptionPane.showMessageDialog(null, "a is catch: " + a.getName());
+    //            JOptionPane.showMessageDialog(null, "a is catch: " + a.getName());
 
                // t.printStackTrace();
                 try{
@@ -1756,7 +1775,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         if(ctx.variableInitializer().arrayInitializer() != null){
             c = (Value) super.visit(ctx.variableInitializer().arrayInitializer());
-            JOptionPane.showMessageDialog(null, "Lord help me: " + c.printArrayToString());
+      //      JOptionPane.showMessageDialog(null, "Lord help me: " + c.printArrayToString());
 
             Variable arrayValue = null;
 
@@ -1782,7 +1801,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
 
-        JOptionPane.showMessageDialog(null, "INside variable declarator, V is: " + v.getName() +  "\n Value: " + v.getValue().toString());
+       // JOptionPane.showMessageDialog(null, "INside variable declarator, V is: " + v.getName() +  "\n Value: " + v.getValue().toString());
         return v;
     }
 

@@ -415,6 +415,7 @@ variableInitializer
 
 arrayInitializer
     :   '{' (variableInitializer (',' variableInitializer)* (',')? )? '}'
+    |    SETEMPTYARRAY expression  // added to pang initialize
     ;
 
 modifier
@@ -1034,6 +1035,7 @@ FLOATINT: 'const double'; //added
 FUNCTION: 'function';//added
 ARRAYWORD: 'array'; //added;
 ARRAYREASSIGNWORD: 'init array'; //added
+SETEMPTYARRAY: 'initialize'; //added
 DEFAULT : 'default';
 DO : 'do';
 DOUBLE : 'double';
