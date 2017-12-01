@@ -323,6 +323,13 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitHashtagTryStatement(JuicyBoysParser.HashtagTryStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code hashtagReassignArrayElements}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code hashtagSwitchStatement}
 	 * labeled alternative in {@link JuicyBoysParser#statement}.
 	 * @param ctx the parse tree
@@ -378,6 +385,18 @@ public interface JuicyBoysVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#arrayCallReassign}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayCallReassign(JuicyBoysParser.ArrayCallReassignContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JuicyBoysParser#arrayCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayCall(JuicyBoysParser.ArrayCallContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JuicyBoysParser#functionCall}.
 	 * @param ctx the parse tree

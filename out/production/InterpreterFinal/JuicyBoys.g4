@@ -639,6 +639,9 @@ statement
 /*
 	|	'try' resourceSpecification block catches? finallyBlock?
 */
+
+    |   arrayCallReassign                                    #hashtagReassignArrayElements
+
     |   'switch' parExpression '{' switchBlockStatementGroups '}' #hashtagSwitchStatement
     //|   'synchronized' parExpression block
     |   RETURN expression? ';'                                #hashtagReturnStatement
@@ -651,6 +654,13 @@ statement
     |   ioStatement                                             #hashtagIOStatement
  //   |   functionCall                                            #hashtagFunctionCall
 
+    ;
+
+arrayCallReassign
+    :   ARRAYREASSIGNWORD Identifier LBRACK expression RBRACK ASSIGN expression
+    ;
+arrayCall
+    :   ARRAYWORD Identifier LBRACK expression RBRACK
     ;
 
 functionCall
@@ -920,7 +930,10 @@ primary
     |   primitiveType ('[' ']')* '.' 'class'
     |   'void' '.' 'class'
     |   functionCall
+    |   arrayCall
+
     ;
+
 
 identifierSuffix
     :   ('[' ']')+ '.' 'class'
@@ -1019,7 +1032,8 @@ CONTINUE : 'continue';
 CONSTINT: 'const int';//added
 FLOATINT: 'const double'; //added
 FUNCTION: 'function';//added
-
+ARRAYWORD: 'array'; //added;
+ARRAYREASSIGNWORD: 'init array'; //added
 DEFAULT : 'default';
 DO : 'do';
 DOUBLE : 'double';

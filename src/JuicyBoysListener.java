@@ -531,6 +531,18 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 */
 	void exitHashtagTryStatement(JuicyBoysParser.HashtagTryStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code hashtagReassignArrayElements}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code hashtagReassignArrayElements}
+	 * labeled alternative in {@link JuicyBoysParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code hashtagSwitchStatement}
 	 * labeled alternative in {@link JuicyBoysParser#statement}.
 	 * @param ctx the parse tree
@@ -626,6 +638,26 @@ public interface JuicyBoysListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#arrayCallReassign}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayCallReassign(JuicyBoysParser.ArrayCallReassignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#arrayCallReassign}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayCallReassign(JuicyBoysParser.ArrayCallReassignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JuicyBoysParser#arrayCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayCall(JuicyBoysParser.ArrayCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JuicyBoysParser#arrayCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayCall(JuicyBoysParser.ArrayCallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JuicyBoysParser#functionCall}.
 	 * @param ctx the parse tree

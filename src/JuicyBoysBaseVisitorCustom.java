@@ -1240,7 +1240,18 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     }*/
 
 
+    @Override
+    public Object visitHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx) {
 
+        Object indexObject = super.visit(ctx.arrayCallReassign().expression(0));
+        int index = Integer.parseInt(indexObject.toString());
+
+        Variable var = (Variable) scopes.peek().lookup(ctx.arrayCallReassign().Identifier().getText());
+            var.getValue().setValueAt(index, super.visit(ctx.arrayCallReassign().expression(1)));
+
+
+        return null;
+    }
 
     @Override
     public Object visitForInit(JuicyBoysParser.ForInitContext ctx) {
@@ -2294,7 +2305,21 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
                 return null;
             }
-      }
+
+        }
+        else if(ctx.arrayCall()!=null){
+
+            int index = Integer.parseInt(super.visit(ctx.arrayCall().expression()).toString());
+
+            Variable var = (Variable) scopes.peek().lookup(ctx.arrayCall().Identifier().getText());
+            System.out.println("INDEX FOR ARRAY PRIMARY: " + index);
+            System.out.println("Name ng array : " + var.getName());
+
+
+           return var.getValue().getValueAt(index).toString();
+
+
+        }
 
         //for variables
         else{

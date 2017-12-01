@@ -627,6 +627,18 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHashtagReassignArrayElements(JuicyBoysParser.HashtagReassignArrayElementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterHashtagSwitchStatement(JuicyBoysParser.HashtagSwitchStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -718,6 +730,30 @@ public class JuicyBoysBaseListener implements JuicyBoysListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitHashtagIOStatement(JuicyBoysParser.HashtagIOStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayCallReassign(JuicyBoysParser.ArrayCallReassignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayCallReassign(JuicyBoysParser.ArrayCallReassignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayCall(JuicyBoysParser.ArrayCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayCall(JuicyBoysParser.ArrayCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
