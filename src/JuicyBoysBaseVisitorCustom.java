@@ -756,11 +756,10 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }catch (Exception e1){
                     try{
                         temp = a.toString();
-                        System.out.print("You cannot perform relational (>, <, >=, <=) operation on strings: " +temp);
                         hasError = true;
 
-                        String newErrorCode = "\n You cannot perform relational (>, <, >=, <=) operation on strings: ";
-
+                       // String newErrorCode = "\n You cannot perform relational (>, <, >=, <=) operation on strings: ";
+                        String newErrorCode = "";
                         if (!errorCode.contains(newErrorCode)) {
 
 
@@ -1067,7 +1066,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
                     Variable var = (Variable) scopes.peek().lookup("i");
-                    System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII: " + var.getValue());
                 } while ((Boolean) condition == true);
             }
         }
