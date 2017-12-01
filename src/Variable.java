@@ -39,11 +39,21 @@ public class Variable extends Symbol {
 
 	public String toString() {
 		// TODO Auto-generated method stub
-		if (value == null)
-			return " Data Type:" + data_type + " Name:" + name + " Value: null";
 
-		else
-			return " Data Type:" + data_type + " Name:" + name + " Value: " + value.toString();
+		try{
+			int size = value.getSize();
+			return " Data Type:" + data_type + " Name:" + name + " Value: " + value.printArrayToString();
+
+		}catch(Exception e)
+		{
+			if (value == null)
+				return " Data Type:" + data_type + " Name:" + name + " Value: null :(";
+
+			else
+				return " Data Type:" + data_type + " Name:" + name + " Value: " + value.toString();
+		}
+
+
 	}
 
 }

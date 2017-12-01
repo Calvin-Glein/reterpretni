@@ -447,7 +447,7 @@ typeName
 */
 type
 	:	/*classOrInterfaceType ('[' ']')**/
-	|	primitiveType ('[' ']')*
+	|	primitiveType
 	;
 
 /*classOrInterfaceType
@@ -468,6 +468,7 @@ primitiveType
     |   CONSTINT
     |   FLOATINT
     |   VOID
+    |   INT LBRACK RBRACK
     ;
 
 variableModifier

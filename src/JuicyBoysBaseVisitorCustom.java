@@ -207,6 +207,48 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
 
     @Override
+    public Object visitArrayInitializer(JuicyBoysParser.ArrayInitializerContext ctx) {
+
+
+        // return super.visitArrayInitializer(ctx);
+
+        List<JuicyBoysParser.VariableInitializerContext> variablesList = ctx.variableInitializer();
+
+        //   JOptionPane.showMessageDialog(null, "inside equality expr, size ni instanceofexp: " + instanceOfExpressionContexts.size());
+        Value b = new Value(null, variablesList.size());
+
+        JOptionPane.showMessageDialog(null, "INside visitarray, size ni array:   " + variablesList.size() );
+
+        for (int j = 0; j < variablesList.size(); j++) {
+            Object a = super.visit(variablesList.get(j).expression());
+            JOptionPane.showMessageDialog(null, "-------------a is: " + a.toString());
+            b.setValueAt(j, a.toString());
+
+            JOptionPane.showMessageDialog(null, "LAST NA ETO: " +  b.getValueAt(j).toString());
+//            JOptionPane.showMessageDialog(null, "Showing inside array: " + b.getValueAt(j).toString());
+        }
+        return b;
+    }
+
+    @Override
+    public Object visitVariableInitializer(JuicyBoysParser.VariableInitializerContext ctx) {
+        // JOptionPane.showMessageDialog(null, "-----------------inside block statement :" + ctx.getText());
+        Object a = ctx.arrayInitializer();
+        Object b = ctx.expression();
+
+        if ( a != null) {
+                 JOptionPane.showMessageDialog(null, "-----------------inside arrayInit :" + ctx.arrayInitializer().getText());
+            return super.visit(ctx.arrayInitializer());
+        }
+        else if ( b != null) {
+                JOptionPane.showMessageDialog(null, "-----------------inside expression :" + ctx.expression().getText());
+            return super.visit(ctx.expression());
+        }
+
+        return null;
+    }
+
+    @Override
     public Object visitHashtagReturnStatement(JuicyBoysParser.HashtagReturnStatementContext ctx) {
 
         Object toBeReturned = super.visit(ctx.expression());
@@ -400,8 +442,9 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             System.out.println("values" + mentry.getValue());
         }
 */
-        while(!scopes.empty())
-            System.out.println(scopes.pop().getList());
+
+
+
         return set;
 /*
         // method 2:
@@ -1402,86 +1445,107 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         System.out.println("---------- Visit LocalVariableDeclaration ----------");
 
-        System.out.println("VALUE NI CTX TYPE: " + ctx.type());
+        System.out.println("VALUE NI CTX TYPE: " + ctx.type().getText());
 
         if(super.visit(ctx.type())!=null)
         {
+            JOptionPane.showMessageDialog(null, "inside super visit ctx type");
             Variable a = (Variable)super.visit(ctx.variableDeclarators());
             a.setDataType(ctx.type().getText().toString());
-            System.out.println("Variable a: " + a.toString());
+
+
 
             Object castChecker = null;
-            try{
-                castChecker = Integer.parseInt(a.getValue().toString());
-            }
-            catch (Exception e){
-                try{
-                    castChecker = Double.parseDouble(a.getValue().toString());
 
-                }catch (Exception e1){
+            try{
+                //if gumana etong line, dat means array sya
+                castChecker = Integer.parseInt(a.getValue().getValueAt(0).toString());
+
+                scopes.peek().bind(a);
+                JOptionPane.showMessageDialog(null, "a is try: " + a.getName());
+
+            }catch (Exception t){
+                JOptionPane.showMessageDialog(null, "a is catch: " + a.getName());
+
+               // t.printStackTrace();
+                try{
+                    castChecker = Integer.parseInt(a.getValue().toString());
+                }
+                catch (Exception e){
                     try{
-                        // JOptionPane.showMessageDialog(null, "cast: " + super.visit(ctx.variableDeclarators()));
-                        castChecker = a.getValue().toString();
-                    }catch (Exception e2) {
-                        hasError = true;
-                        errorCode += "\n Di sya int or di sya double";
-                        e2.printStackTrace();
+                        castChecker = Double.parseDouble(a.getValue().toString());
+
+                    }catch (Exception e1){
+                        try{
+                            castChecker = a.getValue().toString();
+                        }catch (Exception e2) {
+                            hasError = true;
+                            errorCode += "\n Di sya int or di sya double";
+                            e2.printStackTrace();
+                        }
                     }
                 }
-            }
+                Variable var = (Variable) scopes.peek().lookup(a.getName().toString());
 
-            Variable var = (Variable) scopes.peek().lookup(a.getName().toString());
+                if(var==null){
 
-            if(var==null){
+                    if(castChecker instanceof Integer && a.getDataType().equals("int")){
+                        //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                        printNoPop();
+                        scopes.peek().bind(a);
+                    }
+                    else if (castChecker instanceof Double && a.getDataType().equals("double")) {
+                        //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                        printNoPop();
 
-                if(castChecker instanceof Integer && a.getDataType().equals("int")){
-                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                    printNoPop();
-                    scopes.peek().bind(a);
+                        scopes.peek().bind(a);
+
+                    }
+
+                    else if(castChecker instanceof String && a.getDataType().equals("String")){
+                        //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                        printNoPop();
+                        scopes.peek().bind(a);
+                    }
+                    else if(castChecker instanceof Integer && a.getDataType().equals("const int")){
+                        //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                        printNoPop();
+                        scopes.peek().bind(a);
+                    }
+
+                    else if(castChecker instanceof Double && a.getDataType().equals("const double")){
+                        //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
+                        printNoPop();
+                        scopes.peek().bind(a);
+                    }
+
+                  /*  else if(a.getDataType().toString().equals("int[]")){
+                        JOptionPane.showMessageDialog(null, "ETO MGA BOSS: " + a.getValue().getValueAt(4).toString());
+                        scopes.peek().bind(a);
+                    }*/
+
+
+                    else{
+                        hasError = true;
+                        errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Not compatible with value: " + a.getValue();
+                    }
                 }
-                else if (castChecker instanceof Double && a.getDataType().equals("double")) {
-                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                    printNoPop();
-
-                    scopes.peek().bind(a);
-
-                }
-
-                else if(castChecker instanceof String && a.getDataType().equals("String")){
-                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                    printNoPop();
-                    scopes.peek().bind(a);
-                }
-                else if(castChecker instanceof Integer && a.getDataType().equals("const int")){
-                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                    printNoPop();
-                    scopes.peek().bind(a);
-                }
-
-                else if(castChecker instanceof Double && a.getDataType().equals("const double")){
-                    //JOptionPane.showMessageDialog(null, " Type: " + a.getDataType().toString() + "Name: " + a.getName() + "Value: " + a.getValue());
-                    printNoPop();
-                    scopes.peek().bind(a);
-                }
-
-
-                else{
+                else if(var!=null){
                     hasError = true;
-                    errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Not compatible with value: " + a.getValue();
+                    errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Exists already";
                 }
+
+
+
+//                System.out.println(a.toString());
+
+
+                //scopes.push(new Scope(, String scopeName, RuleContext caller);
+
+
+
+
             }
-            else if(var!=null){
-                hasError = true;
-                errorCode += "\nName: " + a.getName() + " (data type: "+ a.getDataType() +") Exists already";
-            }
-
-
-
-            System.out.println(a.toString());
-
-
-            //scopes.push(new Scope(, String scopeName, RuleContext caller);
-
 
 
         }
@@ -1601,7 +1665,6 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
                 }
 /*
             if(var.getDataType().equals(a.getDataType())){
-
                 }*/
                 else{
                     hasError = true;
@@ -1625,6 +1688,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
         return null;
 
     }
+
+
 
 
     @Override
@@ -1676,10 +1741,14 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         if(ctx.variableInitializer() != null){
             b = super.visit(ctx.variableInitializer());
+            JOptionPane.showMessageDialog(null, "Test: " + b.toString());
         }
 
 
+
         Variable v = new Variable(null, a.toString(), new Value(b));
+
+        JOptionPane.showMessageDialog(null, "INside variable declarator, V is: " + v.getName() +  "\n Value: " + v.getValue().toString());
         return v;
     }
 
