@@ -227,6 +227,8 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
             JOptionPane.showMessageDialog(null, "LAST NA ETO: " +  b.getValueAt(j).toString());
 //            JOptionPane.showMessageDialog(null, "Showing inside array: " + b.getValueAt(j).toString());
         }
+
+
         return b;
     }
 
@@ -1727,6 +1729,7 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
     public Object visitVariableDeclarator(JuicyBoysParser.VariableDeclaratorContext ctx) {
         Object a = null;
         Object b = null;
+        Value c = null;
 
         if(ctx.variableDeclaratorId() != null) {
             a = ctx.variableDeclaratorId().getText();
@@ -1739,14 +1742,34 @@ public class JuicyBoysBaseVisitorCustom extends JuicyBoysBaseVisitor {
 
         }*/
 
-        if(ctx.variableInitializer() != null){
-            b = super.visit(ctx.variableInitializer());
-            JOptionPane.showMessageDialog(null, "Test: " + b.toString());
+
+        if(ctx.variableInitializer().arrayInitializer() != null){
+            c = (Value) super.visit(ctx.variableInitializer().arrayInitializer());
+            JOptionPane.showMessageDialog(null, "Lord help me: " + c.printArrayToString());
+
+            Variable arrayValue = null;
+
+
+
+
+            arrayValue = new Variable(null, a.toString(), c);
+
+
+            return arrayValue;
         }
 
+        if(ctx.variableInitializer() != null){
+            b = super.visit(ctx.variableInitializer());
+        }
+
+        Variable v = null;
 
 
-        Variable v = new Variable(null, a.toString(), new Value(b));
+
+
+        v = new Variable(null, a.toString(), new Value(b));
+
+
 
         JOptionPane.showMessageDialog(null, "INside variable declarator, V is: " + v.getName() +  "\n Value: " + v.getValue().toString());
         return v;

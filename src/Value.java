@@ -18,6 +18,10 @@ public class Value {
 	}
 
 
+	public Value(Object[] content) {
+		valArray = content;
+	}
+
 
 	public void setValueAt(int index, Object value) {
 		valArray[index] = value;
